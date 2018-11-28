@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+
+database/migrations/2018_11_28_173542_create_permisos_table\.php
