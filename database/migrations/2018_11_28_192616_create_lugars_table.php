@@ -14,7 +14,7 @@ class CreateLugarsTable extends Migration
     public function up()
     {
         Schema::create('lugars', function (Blueprint $table) {
-             $table->increments('id_lugar');
+            $table->increments('id_lugar');
 			$table->string('pais',100);
 			$table->string('ciudad',50);
 			$table->string('direccion_lugar',200);

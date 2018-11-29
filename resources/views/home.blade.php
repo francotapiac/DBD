@@ -8,10 +8,17 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
+                    
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
+                    @endif
+                    
+                    @if(Auth::user()->tieneRol('admin'))
+                        <div>Acceso como administrador</div>
+                    @else
+                         <div>Acceso usuario</div>
                     @endif
 
                     You are logged in!
