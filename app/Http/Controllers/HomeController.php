@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+
+    //Se autoriza a usuarios de acuerdo a roles (agregar más roles acá)
      $request->user()->autorizarRoles(['usuario', 'admin']);   
         return view('home');
     }

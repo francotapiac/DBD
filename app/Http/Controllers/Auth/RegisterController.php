@@ -51,9 +51,21 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'primer_nombre' => 'required|string|max:45',
+            'segundo_nombre' => 'required|string|max:45',
+            'primer_apellido' => 'required|string|max:36',
+            'segundo_apellido' => 'required|string|max:36',
             'email' => 'required|string|email|max:255|unique:users',
+            'fecha_nacimiento' => 'required|date',
             'password' => 'required|string|min:6|confirmed',
+            'edad' => 'required|integer',
+            'ciudad_residencia' => 'required|string|max:100',
+            'calle_residencia' => 'required|string|max:100',
+            'pais_residencia' => 'required|string|max:50',
+            'numero_celular' => 'required|string|max:20',
+            'tipo_documento' => 'required|integer',
+            'tipo_pago' => 'required|integer',
+            'estado' => 'required|integer',
         ]);
     }
 
@@ -66,9 +78,22 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
+            'primer_nombre' => $data['primer_nombre'],
+            'segundo_nombre' => $data['segundo_nombre'],
+            'primer_apellido' =>$data['primer_apellido'],
+            'segundo_apellido' => $data['segundo_apellido'],
             'email' => $data['email'],
+            'fecha_nacimiento' =>$data['fecha_nacimiento'],
+            'edad' => $data['edad'],
+            'ciudad_residencia' =>$data['ciudad_residencia'],
+            'calle_residencia' =>$data['calle_residencia'],
+            'pais_residencia' => $data['pais_residencia'],
+            'numero_celular' =>$data['numero_celular'],
+            'tipo_documento' => $data['tipo_documento'],
+            'tipo_pago' => $data['tipo_pago'],
+            'estado' =>$data['estado'],
             'password' => Hash::make($data['password']),
+
         ]);
 
         //Crea usuarios por defecto (no admin)
