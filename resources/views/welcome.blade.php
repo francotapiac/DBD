@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Pagina genérica
+                    LATAM Pirata
                 </div>
 
                 <div class="links">
