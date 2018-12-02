@@ -40,6 +40,7 @@ class UserTableSeeder extends Seeder
         $user->rols()->attach($rol_user); //Se agrega rol x a usuario
 
         //Se asignan atributos a usuarios
+        $user = new User();
         $user->primer_nombre = "Admin";
         $user->segundo_nombre = "Admin";
         $user->primer_apellido = "Admin";
@@ -50,7 +51,7 @@ class UserTableSeeder extends Seeder
         $user->ciudad_residencia = "santiago";
         $user->calle_residencia = "cale falsa 12345";
         $user->pais_residencia = "santiago";
-        $user->password = bcrypt('usuario'); //Se encripta contraseña
+        $user->password = bcrypt('admin'); //Se encripta contraseña
         $user->numero_celular = "+56-898989898";
         $user->tipo_documento = true;
         $user->tipo_pago = 1;
