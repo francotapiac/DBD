@@ -16,4 +16,9 @@ class Rol extends Model
     	return $this
     	->belongsToMany('App\User','usuario_rols','id_rol','id_usuario')->withTimestamps();
     }
+
+    public function permisos(){
+   		return $this
+   		->belongsToMany('App\Permiso','rol_permisos','id_rol','id_permiso')->withTimestamps();
+    }
 }
