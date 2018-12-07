@@ -15,7 +15,6 @@ class CreateSegurosTable extends Migration
     {
         Schema::create('seguros', function (Blueprint $table) {
             $table->increments('id_seguro');
-            $table->string('tipo_seguro',15);
             $table->string('nombre_seguro',70);
             $table->string('descripcion',280);
             $table->timestamps();
