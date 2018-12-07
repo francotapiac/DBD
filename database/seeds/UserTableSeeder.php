@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
         $user->segundo_apellido = "User";
         $user->email = "user@user.user";
         $user->fecha_nacimiento = "2016-01-01 00:00:00";
-        $user->edad = 123;
+        $user->edad = 1234;
         $user->ciudad_residencia = "santiago";
         $user->calle_residencia = "cale falsa 1234";
         $user->pais_residencia = "santiago";
