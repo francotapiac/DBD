@@ -17,10 +17,10 @@ class CreateReservaActividadsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_reserva')->unsigned();
-            $table->integer('id_actividad')->unsigned();
-            $table->foreign('id_reserva')->references('id_reserva')->on('reservas');
-            $table->foreign('id_actividad')->references('id_actividad')->on('actividads');
+            $table->integer('id_reserva')->unsigned()->nullable();
+            $table->integer('id_actividad')->unsigned()->nullable();
+            $table->foreign('id_reserva')->references('id_reserva')->on('reservas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_actividad')->references('id_actividad')->on('actividads')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

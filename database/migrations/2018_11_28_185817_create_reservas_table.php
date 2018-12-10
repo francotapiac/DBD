@@ -20,9 +20,9 @@ class CreateReservasTable extends Migration
             $table->text('detalle_reserva');
             $table->timestamps();
 
-            $table->integer('id_usuario')->unsigned();
+            $table->integer('id_usuario')->unsigned()->nullable();
             //este id rol es de esta table       la referencia es de la otra tabla
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -17,10 +17,10 @@ class CreateActividadLugarsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_lugar')->unsigned();
-            $table->integer('id_actividad')->unsigned();
-            $table->foreign('id_lugar')->references('id_lugar')->on('lugars');
-            $table->foreign('id_actividad')->references('id_actividad')->on('actividads');
+            $table->integer('id_lugar')->unsigned()->nullable();
+            $table->integer('id_actividad')->unsigned()->nullable();
+            $table->foreign('id_lugar')->references('id_lugar')->on('lugars')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_actividad')->references('id_actividad')->on('actividads')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

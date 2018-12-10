@@ -17,10 +17,10 @@ class CreatePaqueteActividadsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 			
-			$table->integer('id_paquete')->unsigned();
-			$table->integer('id_actividad')->unsigned();
-			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
-            $table->foreign('id_actividad')->references('id_actividad')->on('actividads');
+			$table->integer('id_paquete')->unsigned()->nullable();
+			$table->integer('id_actividad')->unsigned()->nullable();
+			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_actividad')->references('id_actividad')->on('actividads')->onDelete('cascade')->onUpdate('cascade');
 			
 			
         });

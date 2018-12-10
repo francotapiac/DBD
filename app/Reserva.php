@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
+    protected $primaryKey = 'id_reserva';
     public function actividads(){
     	return $this
     	->belongsToMany('App\Actividad','reserva_actividads','id_reserva','id_actividad')->withTimestamps();
@@ -18,7 +19,7 @@ class Reserva extends Model
 
     public function paquetes(){
     	return $this
-    	->belongsToMany('App\Paquete','reserva_paquetes','id_reserva','id_paquete')->withTimestamps();
+    	->belongsToMany('App\Paquete','reserva__paquetes','id_reserva','id_paquete')->withTimestamps();
     }
 
 
