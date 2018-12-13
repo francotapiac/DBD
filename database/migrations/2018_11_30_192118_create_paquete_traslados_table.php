@@ -13,7 +13,7 @@ class CreatePaqueteTrasladosTable extends Migration
      */
     public function up()
     {
-        Schema::create('paquete__traslados', function (Blueprint $table) {
+        Schema::create('paquete_traslados', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 			
@@ -31,6 +31,6 @@ class CreatePaqueteTrasladosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paquete__traslados');
+        Schema::dropIfExists('paquete_traslados');
     }
 }

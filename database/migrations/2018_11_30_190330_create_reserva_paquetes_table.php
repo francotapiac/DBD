@@ -13,7 +13,7 @@ class CreateReservaPaquetesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserva__paquetes', function (Blueprint $table) {
+        Schema::create('reserva_paquetes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 			
@@ -32,6 +32,6 @@ class CreateReservaPaquetesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserva__paquetes');
+        Schema::dropIfExists('reserva_paquetes');
     }
 }

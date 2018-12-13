@@ -28,7 +28,7 @@ class Paquete extends Model
 
     public function actividads(){
         return $this
-        ->belongsToMany('App\Actividad','paquete__actividads','id_paquete','id_actividad')->withTimestamps(); 
+        ->belongsToMany('App\Actividad','paquete_actividads','id_paquete','id_actividad')->withTimestamps(); 
     }
 
     public function habitacions(){

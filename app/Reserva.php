@@ -19,7 +19,12 @@ class Reserva extends Model
 
     public function paquetes(){
     	return $this
-    	->belongsToMany('App\Paquete','reserva__paquetes','id_reserva','id_paquete')->withTimestamps();
+    	->belongsToMany('App\Paquete','reserva_paquetes','id_reserva','id_paquete')->withTimestamps();
+    }
+
+    public function traslados(){
+        return $this
+        ->hasMany('App\Traslado','id_traslado')->withTimestamps();
     }
 
 

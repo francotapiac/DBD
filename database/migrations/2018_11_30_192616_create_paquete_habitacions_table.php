@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaqueteVuelosTable extends Migration
+class CreatePaqueteHabitacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreatePaqueteVuelosTable extends Migration
      */
     public function up()
     {
-        Schema::create('paquete__vuelos', function (Blueprint $table) {
+        Schema::create('paquete_habitacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 			
 			$table->integer('id_paquete')->unsigned();
-			$table->integer('id_vuelo')->unsigned();
+			$table->integer('id_habitacion')->unsigned();
 			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
-            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
-			
-			
+            $table->foreign('id_habitacion')->references('id_habitacion')->on('habitacions');
         });
     }
 
@@ -33,6 +31,6 @@ class CreatePaqueteVuelosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paquete__vuelos');
+        Schema::dropIfExists('paquete_habitacions');
     }
 }
