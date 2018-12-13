@@ -10,4 +10,9 @@ class Escala extends Model
    		return $this
    		->belongsToMany('App\Vuelo','vuelo_escalas','id_escala','id_vuelo')->withTimestamps();
     }
+
+    public function lugar(){
+    	return $this
+    	->belongTo('App\Lugar','id_lugar')->withTimestamps();
+    }
 }
