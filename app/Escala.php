@@ -13,6 +13,7 @@ class Escala extends Model
 
     public function lugar(){
     	return $this
+    	//belongsTo donde esta la llave foranea en el MR
     	->belongTo('App\Lugar','id_lugar')->withTimestamps();
     }
 }
