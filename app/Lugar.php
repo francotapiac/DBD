@@ -16,6 +16,10 @@ class Lugar extends Model
         ->belongsToMany('App\Actividad','actividad_lugars','id_lugar','id_actividad')->withTimestamps(); //user_id, rol_id
     }
 
+    public function aeropuertos(){
+    	return $this->hasMany(Aeropuerto::class, 'id_aeropuerto');
+    }
+
     public function escalas(){
     	return $this
     	//hasMany el que no la tiene en el MR

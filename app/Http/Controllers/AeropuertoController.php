@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Aeropuerto;
 
 class AeropuertoController extends Controller
 {
@@ -11,9 +12,20 @@ class AeropuertoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //Se recibe lo buscado en vista
+        $nombre = $request->get('nombre_aeropuerto');
+        $tipo = $request->get('tipo_aeropuerto');
+        $numero = $request->get('numero_contacto');
+
+        $aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
+        ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        ->tipo($tipo)
+        ->numero($numero)
+        ->paginate(7); 
+        //return $aeropuertos; 
+        return view('aeropuerto.index',compact('aeropuertos')); 
     }
 
     /**

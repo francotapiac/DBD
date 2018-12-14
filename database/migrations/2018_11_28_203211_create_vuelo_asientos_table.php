@@ -17,10 +17,10 @@ class CreateVueloAsientosTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_vuelo')->unsigned();
-            $table->integer('id_asiento')->unsigned();
-            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
-            $table->foreign('id_asiento')->references('id_asiento')->on('asientos');
+            $table->integer('id_vuelo')->unsigned()->nullable();
+            $table->integer('id_asiento')->unsigned()->nullable();
+            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_asiento')->references('id_asiento')->on('asientos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

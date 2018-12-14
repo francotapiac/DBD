@@ -17,7 +17,7 @@ class CreateAeropuertosTable extends Migration
             $table->increments('id_aeropuerto');
             $table->string('nombre_aeropuerto',70);
             $table->boolean('tipo_aeropuerto');
-            $table->string('numero_contacto',20);
+            $table->string('numero_contacto',30);
             $table->timestamps();
 
             $table->integer('id_lugar')->unsigned();

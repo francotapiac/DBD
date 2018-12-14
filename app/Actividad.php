@@ -39,7 +39,7 @@ class Actividad extends Model
 
     public function scopeCosto($query, $costo){
         if($costo)
-            return $query->where('nombre','LIKE',"%$costo%"); //LIKE permite buscar palabras semejantes (no iguales)
+            return $query->where('costo','LIKE',"%$costo%"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
 }

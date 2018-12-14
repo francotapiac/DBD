@@ -23,7 +23,7 @@ class PaqueteController extends Controller
         ->precio($precio)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->descripcion($descripcion)
         ->descuento($descuento)
-        ->paginate(3); 
+        ->paginate(7); 
         return view('paquete.index',compact('paquetes')); 
     }
 

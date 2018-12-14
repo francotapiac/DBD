@@ -17,11 +17,11 @@ class CreatePaqueteVehiculosTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_paquete')->unsigned();
-            $table->integer('id_vehiculo')->unsigned();
+            $table->integer('id_paquete')->unsigned()->nullable();
+            $table->integer('id_vehiculo')->unsigned()->nullable();
        
-            $table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
-            $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos');
+            $table->foreign('id_paquete')->references('id_paquete')->on('paquetes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

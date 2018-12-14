@@ -17,10 +17,10 @@ class CreateReservaVuelosTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_reserva')->unsigned();
-            $table->integer('id_vuelo')->unsigned();
-            $table->foreign('id_reserva')->references('id_reserva')->on('reservas');
-            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
+            $table->integer('id_reserva')->unsigned()->nullable();
+            $table->integer('id_vuelo')->unsigned()->nullable();
+            $table->foreign('id_reserva')->references('id_reserva')->on('reservas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

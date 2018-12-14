@@ -19,7 +19,7 @@ class CreatePaqueteVuelosTable extends Migration
 			
 			$table->integer('id_paquete')->unsigned();
 			$table->integer('id_vuelo')->unsigned();
-			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
+			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
 			
 			

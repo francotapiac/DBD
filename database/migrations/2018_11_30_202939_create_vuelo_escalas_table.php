@@ -17,10 +17,10 @@ class CreateVueloEscalasTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_vuelo')->unsigned();
-            $table->integer('id_escala')->unsigned();
-            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos');
-            $table->foreign('id_escala')->references('id_escala')->on('escalas');
+            $table->integer('id_vuelo')->unsigned()->nullable();
+            $table->integer('id_escala')->unsigned()->nullable();
+            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_escala')->references('id_escala')->on('escalas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

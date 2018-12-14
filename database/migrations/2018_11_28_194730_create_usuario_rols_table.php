@@ -17,11 +17,11 @@ class CreateUsuarioRolsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_usuario')->unsigned();
-            $table->integer('id_rol')->unsigned();
+            $table->integer('id_usuario')->unsigned()->nullable();
+            $table->integer('id_rol')->unsigned()->nullable();
             //este id rol es de esta table       la referencia es de la otra tabla
-            $table->foreign('id_usuario')->references('id')->on('users');
-            $table->foreign('id_rol')->references('id_rol')->on('rols');
+            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_rol')->references('id_rol')->on('rols')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

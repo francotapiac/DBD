@@ -17,10 +17,10 @@ class CreatePaqueteTrasladosTable extends Migration
             $table->increments('id');
             $table->timestamps();
 			
-			$table->integer('id_paquete')->unsigned();
-			$table->integer('id_traslado')->unsigned();
-			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes');
-            $table->foreign('id_traslado')->references('id_traslado')->on('traslados');
+			$table->integer('id_paquete')->unsigned()->nullable();
+			$table->integer('id_traslado')->unsigned()->nullable();
+			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_traslado')->references('id_traslado')->on('traslados')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

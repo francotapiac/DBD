@@ -17,11 +17,11 @@ class CreateRolPermisosTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->integer('id_rol')->unsigned();
-            $table->integer('id_permiso')->unsigned();
+            $table->integer('id_rol')->unsigned()->nullable();
+            $table->integer('id_permiso')->unsigned()->nullable();
             //este id rol es de esta table       la referencia es de la otra tabla
-            $table->foreign('id_rol')->references('id_rol')->on('rols');
-            $table->foreign('id_permiso')->references('id_permiso')->on('permisos');
+            $table->foreign('id_rol')->references('id_rol')->on('rols')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_permiso')->references('id_permiso')->on('permisos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
