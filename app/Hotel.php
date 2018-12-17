@@ -9,7 +9,7 @@ class Hotel extends Model
     protected $primaryKey = 'id_hotel';
     protected $fillable = [
         'nombre','telefono','compañia','calificacion','descripcion'
-    ]
+    ];
 
     public function habitacions(){
     	return $this

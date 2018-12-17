@@ -24,11 +24,11 @@ class CreateVehiculosTable extends Migration
             $table->boolean('disponibilidad');
             $table->timestamps();
 
-            $table->integer('id_reserva')->unsigned();
-            $table->integer('id_lugar')->unsigned();
+            $table->integer('id_reserva')->unsigned()->nullable();
+            $table->integer('id_lugar')->unsigned()->nullable();
             //este id rol es de esta table       la referencia es de la otra tabla
-            $table->foreign('id_reserva')->references('id_reserva')->on('reservas');
-            $table->foreign('id_lugar')->references('id_lugar')->on('lugars');
+            $table->foreign('id_reserva')->references('id_reserva')->on('reservas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_lugar')->references('id_lugar')->on('lugars')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

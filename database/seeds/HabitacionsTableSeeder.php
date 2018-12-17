@@ -11,6 +11,6 @@ class HabitacionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Habitacion::class,100)->create();
     }
 }

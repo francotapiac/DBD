@@ -11,6 +11,6 @@ class TrasladosTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Traslado::class,20)->create();
     }
 }

@@ -17,6 +17,7 @@ class CreateSegurosTable extends Migration
             $table->increments('id_seguro');
             $table->string('nombre_seguro',70);
             $table->string('descripcion',280);
+            $table->decimal('precio');
             $table->timestamps();
         });
     }

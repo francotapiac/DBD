@@ -18,7 +18,7 @@ class CreateHotelsTable extends Migration
             $table->string('nombre',45);
             $table->string('telefono',20);
             $table->string('compania',70);
-            $table->decimal('calificacion');
+            $table->integer('calificacion');
             $table->text('descripcion');
             $table->timestamps();
 

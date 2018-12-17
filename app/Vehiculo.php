@@ -8,7 +8,7 @@ class Vehiculo extends Model
 {
 	protected $primaryKey = 'id_vehiculo';
     protected $fillable = [
-        'fecha_recogida', 'fecha_devolucion', 'compañia', 'precio_diario', 'nombre', 'capacidad', 'disponibilidad'
+        'fecha_recogida', 'fecha_devolucion', 'compañia', 'precio_diario', 'nombre', 'capacidad', 'disponibilidad',
     ];
 
     public function paquetes(){
