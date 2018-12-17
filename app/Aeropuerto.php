@@ -19,7 +19,7 @@ class Aeropuerto extends Model
 
     public function lugar(){
 
-    	return $this->belongsTo(Lugar::class,'id_lugar');
+    	return $this->hasOne(Lugar::class,'id_lugar');
     }
 
     //Scope

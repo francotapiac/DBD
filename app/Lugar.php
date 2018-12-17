@@ -17,8 +17,17 @@ class Lugar extends Model
     }
 
     public function aeropuertos(){
-    	return $this->hasMany(Aeropuerto::class, 'id_aeropuerto');
+    	return $this->hasOne(Aeropuerto::class, 'id_aeropuerto');
     }
+
+    public function vehiculos(){
+        return $this->hasMany(Vehiculos::class, 'id_vehiculo');
+    }
+
+    public function hotel(){
+        return $this->hasOne(Hotel::class, 'id_hotel');
+    }
+
 
     public function escalas(){
     	return $this

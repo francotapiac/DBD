@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Escala extends Model
 {
+	protected $primaryKey = 'id_escala';
+    protected $fillable = [
+        'cambio_avion', 'cambio_aeropuerto', 'duracion_escala',
+    ];
     public function vuelos(){
    		return $this
    		->belongsToMany('App\Vuelo','vuelo_escalas','id_escala','id_vuelo')->withTimestamps();

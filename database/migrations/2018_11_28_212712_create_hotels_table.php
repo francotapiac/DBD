@@ -22,9 +22,6 @@ class CreateHotelsTable extends Migration
             $table->text('descripcion');
             $table->timestamps();
 
-            $table->integer('id_lugar')->unsigned();
-            $table->foreign('id_lugar')->references('id_lugar')->on('lugars');
-
         });
     }
 

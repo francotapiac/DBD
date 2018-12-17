@@ -19,13 +19,14 @@ class AeropuertoController extends Controller
         $tipo = $request->get('tipo_aeropuerto');
         $numero = $request->get('numero_contacto');
 
-        $aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
+        $aeropuertos = Aeropuerto::All();
+        /*$aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
         ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->tipo($tipo)
         ->numero($numero)
         ->paginate(7); 
-        //return $aeropuertos; 
-        return view('aeropuerto.index',compact('aeropuertos')); 
+        return view('aeropuerto.index',compact('aeropuertos'));*/
+        return $aeropuertos; 
     }
 
     /**

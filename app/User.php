@@ -35,6 +35,11 @@ class User extends Authenticatable
         ->belongsToMany('App\Rol','usuario_rols','id_usuario','id_rol')->withTimestamps(); //user_id, rol_id
     }
 
+    public function historial(){
+        return $this
+        ->belongsTo(Historial::class,'id_historial');
+    }
+
     public function autorizarRoles($rols){
 
         //Método que autoriza acción en rol
