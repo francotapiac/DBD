@@ -18,7 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//el ejemplo era con habitacion
+Route::get('/actividad/show/{id}','ActividadController@show');
 Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
 Route::resource('asiento', 'AsientoController');

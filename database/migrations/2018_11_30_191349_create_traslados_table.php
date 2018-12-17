@@ -17,10 +17,10 @@ class CreateTrasladosTable extends Migration
             $table->increments('id_traslado');
 			$table->decimal('precio');
 			$table->integer('capacidad');
-			 $table->string('compania',70);
-			 $table->date('fecha_traslado');
-			 $table->string('direccion_destino',200);
-			 $table->integer('tipo_traslado');
+			$table->string('compania',70);
+			$table->date('fecha_traslado');
+			$table->string('direccion_destino',200);
+			$table->integer('tipo_traslado');
             $table->timestamps();
 			
 			$table->integer('id_reserva')->unsigned();

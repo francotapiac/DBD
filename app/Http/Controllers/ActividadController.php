@@ -24,7 +24,9 @@ class ActividadController extends Controller
         ->descripcion($descripcion)
         ->costo($costo)
         ->paginate(3); 
-        return view('actividad.index',compact('actividades')); 
+        
+        //return view('actividad.index',compact('actividades')); 
+        return $actividades;
     }
 
     /**
@@ -47,6 +49,7 @@ class ActividadController extends Controller
     {
         $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'costo'=>'required']);
         Actividad::create($request->all());
+        //route::get('/habitacion/store','HabitacionController@store')
         return redirect()->route('actividad.index')->with('success','Registro creado satisfactoriamente');
     }
 
@@ -59,7 +62,8 @@ class ActividadController extends Controller
     public function show($id)
     {
         $actividad = Actividad::find($id);
-        return  view('actividad.show',compact('actividad'));
+        //return  view('actividad.show',compact('actividad'));
+        return $actividad;
     }
 
     /**
@@ -97,6 +101,7 @@ class ActividadController extends Controller
      */
     public function destroy($id)
     {
+        //es necesario guardarlo en variables?
         Actividad::find($id)->delete();
         return redirect()->route('actividad.index')->with('success','Registro eliminado satisfactoriamente');
     }

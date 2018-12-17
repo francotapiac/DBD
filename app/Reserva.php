@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     protected $primaryKey = 'id_reserva';
+    protected $fillable = [
+        'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago'
+    ]
+
     public function actividads(){
     	return $this
     	->belongsToMany('App\Actividad','reserva_actividads','id_reserva','id_actividad')->withTimestamps();
@@ -27,5 +31,14 @@ class Reserva extends Model
         ->hasMany('App\Traslado','id_traslado')->withTimestamps();
     }
 
+    public function habitacions(){
+        return $this
+        ->hasMany(Habitacion::class,'id_habitacion')->withTimestamps();
+    }
+
+    public function vehiculos(){
+        return $this
+        ->hasMany(Vehiculo::class,'id_vehiculo')->withTimestamps();
+    }
 
 }

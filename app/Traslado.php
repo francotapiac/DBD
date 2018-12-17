@@ -8,15 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 //en este caso : un traslado tiene
 class Traslado extends Model
 {
+    protected $primaryKey = 'id_traslado';
+    protected $fillable = [
+        'precio','capacidad','compañia','fecha_traslado','direccion_destino','tipo_traslado'
+    ];   
 	//puede estar en muchos paquetes
     public function paquetes(){
         return $this
-        ->belongsToMany('App\Paquete','paquete_traslados','id_traslado','id_traslado')->withTimestamps(); 
+        ->belongsToMany(Paquete::class,'paquete_traslados','id_traslado','id_paquete')->withTimestamps(); 
     }
     //una reserva
     public function reserva(){
     	return $this
-    	->belongTo('App\Reserva','id_traslado')->withTimestamps();
+    	->belongsTo(Reserva::class,'id_reserva')->withTimestamps();
     }
 
 }

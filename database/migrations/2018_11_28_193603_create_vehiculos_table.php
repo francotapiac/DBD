@@ -19,6 +19,9 @@ class CreateVehiculosTable extends Migration
             $table->date('fecha_devolucion');
             $table->string('compania',45);
             $table->decimal('precio_diario');
+            $table->string('nombre',40);
+            $table->integer('capacidad');
+            $table->boolean('disponibilidad');
             $table->timestamps();
 
             $table->integer('id_reserva')->unsigned();
