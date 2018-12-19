@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TrasladosTableSeeder::class);
 
         $this->call(PaquetesTableSeeder::class);
+        $this->call(HistorialsTableSeeder::class);
         
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Escala
 
 class EscalaController extends Controller
 {
@@ -13,7 +14,8 @@ class EscalaController extends Controller
      */
     public function index()
     {
-        //
+        $escala = Escala::all();
+        return $escala;
     }
 
     /**
@@ -34,7 +36,9 @@ class EscalaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $escala = Escala::create($request->all());
+        $escala->save();
+        return response()->json($escala);
     }
 
     /**
@@ -45,7 +49,8 @@ class EscalaController extends Controller
      */
     public function show($id)
     {
-        //
+        $escala = Escala::find($id);
+        return $escala;
     }
 
     /**
@@ -68,7 +73,7 @@ class EscalaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Escala::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +84,7 @@ class EscalaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $escala = Escala::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

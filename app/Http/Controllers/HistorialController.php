@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Historial
 class HistorialController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class HistorialController extends Controller
      */
     public function index()
     {
-        //
+        $historial = Historial::all();
+        return $historial;
     }
 
     /**
@@ -34,7 +35,9 @@ class HistorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $historial = Historial::create($request->all());
+        $historial->save();
+        return response()->json($historial);
     }
 
     /**
@@ -45,7 +48,8 @@ class HistorialController extends Controller
      */
     public function show($id)
     {
-        //
+        $historial = Historial::find($id);
+        return $historial;
     }
 
     /**
@@ -68,7 +72,7 @@ class HistorialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Historial::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +83,7 @@ class HistorialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $historial = Historial::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

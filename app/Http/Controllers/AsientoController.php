@@ -75,7 +75,6 @@ class AsientoController extends Controller
     public function update(Request $request, $id)
     {
         return Asiento::find($id)->update($request->all());
-
     }
 
     /**

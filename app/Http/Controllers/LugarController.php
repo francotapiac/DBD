@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lugar
 
 class LugarController extends Controller
 {
@@ -13,7 +14,8 @@ class LugarController extends Controller
      */
     public function index()
     {
-        //
+        $lugars = Lugar::all();
+        return $lugars;
     }
 
     /**
@@ -34,7 +36,9 @@ class LugarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lugars = Lugar::create($request->all());
+        $lugars->save();
+        return response()->json($lugars);
     }
 
     /**
@@ -45,7 +49,8 @@ class LugarController extends Controller
      */
     public function show($id)
     {
-        //
+        $lugars = Lugar::find($id);
+        return $lugars;
     }
 
     /**
@@ -68,7 +73,7 @@ class LugarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Lugar::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +84,7 @@ class LugarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lugars = Lugar::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

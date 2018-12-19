@@ -15,5 +15,4 @@ class Historial extends Model
     	return $this
         ->hasMany(User::class)->withTimestamps();
     }
-    }
 }

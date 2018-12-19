@@ -47,7 +47,9 @@ class AeropuertoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aeropuertos = Aeropuerto::create($request->all());
+        $aeropuertos->save();
+        return response()->json($aeropuertos);
     }
 
     /**
@@ -58,7 +60,8 @@ class AeropuertoController extends Controller
      */
     public function show($id)
     {
-        //
+        $aeropuertos = Aeropuerto::find($id);
+        return $aeropuertos;
     }
 
     /**
@@ -81,7 +84,7 @@ class AeropuertoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Aeropuerto::find($id)->update($request->all());
     }
 
     /**
@@ -92,6 +95,7 @@ class AeropuertoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aeropuertos = Aeropuerto::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

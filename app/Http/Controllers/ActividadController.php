@@ -14,6 +14,7 @@ class ActividadController extends Controller
      */
     public function index(Request $request)
     {
+       /*
         //Se recibe lo buscado en vista
         $nombre = $request->get('nombre');
         $descripcion = $request->get('descripcion');
@@ -26,6 +27,9 @@ class ActividadController extends Controller
         ->paginate(3); 
         
         //return view('actividad.index',compact('actividades')); 
+        return $actividades;
+        */
+        $actividades = Actividad::all();
         return $actividades;
     }
 
@@ -48,10 +52,14 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'costo'=>'required']);
+        /*$this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'costo'=>'required']);
         Actividad::create($request->all());
         //route::get('/habitacion/store','HabitacionController@store')
         return redirect()->route('actividad.index')->with('success','Registro creado satisfactoriamente');
+        */
+        $actividades = Actividad::create($request->all());
+        $actividades->save();
+        return response()->json($actividades);
     }
 
     /**
@@ -62,9 +70,12 @@ class ActividadController extends Controller
      */
     public function show($id)
     {
-        $actividad = Actividad::find($id);
+        /*$actividad = Actividad::find($id);
         //return  view('actividad.show',compact('actividad'));
         return $actividad;
+        */
+        $actividades = Actividad::find($id);
+        return $actividades;
     }
 
     /**
@@ -75,8 +86,9 @@ class ActividadController extends Controller
      */
     public function edit($id)
     {
-        $actividad = Actividad::find($id);
+        /*$actividad = Actividad::find($id);
         return view('actividad.edit',compact('actividad'));
+        */
     }
 
     /**
@@ -88,10 +100,11 @@ class ActividadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'costo'=>'required']);
+        /*$this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'costo'=>'required']);
         Actividad::find($id)->update($request->all());
         return redirect()->route('actividad.index')->with('success','Registro actualizado satisfactoriamente');
- 
+        */
+        return Actividad::find($id)->update($request->all());
     }
 
     /**
@@ -102,8 +115,11 @@ class ActividadController extends Controller
      */
     public function destroy($id)
     {
-        //es necesario guardarlo en variables?
+        /*//es necesario guardarlo en variables?
         Actividad::find($id)->delete();
         return redirect()->route('actividad.index')->with('success','Registro eliminado satisfactoriamente');
+        */
+        $actividades = Actividad::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }
