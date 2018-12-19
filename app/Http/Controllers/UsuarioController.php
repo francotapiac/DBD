@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Reserva;
+use App\User;
 
-class ReservaController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        $reservas = Reserva::all();
-        return $reservas;
+        $usuario = User::all();
+        return $usuario;
     }
 
     /**
@@ -36,9 +36,9 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        $reserva = Reserva::create($request->all());
-        $reserva->save();
-        return response()->json($reserva);
+        $usuario = User::create($request->all());
+        $usuario->save();
+        return response()->json($usuario);
     }
 
     /**
@@ -49,8 +49,8 @@ class ReservaController extends Controller
      */
     public function show($id)
     {
-        $reserva = Reserva::find($id);
-        return $reserva;
+        $usuario = User::find($id);
+        return $usuario;
     }
 
     /**
@@ -73,7 +73,7 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Reserva::find($id)->update($request->all());
+        return User::find($id)->update($request->all());
     }
 
     /**
@@ -84,7 +84,7 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        $reserva = Reserva::find($id)->delete();
+        $usuario = User::find($id)->delete();
         return response()->json("Eliminado exitosamente");
     }
 }

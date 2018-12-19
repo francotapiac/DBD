@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Rol;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rol = Rol::all();
+        return $rol;
     }
 
     /**
@@ -34,7 +36,9 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rol = Rol::create($request->all());
+        $rol->save();
+        return response()->json($rol);
     }
 
     /**
@@ -45,7 +49,8 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        //
+        $rol = Rol::find($id);
+        return $rol;
     }
 
     /**
@@ -68,7 +73,8 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         return Rol::find($id)->update($request->all());
+
     }
 
     /**
@@ -79,6 +85,7 @@ class RolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rol = Rol::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

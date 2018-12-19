@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traslado;
 
 class TrasladoController extends Controller
 {
@@ -13,7 +14,8 @@ class TrasladoController extends Controller
      */
     public function index()
     {
-        //
+        $traslados = Traslado::all();
+        return $traslados;
     }
 
     /**
@@ -23,7 +25,7 @@ class TrasladoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,9 @@ class TrasladoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $traslado = Traslado::create($request->all());
+        $traslado->save();
+        return response()->json($traslado);
     }
 
     /**
@@ -45,7 +49,8 @@ class TrasladoController extends Controller
      */
     public function show($id)
     {
-        //
+        $traslado = Traslado::find($id);
+        return $traslado;
     }
 
     /**
@@ -68,7 +73,7 @@ class TrasladoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Traslado::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +84,7 @@ class TrasladoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $traslado = Traslado::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Seguro;
 
 class SeguroController extends Controller
 {
@@ -13,7 +14,8 @@ class SeguroController extends Controller
      */
     public function index()
     {
-        //
+        $seguro = Seguro::all();
+        return $seguro;
     }
 
     /**
@@ -34,7 +36,9 @@ class SeguroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $seguro = Seguro::create($request->all());
+        $seguro->save();
+        return response()->json($seguro);
     }
 
     /**
@@ -45,7 +49,8 @@ class SeguroController extends Controller
      */
     public function show($id)
     {
-        //
+        $seguro = Seguro::find($id);
+        return $seguro;
     }
 
     /**
@@ -68,7 +73,7 @@ class SeguroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Seguro::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +84,7 @@ class SeguroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $seguro = Seguro::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

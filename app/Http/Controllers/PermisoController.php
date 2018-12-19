@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Permiso;
 
 class PermisoController extends Controller
 {
@@ -13,7 +14,8 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        //
+        $permisos = Permiso::all();
+        return $permisos;
     }
 
     /**
@@ -34,7 +36,9 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permiso = Permiso::create($request->all());
+        $permiso->save();
+        return response()->json($permiso);
     }
 
     /**
@@ -45,7 +49,8 @@ class PermisoController extends Controller
      */
     public function show($id)
     {
-        //
+        $permiso = Permiso::find($id);
+        return $permiso;
     }
 
     /**
@@ -68,7 +73,7 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Permiso::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +84,7 @@ class PermisoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permiso = Permiso::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

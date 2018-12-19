@@ -62,7 +62,7 @@ class AsientoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

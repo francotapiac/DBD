@@ -13,7 +13,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculo = Vehiculo::all();
+        return $vehiculo;
     }
 
     /**
@@ -34,7 +35,9 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehiculo = Vehiculo::create($request->all());
+        $vehiculo->save();
+        return response()->json($vehiculo);
     }
 
     /**
@@ -45,7 +48,8 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehiculo = vehiculo::find($id);
+        return $vehiculo;
     }
 
     /**
@@ -68,7 +72,7 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Vehiculo::find($id)->update($request->all());
     }
 
     /**
@@ -79,6 +83,7 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehiculo = Vehiculo::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

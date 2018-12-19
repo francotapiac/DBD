@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vuelo;
 
 class VueloController extends Controller
 {
@@ -13,7 +14,8 @@ class VueloController extends Controller
      */
     public function index()
     {
-        //
+        $vuelos = Vuelo::all();
+        return $vuelos;
     }
 
     /**
@@ -34,7 +36,9 @@ class VueloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vuelo = Vuelo::create($request->all());
+        $vuelo->save();
+        return response()->json($vuelo);
     }
 
     /**
@@ -45,7 +49,8 @@ class VueloController extends Controller
      */
     public function show($id)
     {
-        //
+        $vuelo = Vuelo::find($id);
+        return $vuelo;
     }
 
     /**
@@ -79,6 +84,7 @@ class VueloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vuelo = Vuelo::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }
