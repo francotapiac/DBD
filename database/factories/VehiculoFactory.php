@@ -11,7 +11,6 @@ $factory->define(App\Vehiculo::class, function (Faker $faker) {
         'nombre' => $faker->streetName,
         'capacidad' => $faker->randomElement($array = array(2,5,10)),
         'disponibilidad' => $faker->boolean,
-        'id_reserva' => rand(1,40), //Ojo, posteriormente deben ser 120
         'id_lugar' => rand(1,20),
     ];
 });

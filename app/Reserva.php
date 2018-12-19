@@ -11,9 +11,20 @@ class Reserva extends Model
         'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago'
     ];
 
+
+    public function vehiculos(){
+        return $this
+        ->belongsToMany(Vehiculo::class,'reserva_vehiculos','id_reserva','id_vehiculo')->withTimestamps();
+    }
+
+    public function habitacions(){
+        return $this
+        ->belongsToMany(Habitacion::class,'reserva_habitacions','id_reserva','id_habitacion')->withTimestamps();
+    }
+
     public function actividads(){
-    	return $this
-    	->belongsToMany('App\Actividad','reserva_actividads','id_reserva','id_actividad')->withTimestamps();
+        return $this
+        ->belongsToMany('App\Actividad','reserva_actividads','id_reserva','id_actividad')->withTimestamps();
     }
 
     public function vuelos(){
@@ -30,15 +41,4 @@ class Reserva extends Model
         return $this
         ->hasMany('App\Traslado','id_traslado')->withTimestamps();
     }
-
-    public function habitacions(){
-        return $this
-        ->hasMany(Habitacion::class,'id_habitacion')->withTimestamps();
-    }
-
-    public function vehiculos(){
-        return $this
-        ->hasMany(Vehiculo::class,'id_vehiculo')->withTimestamps();
-    }
-
 }

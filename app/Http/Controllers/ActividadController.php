@@ -36,7 +36,8 @@ class ActividadController extends Controller
      */
     public function create()
     {
-        return view('actividad.create');
+        
+       //return view('actividad.create');
     }
 
     /**

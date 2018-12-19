@@ -11,6 +11,6 @@ $factory->define(App\Traslado::class, function (Faker $faker) {
 		'fecha_traslado' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+2 years', $timezone = null),
 		'direccion_destino'=> $faker->address,
 		'tipo_traslado'=> rand(1,3),
-        'id_reserva' => rand(1,40), 
+        'id_reserva' => rand(1,20), 
     ];
 });

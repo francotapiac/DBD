@@ -19,8 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //el ejemplo era con habitacion
+Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
-Route::resource('actividad', 'ActividadController');  
+Route::get('/actividad/create/','ActividadController@create');
+
+
+//Vuelo
+Route::get('/vuelo','VueloController@index');
+Route::get('/vuelo/create','VueloController@create');
+
+/*Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
 Route::resource('asiento', 'AsientoController');
 Route::resource('escala', 'EscalaController');
@@ -35,7 +43,7 @@ Route::resource('rol', 'RolController');
 Route::resource('seguro', 'SeguroController');
 Route::resource('traslado', 'TrasladoController');
 Route::resource('vehiculo', 'VehiculoController');
-Route::resource('vuelo', 'VueloController');
+Route::resource('vuelo', 'VueloController');*/
 
 
 

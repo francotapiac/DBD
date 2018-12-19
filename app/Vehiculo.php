@@ -21,8 +21,8 @@ class Vehiculo extends Model
     	->belongsTo(Lugar::class,'id_lugar')->withTimestamps();
     }
 
-    public function reserva(){
+    public function reservas(){
     	return $this
-    	->belongsTo(Reserva::class,'id_reserva')->withTimestamps();
+    	->belongsToMany(Reserva::class,'reserva_vehiculos','id_vehiculo','id_reserva')->withTimestamps();
     }
 }
