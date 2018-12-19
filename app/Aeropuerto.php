@@ -8,7 +8,7 @@ class Aeropuerto extends Model
 {
 	protected $primaryKey = 'id_aeropuerto';
 	protected $fillable = [
-       'nombre_aeropuerto','tipo_aeropuerto', 'numero_contacto' 
+       'nombre_aeropuerto','tipo_aeropuerto', 'numero_contacto', 'id_lugar' 
     ];
 
 

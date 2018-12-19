@@ -37,6 +37,7 @@ class AsientoController extends Controller
      */
     public function store(Request $request)
     {
+        $asiento = new \App\Asiento();
         $asiento = Asiento::create($request->all());
         $asiento->save();
         return response()->json($asiento);
