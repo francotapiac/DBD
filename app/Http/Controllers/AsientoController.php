@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Asiento;
 
 class AsientoController extends Controller
 {
@@ -13,7 +14,9 @@ class AsientoController extends Controller
      */
     public function index()
     {
-        //
+        //$asientos = Asiento::orderBy('letra_asiento','DESC');
+        $asientos = Asiento::all();
+        return $asientos;
     }
 
     /**
@@ -34,7 +37,9 @@ class AsientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $asiento = Asiento::create($request->all());
+        $asiento->save();
+        return response()->json($asiento);
     }
 
     /**
@@ -45,7 +50,8 @@ class AsientoController extends Controller
      */
     public function show($id)
     {
-        //
+        $asiento = Asiento::find($id);
+        return $asiento;
     }
 
     /**
@@ -68,7 +74,8 @@ class AsientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Asiento::find($id)->update($request->all());
+
     }
 
     /**
@@ -79,6 +86,7 @@ class AsientoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $asiento = Asiento::find($id)->delete();
+        return response()->json("Eliminado exitosamente");
     }
 }

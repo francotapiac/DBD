@@ -17,12 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 //el ejemplo era con habitacion
 Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
 Route::get('/actividad/create/','ActividadController@create');
 
+//Ruta Asiento
+Route::get('/asiento','AsientoController@index');
+Route::get('/asiento/show/{id}','AsientoController@show');
+Route::post('/asiento/destroy/{id}','AsientoController@destroy');
+Route::post('/asiento/store','AsientoController@store');
 
 //Vuelo
 Route::get('/vuelo','VueloController@index');
