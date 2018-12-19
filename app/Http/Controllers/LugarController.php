@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Lugar
+use App\Lugar;
 
 class LugarController extends Controller
 {

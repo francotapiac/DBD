@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Escala
+use App\Escala;
 
 class EscalaController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Habitacion
+use App\Habitacion;
 
 class HabitacionController extends Controller
 {
