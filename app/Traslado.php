@@ -10,7 +10,7 @@ class Traslado extends Model
 {
     protected $primaryKey = 'id_traslado';
     protected $fillable = [
-        'precio','capacidad','compañia','fecha_traslado','direccion_destino','tipo_traslado'
+        'precio','capacidad','compañia','fecha_traslado','direccion_destino','tipo_traslado','id_reserva'
     ];   
 	//puede estar en muchos paquetes
     public function paquetes(){

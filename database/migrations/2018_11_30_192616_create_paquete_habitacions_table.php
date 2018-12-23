@@ -20,7 +20,7 @@ class CreatePaqueteHabitacionsTable extends Migration
 			$table->integer('id_paquete')->unsigned()->nullable();
 			$table->integer('id_habitacion')->unsigned()->nullable();
 			$table->foreign('id_paquete')->references('id_paquete')->on('paquetes')->onDelete('cascade')->onUpdate('cascade');;
-            $table->foreign('id_habitacion')->references('id_habitacion')->on('habitacions')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('id_habitacion')->references('id_habitacion')->on('habitacions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

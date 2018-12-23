@@ -20,8 +20,8 @@ class CreateAeropuertosTable extends Migration
             $table->string('numero_contacto',30);
             $table->timestamps();
 
-            $table->integer('id_lugar')->unsigned();
-            $table->foreign('id_lugar')->references('id_lugar')->on('lugars');
+            $table->integer('id_lugar')->unsigned()->nullable();
+            $table->foreign('id_lugar')->references('id_lugar')->on('lugars')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -23,7 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //el ejemplo era con habitacion
 Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
+Route::post('/actividad/destroy/{id}','ActividadController@destroy');
 Route::post('/actividad/store/','ActividadController@store');
+Route::post('/actividad/update/{id}','ActividadController@update');
 
 //Ruta Asiento
 Route::get('/asiento','AsientoController@index');
@@ -35,6 +37,7 @@ Route::get('/traslado','TrasladoController@index');
 Route::get('/traslado/show/{id}','TrasladoController@show');
 Route::post('/traslado/destroy/{id}','TrasladoController@destroy');
 Route::post('/traslado/store','TrasladoController@store');
+Route::post('/traslado/update/{id}','TrasladoController@update');
 
 //Ruta Hotel
 Route::get('/hotel','HotelController@index');
@@ -47,18 +50,21 @@ Route::get('/escala','EscalaController@index');
 Route::get('/escala/show/{id}','EscalaController@show');
 Route::post('/escala/destroy/{id}','EscalaController@destroy');
 Route::post('/escala/store','EscalaController@store');
+Route::post('/escala/update/{id}','EscalaController@update');
 
 //Ruta Habitacion
 Route::get('/habitacion','HabitacionController@index');
 Route::get('/habitacion/show/{id}','HabitacionController@show');
 Route::post('/habitacion/destroy/{id}','HabitacionController@destroy');
 Route::post('/habitacion/store','HabitacionController@store');
+Route::post('/habitacion/update/{id}','HabitacionController@update');
 
 //Ruta Aeropuerto
 Route::get('/aeropuerto','AeropuertoController@index');
 Route::get('/aeropuerto/show/{id}','AeropuertoController@show');
 Route::post('/aeropuerto/destroy/{id}','AeropuertoController@destroy');
 Route::post('/aeropuerto/store','AeropuertoController@store');
+Route::post('/aeropuerto/update/{id}','AeropuertoController@update');
 
 //Ruta Lugar
 Route::get('/lugar','LugarController@index');
@@ -76,13 +82,14 @@ Route::post('/historial/store','HistorialController@store');
 Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
 Route::post('/actividad/destroy/{id}','ActividadController@destroy');
-Route::post('/historial/store','ActividadController@store');
+Route::post('/actividad/store','ActividadController@store');
 
 //Vuelo
 Route::get('/vuelo','VueloController@index');
 Route::get('/vuelo/show/{id}','VueloController@show');
 Route::post('/vuelo/destroy/{id}','VueloController@destroy');
 Route::post('/vuelo/store','vueloController@store');
+Route::post('/vuelo/update/{id}','VueloController@update');
 
 Route::get('/vehiculo','VehiculoController@index');
 Route::get('/vehiculo/show/{id}','VehiculoController@show');
@@ -103,11 +110,13 @@ Route::get('/seguro','SeguroController@index');
 Route::get('/seguro/show/{id}','SeguroController@show');
 Route::post('/seguro/destroy/{id}','SeguroController@destroy');
 Route::post('/seguro/store','SeguroController@store');
+Route::post('/seguro/update/{id}','SeguroController@update');
 
 Route::get('/rol','RolController@index');
 Route::get('/rol/show/{id}','RolController@show');
 Route::post('/rol/destroy/{id}','RolController@destroy');
 Route::post('/rol/store','RolController@store');
+Route::post('/rol/update/{id}','RolController@update');
 
 Route::get('/reserva','ReservaController@index');
 Route::get('/reserva/show/{id}','ReservaController@show');

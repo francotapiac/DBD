@@ -24,6 +24,10 @@ class ReservasTableSeeder extends Seeder
             $reserva->vehiculos()->attach(App\Vehiculo::all()->random(1)); //se crea tabla intermedia
         });
 
+        factory(App\Reserva::class,20)->create()->each(function($reserva) { //Para cada  reserva
+            $reserva->vuelos()->attach(App\Vuelo::all()->random(1)); //se crea tabla intermedia
+        });
+
         
     }
 }

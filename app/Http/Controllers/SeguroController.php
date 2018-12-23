@@ -7,6 +7,13 @@ use App\Seguro;
 
 class SeguroController extends Controller
 {
+    public function rules(){
+        return [
+        'nombre_seguro' => 'required|string',
+        'descripcion' => 'required|string',
+        'precio' => 'required|numeric', 
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +43,19 @@ class SeguroController extends Controller
      */
     public function store(Request $request)
     {
-        $seguro = Seguro::create($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $seguro = new Seguro();
+        $seguro->nombre_seguro = $request->get('nombre_seguro');
+        $seguro->descripcion = $request->get('descripcion');
+        $seguro->precio = $request->get('precio');
         $seguro->save();
-        return response()->json($seguro);
+        return $permiso;
+        
     }
 
     /**
@@ -73,7 +90,19 @@ class SeguroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Seguro::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $seguro = Seguro::find($id);
+        $seguro->nombre_seguro = $request->get('nombre_seguro');
+        $seguro->descripcion = $request->get('descripcion');
+        $seguro->precio = $request->get('precio');
+        $seguro->save();
+        return $seguro;
+        
     }
 
     /**

@@ -23,8 +23,8 @@ class CreateTrasladosTable extends Migration
 			$table->integer('tipo_traslado');
             $table->timestamps();
 			
-			$table->integer('id_reserva')->unsigned();
-            $table->foreign('id_reserva')->references('id_reserva')->on('reservas');
+			$table->integer('id_reserva')->unsigned()->nullable();
+            $table->foreign('id_reserva')->references('id_reserva')->on('reservas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

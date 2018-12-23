@@ -11,6 +11,6 @@ class EscalasTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Escala::class,20)->create();
     }
 }

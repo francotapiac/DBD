@@ -7,6 +7,14 @@ use App\Escala;
 
 class EscalaController extends Controller
 {
+    public function rules(){
+        return [
+        'cambio_avion' => 'required|numeric',
+        'cambio_aeropuerto' => 'required|numeric', 
+        'duracion_escala' => 'required|numeric',
+        'id_lugar' => 'required|numeric'
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +44,20 @@ class EscalaController extends Controller
      */
     public function store(Request $request)
     {
-        $escala = Escala::create($request->all());
-        $escala->save();
-        return response()->json($escala);
+        $escala = new Escala();
+        $escala->cambio_avion = $request->get('cambio_avion');
+        $escala->cambio_aeropuerto = $request->get('cambio_aeropuerto');
+        $escala->duracion_escala = $request->get('duracion_escala');
+         try{
+            $id = $request->get('id_lugar');
+            $lugar = \App\Lugar::find($id);
+            $escala->id_lugar = $id;
+            $escala->save();
+            return $escala;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**
@@ -73,7 +92,20 @@ class EscalaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Escala::find($id)->update($request->all());
+        $escala = Escala::find($id);
+        $escala->cambio_avion = $request->get('cambio_avion');
+        $escala->cambio_aeropuerto = $request->get('cambio_aeropuerto');
+        $escala->duracion_escala = $request->get('duracion_escala');
+         try{
+            $id = $request->get('id_lugar');
+            $lugar = \App\Lugar::find($id);
+            $escala->id_lugar = $id;
+            $escala->save();
+            return $escala;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**

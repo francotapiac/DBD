@@ -8,12 +8,12 @@ class Vuelo extends Model
 {
     protected $primaryKey = 'id_vuelo';
     protected $fillable = [
-        'fecha_ida', 'fecha_vuelta', 'hora_salida','hora_llegada','duracion_vuelo','precio','numero_paradas','tipo_vuelo','equipaje','disponibilidad','aerolinea',
+        'fecha_ida', 'fecha_vuelta', 'hora_salida','hora_llegada','duracion_vuelo','precio','numero_paradas','tipo_vuelo','equipaje','disponibilidad','aerolinea','id_aeropuerto_origen','id_aeropuerto_destino','id_lugar','id_seguro'
     ];
 
     public function asientos(){
    		return $this
-   		->belongsToMany('App\Asiento','reserva_vuelos','id_vuelo','id_asiento')->withTimestamps();
+   		->belongsToMany('App\Asiento','vuelo_asientos','id_vuelo','id_asiento')->withTimestamps();
     }
 
     public function seguros(){
@@ -23,7 +23,7 @@ class Vuelo extends Model
 
     public function escalas(){
    		return $this
-   		->belongsToMany('App\Escalas','vuelo_escalas','id_vuelo','id_escala')->withTimestamps();
+   		->belongsToMany('App\Escala','vuelo_escalas','id_vuelo','id_escala')->withTimestamps();
     }
 
     public function paquetes(){

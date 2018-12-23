@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class RolController extends Controller
 {
+    public function rules(){
+        return [
+        'nombre' => 'required|string',
+        'descripcion' => 'required|string', 
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +42,17 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        $rol = Rol::create($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $rol = new Rol();
+        $rol->nombre = $request->get('nombre');
+        $rol->descripcion = $request->get('descripcion');
         $rol->save();
-        return response()->json($rol);
+        return $rol;
     }
 
     /**
@@ -73,7 +87,17 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-         return Rol::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $rol = new Rol()::find($id);
+        $rol->nombre = $request->get('nombre');
+        $rol->descripcion = $request->get('descripcion');
+        $rol->save();
+        return $rol;
 
     }
 

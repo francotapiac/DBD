@@ -63,7 +63,7 @@ class AeropuertoController extends Controller
             return $validator->messages();
         }
         
-        $aeropuerto = new \App\Aeropuerto();
+        $aeropuerto = new Aeropuerto();
         $aeropuerto->nombre_aeropuerto = $request->get('nombre_aeropuerto');
         $aeropuerto->tipo_aeropuerto = $request->get('tipo_aeropuerto') == 1;
         $aeropuerto->numero_contacto = $request->get('numero_contacto');
@@ -111,7 +111,26 @@ class AeropuertoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Aeropuerto::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $aeropuerto = Aeropuerto::find($id);
+        $aeropuerto->nombre_aeropuerto = $request->get('nombre_aeropuerto');
+        $aeropuerto->tipo_aeropuerto = $request->get('tipo_aeropuerto');
+        $aeropuerto->numero_contacto = $request->get('numero_contacto');
+        try{
+            $id = $request->get('id_lugar');
+            $lugar = \App\Lugar::find($id);
+            $aeropuerto->id_lugar = $id;
+            $aeropuerto->save();
+            return $aeropuerto;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**

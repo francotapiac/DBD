@@ -7,6 +7,17 @@ use App\Traslado;
 
 class TrasladoController extends Controller
 {
+    public function rules(){
+        return [
+        'precio' => 'required|numeric',
+        'capacidad' => 'required|numeric', 
+        'compania' => 'required|string',
+        'fecha_traslado'=> 'required|date',
+        'direccion_destino' => 'required|string',
+        'tipo_traslado' => 'required|numeric',
+        'id_reserva' => 'required|numeric',
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,9 +47,29 @@ class TrasladoController extends Controller
      */
     public function store(Request $request)
     {
-        $traslado = Traslado::create($request->all());
-        $traslado->save();
-        return response()->json($traslado);
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $traslado = new Traslado();
+        $traslado->precio = $request->get('precio');
+        $traslado->capacidad = $request->get('capacidad');
+        $traslado->compania = $request->get('compania');
+        $traslado->fecha_traslado = $request->get('fecha_traslado');
+        $traslado->direccion_destino = $request->get('direccion_destino');
+        $traslado->tipo_traslado = $request->get('tipo_traslado');
+        try{
+            $id = $request->get('id_reserva');
+            $reserva = \App\Reserva::find($id);
+            $traslado->id_reserva = $id;
+            $traslado->save();
+            return $traslado;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**
@@ -73,7 +104,30 @@ class TrasladoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Traslado::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $traslado = Traslado::find($id);
+        $traslado->precio = $request->get('precio');
+        $traslado->capacidad = $request->get('capacidad');
+        $traslado->compania = $request->get('compania');
+        $traslado->fecha_traslado = $request->get('fecha_traslado');
+        $traslado->direccion_destino = $request->get('direccion_destino');
+        $traslado->tipo_traslado = $request->get('tipo_traslado');
+        try{
+            $id = $request->get('id_reserva');
+            $reserva = \App\Reserva::find($id);
+            $traslado->id_reserva = $id;
+            $traslado->save();
+            return $traslado;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
+    }
     }
 
     /**

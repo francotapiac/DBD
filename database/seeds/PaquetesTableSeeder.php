@@ -38,5 +38,9 @@ class PaquetesTableSeeder extends Seeder
         factory(App\Paquete::class,20)->create()->each(function($habitacion) { //Para cada  actividad
             $habitacion->habitacions()->attach(App\Habitacion::all()->random(1)); //se crea tabla intermedia
         });
+
+        factory(App\Paquete::class,20)->create()->each(function($vuelo) { //Para cada  actividad
+            $vuelo->vuelos()->attach(App\Vuelo::all()->random(1)); //se crea tabla intermedia
+        });
     }
 }

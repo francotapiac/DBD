@@ -17,11 +17,11 @@ class CreateEscalasTable extends Migration
             $table->increments('id_escala');
             $table->boolean('cambio_avion');
             $table->boolean('cambio_aeropuerto');
-            $table->time('duracion_escala');
+            $table->integer('duracion_escala');
             $table->timestamps();
 
-            $table->integer('id_lugar')->unsigned();
-            $table->foreign('id_lugar')->references('id_lugar')->on('lugars');
+            $table->integer('id_lugar')->unsigned()->nullable();
+            $table->foreign('id_lugar')->references('id_lugar')->on('lugars')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

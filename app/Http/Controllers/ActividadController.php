@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actividad;
+use Validator;
 
 class ActividadController extends Controller
 {
+    public function rules(){
+        return [
+        'nombre' => 'required|string',
+        'descripcion' => 'required|string', 
+        'costo' => 'required|numeric',
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -57,9 +65,18 @@ class ActividadController extends Controller
         //route::get('/habitacion/store','HabitacionController@store')
         return redirect()->route('actividad.index')->with('success','Registro creado satisfactoriamente');
         */
-        $actividades = Actividad::create($request->all());
-        $actividades->save();
-        return response()->json($actividades);
+
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $actividad = new Actividad();
+        $actividad->nombre = $request->get('nombre');
+        $actividad->descripcion = $request->get('descripcion');
+        $actividad->costo = $request->get('costo');
+        $actividad->save();
+        return $actividad;
     }
 
     /**
@@ -104,7 +121,18 @@ class ActividadController extends Controller
         Actividad::find($id)->update($request->all());
         return redirect()->route('actividad.index')->with('success','Registro actualizado satisfactoriamente');
         */
-        return Actividad::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $actividad = Actividad::find($id);
+        $actividad->nombre = $request->get('nombre');
+        $actividad->descripcion = $request->get('descripcion');
+        $actividad->costo = $request->get('costo');
+        $actividad->save();
+        return $actividad;
     }
 
     /**

@@ -7,6 +7,14 @@ use App\Asiento;
 
 class AsientoController extends Controller
 {
+    public function rules(){
+        return [
+        'numero_asiento' => 'required|number',
+        'letra_asiento' => 'required|string', 
+        'tipo_asiento' => 'required|number',
+        'disponibilidad' => 'required|numeric',
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,10 +45,18 @@ class AsientoController extends Controller
      */
     public function store(Request $request)
     {
-        $asiento = new \App\Asiento();
-        $asiento = Asiento::create($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $asiento = new Asiento();
+        $asiento->numero_asiento = $request->get('numero_asiento');
+        $asiento->letra_asiento = $request->get('letra_asiento');
+        $asiento->tipo_asiento = $request->get('tipo_asiento');
+        $asiento->disponibilidad = $request->get('disponibilidad');
         $asiento->save();
-        return response()->json($asiento);
+        return $asiento;
     }
 
     /**
@@ -75,7 +91,18 @@ class AsientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Asiento::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $asiento = Asiento::find($id);
+        $asiento->numero_asiento = $request->get('numero_asiento');
+        $asiento->letra_asiento = $request->get('letra_asiento');
+        $asiento->tipo_asiento = $request->get('tipo_asiento');
+        $asiento->disponibilidad = $request->get('disponibilidad');
+        $asiento->save();
+        return $asiento;
     }
 
     /**
