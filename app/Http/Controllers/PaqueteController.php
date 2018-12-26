@@ -12,6 +12,16 @@ class PaqueteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'precio_por_persona' => 'required|numeric',
+            'descripcion' => 'required|string',
+            'descuento' => 'required|numeric',
+        ];
+    }
+
     public function index(Request $request)
     {
         //Se recibe lo buscado en vista
@@ -36,7 +46,7 @@ class PaqueteController extends Controller
      */
     public function create()
     {
-        return view('paquete.create');
+        //return view('paquete.create');
     }
 
     /**
@@ -51,9 +61,16 @@ class PaqueteController extends Controller
         Paquete::create($request->all());
         return redirect()->route('paquete.index')->with('success','Registro creado satisfactoriamente');*/
 
-        $paquete = Paquete::create($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $paquete = new \App\Paquete;
+        $paquete->precio_por_persona=$request->get('precio_por_persona');
+        $paquete->descripcion= $request->get('descripcion');
+        $paquete->descuento=$request->get('descuento');
         $paquete->save();
-        return response()->json($paquete);
+        return $paquete;
     }
 
     /**
@@ -78,8 +95,8 @@ class PaqueteController extends Controller
      */
     public function edit($id)
     {
-        $paquete = Paquete::find($id);
-        return view('paquete.edit',compact('paquete'));
+        //$paquete = Paquete::find($id);
+        //return view('paquete.edit',compact('paquete'));
     }
 
     /**
@@ -94,7 +111,17 @@ class PaqueteController extends Controller
        /*this->validate($request,['precio_por_persona'=>'required', 'descripcion'=>'required', 'descuento'=>'required']);
         Paquete::find($id)->update($request->all());
         return redirect()->route('paquete.index')->with('success','Registro actualizado satisfactoriamente');*/
-        return Paquete::find($id)->update($request->all());
+        //return Paquete::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $paquete = Paquete::find($id);
+        $paquete->precio_por_persona = $request->get('precio_por_persona');
+        $paquete->descripcion = $request->get('descripcion');
+        $paquete->descuento = $request->get('descuento');
+        $paquete->save();
+        return $paquete;
 
     }
 

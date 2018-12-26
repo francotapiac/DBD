@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Permiso;
+use Validator;
 
 class PermisoController extends Controller
 {
@@ -12,6 +13,16 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'nombre' => 'required|string',
+            'descripcion' => 'required|string',
+            'tipo' => 'required|numeric',
+        ];
+    }
+
     public function index()
     {
         $permisos = Permiso::all();
@@ -36,9 +47,19 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        $permiso = Permiso::create($request->all());
+        /*$permiso = Permiso::create($request->all());
         $permiso->save();
-        return response()->json($permiso);
+        return response()->json($permiso);*/
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $permiso = new \App\Permiso;
+        $permiso->nombre=$request->get('nombre');
+        $permiso->descripcion= $request->get('descripcion');
+        $permiso->tipo=$request->get('tipo');
+        $permiso->save();
+        return $permiso;
     }
 
     /**
@@ -73,7 +94,17 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Permiso::find($id)->update($request->all());
+        //return Permiso::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $permiso = Permiso::find($id);
+        $permiso->nombre = $request->get('fecha_recogida');
+        $permiso->descripcion = $request->get('fecha_devolucion');
+        $permiso->tipo = $request->get('compania');
+        $permiso->save();
+        return $permiso;
     }
 
     /**

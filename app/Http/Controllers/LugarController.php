@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lugar;
+use Validator;
 
 class LugarController extends Controller
 {
@@ -12,6 +13,17 @@ class LugarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'pais' => 'required|string',
+            'ciudad' => 'required|string',
+            'direccion_lugar' => 'required|string',
+            'codigo_postal' => 'required|string',
+        ];
+    }
+
     public function index()
     {
         $lugars = Lugar::all();
@@ -36,9 +48,20 @@ class LugarController extends Controller
      */
     public function store(Request $request)
     {
-        $lugars = Lugar::create($request->all());
+        /*$lugars = Lugar::create($request->all());
         $lugars->save();
-        return response()->json($lugars);
+        return response()->json($lugars);*/
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $lugar = new \App\Lugar;
+        $lugar->pais=$request->get('pais');
+        $lugar->ciudad= $request->get('ciudad');
+        $lugar->direccion_lugar=$request->get('direccion_lugar');
+        $lugar->codigo_postal=$request->get('codigo_postal');
+        $lugar->save();
+        return $lugar;
     }
 
     /**
@@ -73,7 +96,18 @@ class LugarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Lugar::find($id)->update($request->all());
+        //return Lugar::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $lugar = Lugar::find($id);
+        $lugar->pais = $request->get('pais');
+        $lugar->ciudad = $request->get('ciudad');
+        $lugar->direccion_lugar = $request->get('direccion_lugar');
+        $lugar->codigo_postal = $request->get('codigo_postal');
+        $lugar->save();
+        return $lugar;
     }
 
     /**

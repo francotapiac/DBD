@@ -44,6 +44,7 @@ Route::get('/hotel','HotelController@index');
 Route::get('/hotel/show/{id}','HotelController@show');
 Route::post('/hotel/destroy/{id}','HotelController@destroy');
 Route::post('/hotel/store','HotelController@store');
+Route::post('/hotel/update/{id}','HotelController@update');
 
 //Ruta Escala
 Route::get('/escala','EscalaController@index');
@@ -71,12 +72,14 @@ Route::get('/lugar','LugarController@index');
 Route::get('/lugar/show/{id}','LugarController@show');
 Route::post('/lugar/destroy/{id}','LugarController@destroy');
 Route::post('/lugar/store','LugarController@store');
+Route::post('/lugar/update/{id}','LugarController@update');
 
 //Ruta Historial
 Route::get('/historial','HistorialController@index');
 Route::get('/historial/show/{id}','HistorialController@show');
 Route::post('/historial/destroy/{id}','HistorialController@destroy');
 Route::post('/historial/store','HistorialController@store');
+Route::post('/historial/update/{id}','HistorialController@update');
 
 //Ruta Actividad
 Route::get('/actividad','ActividadController@index');
@@ -84,17 +87,19 @@ Route::get('/actividad/show/{id}','ActividadController@show');
 Route::post('/actividad/destroy/{id}','ActividadController@destroy');
 Route::post('/actividad/store','ActividadController@store');
 
-//Vuelo
+//Ruta Vuelo
 Route::get('/vuelo','VueloController@index');
 Route::get('/vuelo/show/{id}','VueloController@show');
 Route::post('/vuelo/destroy/{id}','VueloController@destroy');
 Route::post('/vuelo/store','vueloController@store');
 Route::post('/vuelo/update/{id}','VueloController@update');
 
+//Ruta Vehiculo
 Route::get('/vehiculo','VehiculoController@index');
 Route::get('/vehiculo/show/{id}','VehiculoController@show');
 Route::post('/vehiculo/destroy/{id}','VehiculoController@destroy');
 Route::post('/vehiculo/store','VehiculoController@store');
+Route::post('/vehiculo/update/{id}','VehiculoController@update');
 
 Route::get('/escala','EscalaController@index');
 Route::get('/escala/show/{id}','EscalaController@show');
@@ -118,20 +123,26 @@ Route::post('/rol/destroy/{id}','RolController@destroy');
 Route::post('/rol/store','RolController@store');
 Route::post('/rol/update/{id}','RolController@update');
 
+//Ruta Reserva
 Route::get('/reserva','ReservaController@index');
 Route::get('/reserva/show/{id}','ReservaController@show');
 Route::post('/reserva/destroy/{id}','ReservaController@destroy');
 Route::post('/reserva/store','ReservaController@store');
+Route::post('/reserva/update/{id}','ReservaController@update');
 
+//Ruta Permiso
 Route::get('/permiso','PermisoController@index');
 Route::get('/permiso/show/{id}','PermisoController@show');
 Route::post('/permiso/destroy/{id}','PermisoController@destroy');
 Route::post('/permiso/store','PermisoController@store');
+Route::post('permiso/update/{id}','PermisoController@update');
 
+//Ruta Paquete
 Route::get('/paquete','PaqueteController@index');
 Route::get('/paquete/show/{id}','PaqueteController@show');
 Route::post('/paquete/destroy/{id}','PaqueteController@destroy');
 Route::post('/paquete/store','PaqueteController@store');
+Route::post('/paquete/update/{id}','PaqueteController@update');
 
 
 

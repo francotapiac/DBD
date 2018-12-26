@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reserva;
+use Validator;
 
 class ReservaController extends Controller
 {
@@ -12,6 +13,16 @@ class ReservaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'fecha_reserva' => 'required|string',
+            'hora_reserva' => 'required|string',
+            'detalle_reserva' => 'required|string',
+        ];
+    }
+
     public function index()
     {
         $reservas = Reserva::all();
@@ -36,9 +47,20 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        $reserva = Reserva::create($request->all());
+        /*$reserva = Reserva::create($request->all());
         $reserva->save();
-        return response()->json($reserva);
+        return response()->json($reserva);*/
+
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $reserva = new \App\Reserva;
+        $reserva->fecha_reserva=$request->get('fecha_reserva');
+        $reserva->hora_reserva= $request->get('hora_reserva');
+        $reserva->detalle_reserva=$request->get('detalle_reserva');
+        $reserva->save();
+        return $reserva;
     }
 
     /**
@@ -73,7 +95,17 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Reserva::find($id)->update($request->all());
+        //return Reserva::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $reserva = Reserva::find($id);
+        $reserva->fecha_reserva = $request->get('fecha_reserva');
+        $reserva->hora_reserva = $request->get('hora_reserva');
+        $reserva->detalle_reserva = $request->get('detalle_reserva');
+        $reserva->save();
+        return $hotel;
     }
 
     /**

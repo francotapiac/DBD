@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Hotel;
+use Validator;
 
 class HotelController extends Controller
 {
@@ -12,6 +13,18 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'nombre' => 'required|string',
+            'telefono' => 'required|string',
+            'compania' => 'required|string',
+            'calificacion' => 'required|numeric',
+            'descripcion' => 'required|string',
+        ];
+    }
+
     public function index()
     {
         $hotels = Hotel::all();
@@ -36,9 +49,21 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        $hotels = Hotel::create($request->all());
+        /*$hotels = Hotel::create($request->all());
         $hotels->save();
-        return response()->json($hotels);
+        return response()->json($hotels);*/
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $hotel = new \App\Hotel;
+        $hotel->nombre=$request->get('nombre');
+        $hotel->telefono= $request->get('telefono');
+        $hotel->compania=$request->get('compania');
+        $hotel->calificacion=$request->get('calificacion');
+        $hotel->descripcion=$request->get('descripcion');
+        $hotel->save();
+        return $hotel;
     }
 
     /**
@@ -73,7 +98,19 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Hotel::find($id)->update($request->all());
+        //return Hotel::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $hotel = Hotel::find($id);
+        $hotel->nombre = $request->get('nombre');
+        $hotel->telefono = $request->get('telefono');
+        $hotel->compania = $request->get('compania');
+        $hotel->calificacion = $request->get('calificacion');
+        $hotel->descripcion = $request->get('descripcion');
+        $hotel->save();
+        return $hotel;
     }
 
     /**

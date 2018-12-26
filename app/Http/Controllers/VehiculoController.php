@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehiculo;
+use Validator;
 
 class VehiculoController extends Controller
 {
@@ -11,6 +13,20 @@ class VehiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'fecha_recogida' => 'required|string',
+            'fecha_devolucion' => 'required|string',
+            'compania' => 'required|numeric',
+            'precio_diario' => 'required|numeric',
+            'nombre' => 'required|string',
+            'capacidad' => 'required|numeric',
+            'disponibilidad' => 'required|numeric', // BOOLEAN ?¿?
+        ];
+    }
+
     public function index()
     {
         $vehiculo = Vehiculo::all();
@@ -35,9 +51,23 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        $vehiculo = Vehiculo::create($request->all());
+        /*¿$vehiculo = Vehiculo::create($request->all());
         $vehiculo->save();
-        return response()->json($vehiculo);
+        return response()->json($vehiculo);*/
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $vehiculo = new \App\Vehiculo;
+        $vehiculo->fecha_recogida=$request->get('fecha_recogida');
+        $vehiculo->fecha_devolucion= $request->get('fecha_devolucion');
+        $vehiculo->compania=$request->get('compania');
+        $vehiculo->precio_diario=$request->get('precio_diario');
+        $vehiculo->nombre= $request->get('nombre');
+        $vehiculo->capacidad=$request->get('capacidad');
+        $vehiculo->disponibilidad=$request->get('disponibilidad');
+        $vehiculo->save();
+        return $vehiculo;
     }
 
     /**
@@ -72,7 +102,21 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return Vehiculo::find($id)->update($request->all());
+        //return Vehiculo::find($id)->update($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $vahiculo = Vehiculo::find($id);
+        $vehiculo->fecha_recogida = $request->get('fecha_recogida');
+        $vehiculo->fecha_devolucion = $request->get('fecha_devolucion');
+        $vehiculo->compania = $request->get('compania');
+        $vehiculo->precio_diario = $request->get('precio_diario');
+        $vehiculo->nombre = $request->get('nombre');
+        $vehiculo->capacidad = $request->get('capacidad');
+        $vehiculo->disponibilidad = $request->get('disponibilidad');
+        $vehiculo->save();
+        return $vehiculo;
     }
 
     /**
