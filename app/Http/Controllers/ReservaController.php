@@ -20,6 +20,8 @@ class ReservaController extends Controller
             'fecha_reserva' => 'required|string',
             'hora_reserva' => 'required|string',
             'detalle_reserva' => 'required|string',
+            'tipo_pago'=> 'required|numeric',
+            'id_usuario' => 'required|numeric',
         ];
     }
 
@@ -34,9 +36,9 @@ class ReservaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return $this->store($request);
     }
 
     /**
@@ -55,12 +57,22 @@ class ReservaController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $reserva = new \App\Reserva;
-        $reserva->fecha_reserva=$request->get('fecha_reserva');
-        $reserva->hora_reserva= $request->get('hora_reserva');
-        $reserva->detalle_reserva=$request->get('detalle_reserva');
-        $reserva->save();
-        return $reserva;
+
+        $reserva = new Reserva();
+        $reserva->fecha_reserva = $request->get('fecha_reserva');
+        $reserva->hora_reserva = $request->get('hora_reserva');
+        $reserva->detalle_reserva = $request->get('detalle_reserva');
+        $reserva->tipo_pago = $request->get('tipo_pago');
+        try{
+            $id = $request->get('id_usuario');
+            $usuario = \App\User::find($id);
+            $reserva->id_usuario = $id;
+            $reserva->save();
+            return $reserva;
+        }
+        catch(\Exception $e){
+            return $e;
+        }
     }
 
     /**
@@ -104,8 +116,17 @@ class ReservaController extends Controller
         $reserva->fecha_reserva = $request->get('fecha_reserva');
         $reserva->hora_reserva = $request->get('hora_reserva');
         $reserva->detalle_reserva = $request->get('detalle_reserva');
-        $reserva->save();
-        return $hotel;
+        $reserva->tipo_pago = $request->get('tipo_pago');
+        try{
+            $id = $request->get('id_usuario');
+            $usuario = \App\User::find($id);
+            $reserva->id_usuario = $id;
+            $reserva->save();
+            return $reserva;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**

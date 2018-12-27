@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Paquete;
+use Validator;
 
 class PaqueteController extends Controller
 {
@@ -44,8 +45,9 @@ class PaqueteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        return $this->store($request);
         //return view('paquete.create');
     }
 

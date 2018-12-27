@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     protected $primaryKey = 'id_reserva';
     protected $fillable = [
-        'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago'
+        'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago','id_usuario'
     ];
 
 
@@ -40,5 +40,10 @@ class Reserva extends Model
     public function traslados(){
         return $this
         ->hasMany('App\Traslado','id_traslado')->withTimestamps();
+    }
+
+    public function usuario(){
+        return $this
+        ->belongsTo(User::class);
     }
 }

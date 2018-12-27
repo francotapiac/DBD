@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Habitacion;
+use Validator;
 
 class HabitacionController extends Controller
 {
@@ -33,9 +34,9 @@ class HabitacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return $this->store($request);
     }
 
     /**

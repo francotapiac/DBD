@@ -7,7 +7,8 @@ $factory->define(App\Reserva::class, function (Faker $faker) {
 
     	'fecha_reserva' => $faker->date,
         'hora_reserva' => $faker->time,
-        'detalle_reserva' => $faker->realText,      
+        'detalle_reserva' => $faker->realText,     
+        'tipo_pago' => rand(1,3), 
         'id_usuario' => rand(1,20),
     ];
 });

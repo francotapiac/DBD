@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Rol;
+use Validator;
 
 use Illuminate\Http\Request;
 
@@ -29,9 +30,9 @@ class RolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return $this->store($request);
     }
 
     /**

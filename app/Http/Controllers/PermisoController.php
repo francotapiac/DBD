@@ -34,9 +34,9 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return $this->store($request);
     }
 
     /**
@@ -100,9 +100,9 @@ class PermisoController extends Controller
             return $validator->messages();
         }
         $permiso = Permiso::find($id);
-        $permiso->nombre = $request->get('fecha_recogida');
-        $permiso->descripcion = $request->get('fecha_devolucion');
-        $permiso->tipo = $request->get('compania');
+        $permiso->nombre = $request->get('nombre');
+        $permiso->descripcion = $request->get('descripcion');
+        $permiso->tipo = $request->get('tipo');
         $permiso->save();
         return $permiso;
     }

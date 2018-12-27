@@ -30,6 +30,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function reservas(){
+        return $this
+        ->hasMany('App\Reserva','id_reserva')->withTimestamps();
+    }
+
     public function rols(){
         return $this
         ->belongsToMany('App\Rol','usuario_rols','id_usuario','id_rol')->withTimestamps(); //user_id, rol_id

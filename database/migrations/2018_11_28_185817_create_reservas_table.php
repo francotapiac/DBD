@@ -18,6 +18,7 @@ class CreateReservasTable extends Migration
             $table->date('fecha_reserva');
             $table->time('hora_reserva');
             $table->text('detalle_reserva');
+            $table->integer('tipo_pago');
             $table->timestamps();
 
             $table->integer('id_usuario')->unsigned()->nullable();

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Asiento;
+use Validator;
 
 class AsientoController extends Controller
 {
     public function rules(){
         return [
-        'numero_asiento' => 'required|number',
+        'numero_asiento' => 'required|numeric',
         'letra_asiento' => 'required|string', 
-        'tipo_asiento' => 'required|number',
+        'tipo_asiento' => 'required|numeric',
         'disponibilidad' => 'required|numeric',
         ];
     }
@@ -32,9 +33,9 @@ class AsientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return $this->store($request);
     }
 
     /**
