@@ -62,9 +62,10 @@ class UserTableSeeder extends Seeder
         $user->rols()->attach($rol_admin); //Se agrega rol x a usuario
 
         //Creación usuarios con roles al azar
-        factory(App\User::class,18)->create()->each(function($rol) { //Para cada  usuario
+        /*factory(App\User::class,18)->create()->each(function($rol) { //Para cada  usuario
             $rol->rols()->attach(App\Rol::all()->random(1));
-        });;
+        });*/
+        factory(App\User::class,18)->create();
         
     }
 }

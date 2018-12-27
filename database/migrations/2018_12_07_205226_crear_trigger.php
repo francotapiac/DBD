@@ -13,7 +13,7 @@ class CrearTrigger extends Migration
      */
     public function up()
     {
-        DB::statement('
+        /*DB::statement('
             CREATE OR REPLACE FUNCTION llenarReserva() RETURNS TRIGGER AS 
             $$
             DECLARE
@@ -28,7 +28,7 @@ class CrearTrigger extends Migration
         CREATE TRIGGER insertar_reserva AFTER INSERT ON users FOR EACH ROW
         EXECUTE PROCEDURE llenarReserva();
         ');
-
+    */
         
       
     }
