@@ -25,17 +25,6 @@ class PaqueteController extends Controller
 
     public function index(Request $request)
     {
-        //Se recibe lo buscado en vista
-        /*$precio = $request->get('precio_por_persona');
-        $descripcion = $request->get('descripcion');
-        $descuento = $request->get('descuento');
-
-        $paquetes = Paquete::orderBy('id_paquete','DESC')
-        ->precio($precio)               //Se realiza query scope desde el modelo (con función scopeNombre)
-        ->descripcion($descripcion)
-        ->descuento($descuento)
-        ->paginate(7); 
-        return view('paquete.index',compact('paquetes')); */
         $paquetes = Paquete::all();
         return $paquetes;
     }
@@ -48,7 +37,6 @@ class PaqueteController extends Controller
     public function create(Request $request)
     {
         return $this->store($request);
-        //return view('paquete.create');
     }
 
     /**
@@ -59,10 +47,6 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request,['precio_por_persona'=>'required', 'descripcion'=>'required', 'descuento'=>'required']);
-        Paquete::create($request->all());
-        return redirect()->route('paquete.index')->with('success','Registro creado satisfactoriamente');*/
-
         $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();

@@ -20,7 +20,8 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-//el ejemplo era con habitacion
+
+//Ruta Actividad
 Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
 Route::post('/actividad/destroy/{id}','ActividadController@destroy');
@@ -36,6 +37,7 @@ Route::post('/asiento/store','AsientoController@store');
 Route::post('/asiento/update/{id}','AsientoController@update');
 Route::get('/asiento/create','AsientoController@create');
 
+//Ruta Traslado
 Route::get('/traslado','TrasladoController@index');
 Route::get('/traslado/show/{id}','TrasladoController@show');
 Route::post('/traslado/destroy/{id}','TrasladoController@destroy');
@@ -107,6 +109,7 @@ Route::post('/vehiculo/store','VehiculoController@store');
 Route::post('/vehiculo/update/{id}','VehiculoController@update');
 Route::get('/vehiculo/create','VehiculoController@create');
 
+//Ruta Usuario
 Route::get('/usuario','UsuarioController@index');
 Route::get('/usuario/show/{id}','UsuarioController@show');
 Route::post('/usuario/destroy/{id}','UsuarioController@destroy');
@@ -114,6 +117,7 @@ Route::post('/usuario/store','UsuarioController@store');
 Route::post('/usuario/update/{id}','UsuarioController@update');
 Route::get('/usuario/create','UsuarioController@create');
 
+//Ruta Usuario
 Route::get('/seguro','SeguroController@index');
 Route::get('/seguro/show/{id}','SeguroController@show');
 Route::post('/seguro/destroy/{id}','SeguroController@destroy');
@@ -121,6 +125,7 @@ Route::post('/seguro/store','SeguroController@store');
 Route::post('/seguro/update/{id}','SeguroController@update');
 Route::get('/seguro/create','SeguroController@create');
 
+//Ruta Rol
 Route::get('/rol','RolController@index');
 Route::get('/rol/show/{id}','RolController@show');
 Route::post('/rol/destroy/{id}','RolController@destroy');
@@ -151,10 +156,6 @@ Route::post('/paquete/destroy/{id}','PaqueteController@destroy');
 Route::post('/paquete/store','PaqueteController@store');
 Route::post('/paquete/update/{id}','PaqueteController@update');
 Route::get('/paquete/create','PaqueteController@create');
-
-
-
-
 
 /*Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');

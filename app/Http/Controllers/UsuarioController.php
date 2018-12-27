@@ -13,6 +13,29 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return
+        [
+            'primer_nombre' => 'required|string',
+            'segundo_nombre' => 'required|string',
+            'primer_apellido' => 'required|string',
+            'segundo_apellido'=> 'required|string',
+            'email' => 'required|string',
+            'fecha_nacimiento' => 'required|date',
+            'edad' => 'required|numeric',
+            'ciudad_residencia' => 'required|string',
+            'calle_residencia'=> 'required|string',
+            'pais_residencia' => 'required|string',
+            'password' => 'required|string',
+            'numero_celular'=> 'required|string',
+            'tipo_documento' => 'required|numeric',
+            'tipo_pago' => 'required|numeric',
+            'estado'=> 'required|numeric',
+            'remember_token' => 'required|string',
+        ];
+    }
+
     public function index()
     {
         $usuario = User::all();
@@ -37,9 +60,28 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = User::create($request->all());
-        $usuario->save();
-        return response()->json($usuario);
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $usuario = new User();
+        $usuario->primer_nombre = $request->get('primer_nombre');
+        $usuario->segundo_nombre = $request->get('segundo_nombre');
+        $usuario->primer_apellido = $request->get('primer_apellido');
+        $usuario->segundo_apellido = $request->get('segundo_apellido');
+        $usuario->email = $request->get('email');
+        $usuario->edad = $request->get('edad');
+        $usuario->ciudad_residencia = $request->get('ciudad_residencia');
+        $usuario->calle_residencia = $request->get('calle_residencia') ;
+        $usuario->pais_residencia = $request->get('pais_residencia');
+        $usuario->password = $request->get('password');
+        $usuario->numero_celular = $request->get('numero_celular');
+        $usuario->tipo_documento = $request->get('tipo_documento') ;
+        $usuario->tipo_pago = $request->get('tipo_pago');
+        $usuario->estado = $request->get('estado');
+        $usuario->remember_token = $request->get('remember_token');
     }
 
     /**
@@ -74,7 +116,28 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return User::find($id)->update($request->all());
+        $validator = Validator::make($request->all(),
+                        $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        
+        $usuario = new User();
+        $usuario->primer_nombre = $request->get('primer_nombre');
+        $usuario->segundo_nombre = $request->get('segundo_nombre');
+        $usuario->primer_apellido = $request->get('primer_apellido');
+        $usuario->segundo_apellido = $request->get('segundo_apellido');
+        $usuario->email = $request->get('email');
+        $usuario->edad = $request->get('edad');
+        $usuario->ciudad_residencia = $request->get('ciudad_residencia');
+        $usuario->calle_residencia = $request->get('calle_residencia') ;
+        $usuario->pais_residencia = $request->get('pais_residencia');
+        $usuario->password = $request->get('password');
+        $usuario->numero_celular = $request->get('numero_celular');
+        $usuario->tipo_documento = $request->get('tipo_documento') ;
+        $usuario->tipo_pago = $request->get('tipo_pago');
+        $usuario->estado = $request->get('estado');
+        $usuario->remember_token = $request->get('remember_token');
     }
 
     /**

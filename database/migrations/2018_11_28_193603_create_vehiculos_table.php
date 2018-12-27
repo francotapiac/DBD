@@ -25,7 +25,6 @@ class CreateVehiculosTable extends Migration
             $table->timestamps();
 
             $table->integer('id_lugar')->unsigned()->nullable();
-            //este id rol es de esta table       la referencia es de la otra tabla
             $table->foreign('id_lugar')->references('id_lugar')->on('lugars')->onDelete('cascade')->onUpdate('cascade');
         });
     }

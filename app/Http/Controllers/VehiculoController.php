@@ -66,8 +66,16 @@ class VehiculoController extends Controller
         $vehiculo->nombre= $request->get('nombre');
         $vehiculo->capacidad=$request->get('capacidad');
         $vehiculo->disponibilidad=$request->get('disponibilidad');
-        $vehiculo->save();
-        return $vehiculo;
+        try{
+            $id = $request->get('id_lugar');
+            $lugar = \App\Lugar::find($id);
+            $vehiculo->id_lugar = $id;
+            $vehiculo->save();
+            return $vehiculo;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**
@@ -115,8 +123,16 @@ class VehiculoController extends Controller
         $vehiculo->nombre = $request->get('nombre');
         $vehiculo->capacidad = $request->get('capacidad');
         $vehiculo->disponibilidad = $request->get('disponibilidad');
-        $vehiculo->save();
-        return $vehiculo;
+        try{
+            $id = $request->get('id_lugar');
+            $lugar = \App\Lugar::find($id);
+            $vehiculo->id_lugar = $id;
+            $vehiculo->save();
+            return $vehiculo;
+        }
+        catch(\Exception $e){
+            return 'Todo esta malo';
+        }
     }
 
     /**
