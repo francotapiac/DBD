@@ -19,11 +19,11 @@ class VehiculoController extends Controller
         [
             'fecha_recogida' => 'required|string',
             'fecha_devolucion' => 'required|string',
-            'compania' => 'required|numeric',
+            'compania' => 'required|string',
             'precio_diario' => 'required|numeric',
             'nombre' => 'required|string',
             'capacidad' => 'required|numeric',
-            'disponibilidad' => 'required|numeric', // BOOLEAN ?¿?
+            'disponibilidad' => 'required|boolean', 
         ];
     }
 
@@ -115,7 +115,7 @@ class VehiculoController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $vahiculo = Vehiculo::find($id);
+        $vehiculo = Vehiculo::find($id);
         $vehiculo->fecha_recogida = $request->get('fecha_recogida');
         $vehiculo->fecha_devolucion = $request->get('fecha_devolucion');
         $vehiculo->compania = $request->get('compania');

@@ -122,7 +122,7 @@ class UsuarioController extends Controller
             return $validator->messages();
         }
         
-        $usuario = new User();
+        $usuario = User::find($id);
         $usuario->primer_nombre = $request->get('primer_nombre');
         $usuario->segundo_nombre = $request->get('segundo_nombre');
         $usuario->primer_apellido = $request->get('primer_apellido');

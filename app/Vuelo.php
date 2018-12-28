@@ -8,7 +8,7 @@ class Vuelo extends Model
 {
     protected $primaryKey = 'id_vuelo';
     protected $fillable = [
-        'fecha_ida', 'fecha_vuelta', 'hora_salida','hora_llegada','duracion_vuelo','precio','numero_paradas','tipo_vuelo','equipaje','disponibilidad','aerolinea','id_aeropuerto_origen','id_aeropuerto_destino','id_lugar','id_seguro'
+        'fecha_ida', 'fecha_vuelta', 'hora_salida','hora_llegada','duracion_vuelo','precio','numero_paradas','tipo_vuelo','equipaje','disponibilidad','aerolinea','id_aeropuerto_origen','id_aeropuerto_destino','id_seguro'
     ];
 
     public function asientos(){

@@ -13,6 +13,12 @@ class SegurosTableSeeder extends Seeder
     {
         //
         $seguro= new Seguro();
+        $seguro->nombre_seguro = "Estándar";
+        $seguro->descripcion = "Seguro estándar sin ninguna cobertura";
+        $seguro->precio = 0.00;
+        $seguro->save();
+
+        $seguro= new Seguro();
         $seguro->nombre_seguro = "Accidentes personales";
         $seguro->descripcion = "Seguro de muerte accidental, desmembramiento en transporte común";
         $seguro->precio = 250.00;

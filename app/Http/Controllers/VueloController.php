@@ -12,20 +12,17 @@ class VueloController extends Controller
         return [
         'fecha_ida' => 'required|date',
         'fecha_vuelta' => 'required|date', 
-        'hora_salida' => 'required|timezone',
-        'hora_llegada' => 'required|timezone',
+        'hora_salida' => 'required|string',
+        'hora_llegada' => 'required|string',
         'duracion_vuelo' => 'required|numeric',
         'precio' => 'required|numeric', 
         'numero_paradas' => 'required|numeric',
         'tipo_vuelo' => 'required|numeric',
         'equipaje' => 'required|numeric', 
-        'disponibilidad' => 'required|numeric', 
+        'disponibilidad' => 'required|boolean', 
         'aerolinea' => 'required|string', 
         'id_aeropuerto_origen' => 'required|numeric', 
         'id_aeropuerto_destino' => 'required|numeric', 
-        'id_lugar' => 'required|numeric', 
-        'id_seguro'=> 'required|numeric', 
-
 
         ];
     }
@@ -85,14 +82,6 @@ class VueloController extends Controller
             $id = $request->get('id_aeropuerto_destino');
             $aeropuerto = \App\Aeropuerto::find($id);
             $vuelo->id_aeropuerto_destino = $id;
-
-            $id = $request->get('id_lugar');
-            $lugar = \App\Lugar::find($id);
-            $vuelo->id_lugar = $id;
-
-            $id = $request->get('id_seguro');
-            $lugar = \App\Seguro::find($id);
-            $vuelo->id_seguro = $id;
 
             $vuelo->save();
             return $vuelo;
@@ -160,14 +149,6 @@ class VueloController extends Controller
             $id = $request->get('id_aeropuerto_destino');
             $aeropuerto = \App\Aeropuerto::find($id);
             $vuelo->id_aeropuerto_destino = $id;
-
-            $id = $request->get('id_lugar');
-            $lugar = \App\Lugar::find($id);
-            $vuelo->id_lugar = $id;
-
-            $id = $request->get('id_seguro');
-            $lugar = \App\Seguro::find($id);
-            $vuelo->id_seguro = $id;
 
             $vuelo->save();
             return $vuelo;
