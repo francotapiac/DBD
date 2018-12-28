@@ -94,7 +94,7 @@ class RolController extends Controller
             return $validator->messages();
         }
         
-        $rol = new Rol()::find($id);
+        $rol = Rol::find($id);
         $rol->nombre = $request->get('nombre');
         $rol->descripcion = $request->get('descripcion');
         $rol->save();

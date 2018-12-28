@@ -11,15 +11,16 @@ class VuelosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Vuelo::class,20)->create()
+        factory(App\Vuelo::class,40)->create();
+        /*factory(App\Vuelo::class,20)->create()
         ->each(function($asiento) { //Para cada  reserva
             $asiento->asientos()->attach(App\Asiento::all()->random(1)); //se crea tabla intermedia
-        });
+        });*/
 
-        factory(App\Vuelo::class,20)->create()
+       /* factory(App\Vuelo::class,20)->create()
         ->each(function($seguro) { //Para cada  reserva
             $seguro->seguros()->attach(App\Seguro::all()->random(1)); //se crea tabla intermedia
-        });
+        });*/
 
         factory(App\Vuelo::class,20)->create()
         ->each(function($escala) { //Para cada  reserva
