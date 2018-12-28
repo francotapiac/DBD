@@ -129,7 +129,6 @@ class TrasladoController extends Controller
             return 'Todo esta malo';
         }
     }
-    }
 
     /**
      * Remove the specified resource from storage.

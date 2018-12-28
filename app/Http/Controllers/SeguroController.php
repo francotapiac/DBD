@@ -55,7 +55,7 @@ class SeguroController extends Controller
         $seguro->descripcion = $request->get('descripcion');
         $seguro->precio = $request->get('precio');
         $seguro->save();
-        return $permiso;
+        return $seguro;
         
     }
 
