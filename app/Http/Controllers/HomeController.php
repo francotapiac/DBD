@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     /*public function algunasCosasDeAdministrador(Request $request){
 
-        $request->user()->autorizarRoles('adimn');
+        $request->user()->autorizarRoles('admin');
         return view('algunas.view');
     }*/
 }

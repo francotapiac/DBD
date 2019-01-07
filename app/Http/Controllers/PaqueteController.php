@@ -25,8 +25,17 @@ class PaqueteController extends Controller
 
     public function index(Request $request)
     {
-        $paquetes = Paquete::all();
-        return $paquetes;
+        $precio_por_persona = $request->get('precio_por_persona');
+        $descripcion = $request->get('descripcion');
+        $descuento = $request->get('descuento');
+
+        $paquetes = Paquete::orderBy('id_paquete','DESC')
+        ->precio($precio_por_persona)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        ->descripcion($descripcion)
+        ->descuento($descuento)
+        ->paginate(3); 
+        
+        return view('paquete.index',compact('paquetes')); 
     }
 
     /**
@@ -36,7 +45,8 @@ class PaqueteController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        return view('paquete.create');
+
     }
 
     /**
@@ -56,7 +66,7 @@ class PaqueteController extends Controller
         $paquete->descripcion= $request->get('descripcion');
         $paquete->descuento=$request->get('descuento');
         $paquete->save();
-        return $paquete;
+         return redirect()->route('paquete.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -67,10 +77,8 @@ class PaqueteController extends Controller
      */
     public function show($id)
     {
-        /*$paquete = Paquete::find($id);
-        return  view('paquete.show',compact('paquete'));*/
         $paquete = Paquete::find($id);
-        return $paquete;
+        return  view('paquete.show',compact('paquete'));
     }
 
     /**
@@ -81,8 +89,8 @@ class PaqueteController extends Controller
      */
     public function edit($id)
     {
-        //$paquete = Paquete::find($id);
-        //return view('paquete.edit',compact('paquete'));
+        $paquete = Paquete::find($id);
+        return view('paquete.edit',compact('paquete'));
     }
 
     /**
@@ -107,7 +115,7 @@ class PaqueteController extends Controller
         $paquete->descripcion = $request->get('descripcion');
         $paquete->descuento = $request->get('descuento');
         $paquete->save();
-        return $paquete;
+        return redirect()->route('paquete.index')->with('success','Registro actualizado satisfactoriamente');
 
     }
 
@@ -122,6 +130,6 @@ class PaqueteController extends Controller
         /*Paquete::find($id)->delete();
         return redirect()->route('paquete.index')->with('success','Registro eliminado satisfactoriamente');*/
         $paquete = Paquete::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        return redirect()->route('paquete.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

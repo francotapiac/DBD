@@ -38,4 +38,14 @@ class Aeropuerto extends Model
         if($numero)
             return $query->where('numero_contacto','LIKE',"%$numero%"); //LIKE permite buscar palabras semejantes (no iguales)
     }
+
+    public function scopePais($query,$pais){
+        if($pais)
+            return $this->lugar()->where('pais','LIKE',"%$pais%");
+    }
+
+    public function scopeCiudad($query,$ciudad){
+        if($ciudad)
+            return $this->lugar()->where('ciudad','LIKE',"%$ciudad%");
+    }
 }

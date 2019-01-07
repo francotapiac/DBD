@@ -28,6 +28,10 @@
                 <label for="ciudad">Número:</label>
                 <input type="text" class="form-control" name="numero_contacto">
              </div>
+             <div class="form-group col-md-4">
+                <label for="lugar">Lugar:</label>
+                <input type="text" class="form-control" name="lugar">
+             </div>
             <div class="row">
                <div class="col-md-4"></div>
                 <div class="form-group col-md-4" style="margin-top:60px">
@@ -42,6 +46,7 @@
           <table id="mytable" class="table table-bordred table-striped">
             <thead>
               <th>Nombre</th>
+              <th>Lugar</th>
               <th>Tipo</th>
               <th>Numero de contacto</th>
               <th>Editar</th>

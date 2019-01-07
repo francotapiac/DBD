@@ -15,10 +15,10 @@ class Habitacion extends Model
         return $this
         ->belongsToMany('App\Paquete','paquete_habitacions','id_habitacion','id_paquete')->withTimestamps();
     }
-
+    //hasmany
     public function reserva(){
     	return $this
-    	->belongsTo(Reserva::class,'id_reserva')->withTimestamps();
+    	->belongsToMany(Reserva::class,'id_reserva')->withTimestamps();
     }
 
     public function hotel(){

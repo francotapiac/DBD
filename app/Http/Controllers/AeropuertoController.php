@@ -25,18 +25,20 @@ class AeropuertoController extends Controller
     public function index(Request $request)
     {
         //Se recibe lo buscado en vista
-        /*$nombre = $request->get('nombre_aeropuerto');
+        $nombre = $request->get('nombre_aeropuerto');
         $tipo = $request->get('tipo_aeropuerto');
-        $numero = $request->get('numero_contacto');*/
+        $numero = $request->get('numero_contacto');
+        $lugar = $request->get('lugar');
+        $ciudad = $request->get('lugar');
 
-        return Aeropuerto::All();
-        /*$aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
+        $aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
         ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->tipo($tipo)
         ->numero($numero)
+        ->pais($lugar)
+        ->ciudad($lugar)
         ->paginate(7); 
-        return view('aeropuerto.index',compact('aeropuertos'));*/
-        //return response()->json($aeropuertos);
+        return view('aeropuerto.index',compact('aeropuertos'));
     }
 
     /**
@@ -72,11 +74,13 @@ class AeropuertoController extends Controller
             $lugar = \App\Lugar::find($id);
             $aeropuerto->id_lugar = $id;
             $aeropuerto->save();
-            return $aeropuerto;
+            return redirect()->route('aeropuerto.index')->with('success','Registro creado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
         }
+
+        
     }
 
     /**
@@ -88,7 +92,7 @@ class AeropuertoController extends Controller
     public function show($id)
     {
         $aeropuertos = Aeropuerto::find($id);
-        return $aeropuertos;
+        return  view('aeropuerto.show',compact('aeropuertos'));
     }
 
     /**
@@ -99,7 +103,8 @@ class AeropuertoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $aeropuerto = Aeropuerto::find($id);
+        return view('aeropuerto.edit',compact('aeropuerto'));
     }
 
     /**
@@ -126,7 +131,7 @@ class AeropuertoController extends Controller
             $lugar = \App\Lugar::find($id);
             $aeropuerto->id_lugar = $id;
             $aeropuerto->save();
-            return $aeropuerto;
+            return redirect()->route('aeropuerto.index')->with('success','Registro actualizado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';

@@ -1,3 +1,5 @@
+CREATE DATABASE dbdLab;
+
 CREATE TABLE actividad_lugars (
     id integer NOT NULL,
     created_at timestamp(0) without time zone,

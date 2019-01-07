@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Ruta Actividad
-Route::get('/actividad','ActividadController@index');
+/*Route::get('/actividad','ActividadController@index');
 Route::get('/actividad/show/{id}','ActividadController@show');
 Route::post('/actividad/destroy/{id}','ActividadController@destroy');
 Route::post('/actividad/store/','ActividadController@store');
@@ -156,8 +156,8 @@ Route::post('/paquete/destroy/{id}','PaqueteController@destroy');
 Route::post('/paquete/store','PaqueteController@store');
 Route::post('/paquete/update/{id}','PaqueteController@update');
 Route::get('/paquete/create','PaqueteController@create');
-
-/*Route::resource('actividad', 'ActividadController');  
+*/
+Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
 Route::resource('asiento', 'AsientoController');
 Route::resource('escala', 'EscalaController');
@@ -172,7 +172,7 @@ Route::resource('rol', 'RolController');
 Route::resource('seguro', 'SeguroController');
 Route::resource('traslado', 'TrasladoController');
 Route::resource('vehiculo', 'VehiculoController');
-Route::resource('vuelo', 'VueloController');*/
+Route::resource('vuelo', 'VueloController');
 
 
 
