@@ -20,4 +20,5 @@ class Hotel extends Model
     	return $this
     	->hasOne(Lugar::class,'id_lugar')->withTimeStaps();
     }
+    
 }

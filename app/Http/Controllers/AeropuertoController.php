@@ -29,14 +29,12 @@ class AeropuertoController extends Controller
         $tipo = $request->get('tipo_aeropuerto');
         $numero = $request->get('numero_contacto');
         $lugar = $request->get('lugar');
-        $ciudad = $request->get('lugar');
 
         $aeropuertos = Aeropuerto::orderBy('id_aeropuerto','DESC')
         ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->tipo($tipo)
         ->numero($numero)
-        ->pais($lugar)
-        ->ciudad($lugar)
+        ->lugar($lugar)
         ->paginate(7); 
         return view('aeropuerto.index',compact('aeropuertos'));
     }
@@ -48,7 +46,7 @@ class AeropuertoController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        return view('aeropuerto.create');
     }
 
     /**
@@ -147,6 +145,6 @@ class AeropuertoController extends Controller
     public function destroy($id)
     {
         $aeropuertos = Aeropuerto::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        return redirect()->route('aeropuerto.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

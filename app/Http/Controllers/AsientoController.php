@@ -21,11 +21,21 @@ class AsientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$asientos = Asiento::orderBy('letra_asiento','DESC');
-        $asientos = Asiento::all();
-        return $asientos;
+        $numero_asiento = $request->get('numero_asiento');
+        $letra_asiento = $request->get('letra_asiento');
+        $tipo_asiento = $request->get('tipo_asiento');
+        $disponibilidad = $request->get('disponibilidad');
+
+        $asientos = Asiento::orderBy('id_asiento','DESC')
+        ->numeroAsiento($numero_asiento)               
+        ->letraAsiento($letra_asiento)
+        ->tipoAsiento($tipo_asiento)
+        ->disponibilidad($disponibilidad)
+        ->paginate(3); 
+        
+        return view('asiento.index',compact('asientos')); 
     }
 
     /**
@@ -35,7 +45,7 @@ class AsientoController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        return view('asiento.create');
     }
 
     /**
@@ -57,7 +67,7 @@ class AsientoController extends Controller
         $asiento->tipo_asiento = $request->get('tipo_asiento');
         $asiento->disponibilidad = $request->get('disponibilidad');
         $asiento->save();
-        return $asiento;
+        return redirect()->route('asiento.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -69,7 +79,7 @@ class AsientoController extends Controller
     public function show($id)
     {
         $asiento = Asiento::find($id);
-        return $asiento;
+        return  view('asiento.show',compact('asiento'));
     }
 
     /**
@@ -80,7 +90,8 @@ class AsientoController extends Controller
      */
     public function edit($id)
     {
-        
+        $asiento = Asiento::find($id);
+        return view('asiento.edit',compact('asiento'));
     }
 
     /**
@@ -103,7 +114,7 @@ class AsientoController extends Controller
         $asiento->tipo_asiento = $request->get('tipo_asiento');
         $asiento->disponibilidad = $request->get('disponibilidad');
         $asiento->save();
-        return $asiento;
+        return redirect()->route('asiento.index')->with('success','Registro actualizado satisfactoriamente');
     }
 
     /**
@@ -115,6 +126,6 @@ class AsientoController extends Controller
     public function destroy($id)
     {
         $asiento = Asiento::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        return redirect()->route('asiento.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>LATAM pirata</title>
+<title>Little Cisterna</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -55,13 +55,13 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="/"><img src="imagenes/logo.png" alt="">LATAM pirata</a></div>
+                            <div class="logo"><a href="/"><img src="imagenes/logo.png" alt="">Little Cisterna</a></div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
                                 <li class="main_nav_item"><a href="/">Inicio</a></li>
                                 <li class="main_nav_item"><a href="about.html">about us</a></li>
-                                <li class="main_nav_item"><a href="offers.html">offers</a></li>
+                                <li class="main_nav_item"><a href="offers">offers</a></li>
                                 <li class="main_nav_item"><a href="blog.html">news</a></li>
                                 <li class="main_nav_item"><a href="contact.html">contact</a></li>
                             </ul>
@@ -111,7 +111,7 @@
             <ul>
                 <li class="menu_item"><a href="/">Inicio</a></li>
                 <li class="menu_item"><a href="about.html">about us</a></li>
-                <li class="menu_item"><a href="offers.html">offers</a></li>
+                <li class="menu_item"><a href="offers">offers</a></li>
                 <li class="menu_item"><a href="blog.html">news</a></li>
                 <li class="menu_item"><a href="contact.html">contact</a></li>
             </ul>
@@ -231,20 +231,19 @@
             <div class="row fill_height">
                 <div class="col fill_height">
 
-                    <!-- Search Tabs -->
+                    <!-- Busqueda de vuelos -->
 
                     <div class="search_tabs_container">
                         <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/departure.png" alt="">vuelos</div>
                             <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/suitcase.png" alt=""><span>hoteles</span></div>
                             <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/bus.png" alt="">renta vehiculos</div>
-                            <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/island.png" alt="">viajes</div>
-                            <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/cruise.png" alt="">cruceros</div>
+                            <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/cruise.png" alt="">Paquetes</div>
                             <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="imagenes/diving.png" alt="">actividades</div>
                         </div>      
                     </div>
 
-                    <!-- Search Panel -->
+                    <!-- Busqueda de hoteles -->
 
                     <div class="search_panel active">
                         <form  method="GET" action="/vuelo" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -352,43 +351,9 @@
                         </form>
                     </div>
 
-                    <!-- Search Panel -->
+                   
 
-                    <div class="search_panel">
-                        <form action="#" id="search_form_4" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                            <div class="search_item">
-                                <div>destination</div>
-                                <input type="text" class="destination search_input" required="required">
-                            </div>
-                            <div class="search_item">
-                                <div>check in</div>
-                                <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                            </div>
-                            <div class="search_item">
-                                <div>check out</div>
-                                <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                            </div>
-                            <div class="search_item">
-                                <div>adults</div>
-                                <select name="adults" id="adults_4" class="dropdown_item_select search_input">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
-                            <div class="search_item">
-                                <div>children</div>
-                                <select name="children" id="children_4" class="dropdown_item_select search_input">
-                                    <option>0</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
-                            <button class="button search_button">search<span></span><span></span><span></span></button>
-                        </form>
-                    </div>
-
-                    <!-- Search Panel -->
+                    <!-- Busqueda de paquetes-->
 
                     <div class="search_panel">
                         <form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -424,38 +389,23 @@
                         </form>
                     </div>
 
-                    <!-- Search Panel -->
+                    <!-- Busqueda de actividad -->
 
                     <div class="search_panel">
                         <form method="GET" action="/actividad"  id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <div class="search_item">
                                 <div>Nombre de actividad</div>
-                                <input type="text" class="destination search_input" required="required" name="nombre">
+                                <input type="text" class="destination search_input" name="nombre">
                             </div>
                             <div class="search_item">
-                                <div>check in</div>
-                                <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+                                <div>Lugar de actividad</div>
+                                <input type="text" class="destination search_input" required="required" name="lugar">
                             </div>
                             <div class="search_item">
-                                <div>check out</div>
-                                <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
+                                <div>Costo de actividad</div>
+                                <input type="number" class="destination search_input" name="costo">
                             </div>
-                            <div class="search_item">
-                                <div>adults</div>
-                                <select name="adults" id="adults_6" class="dropdown_item_select search_input">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
-                            <div class="search_item">
-                                <div>children</div>
-                                <select name="children" id="children_6" class="dropdown_item_select search_input">
-                                    <option>0</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
+                           
                             <button class="button search_button" type="submit">search<span></span><span></span><span></span></button>
                         </form>
                     </div>
@@ -561,581 +511,7 @@
         </div>
     </div>
 
-    <!-- CTA -->
-<!-- Intro Item -->
 
-{{-- 
-    <div class="cta">
-        <!-- Image by https://unsplash.com/@thanni -->
-        <div class="cta_background" style="background-image:url(imagenes/cta.jpg)"></div>
-        
-        <div class="container">
-            <div class="row">
-                <div class="col">
-
-                    <!-- CTA Slider -->
-
-                    <div class="cta_slider_container">
-                        <div class="owl-carousel owl-theme cta_slider">
-
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
-                                <div class="rating_r rating_r_4">
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-                            </div>
-
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
-                                <div class="rating_r rating_r_4">
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-                            </div>
-
-                            <!-- CTA Slider Item -->
-                            <div class="owl-item cta_item text-center">
-                                <div class="cta_title">maldives deluxe package</div>
-                                <div class="rating_r rating_r_4">
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                    <i></i>
-                                </div>
-                                <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
-                                <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
-                            </div>
-                            
-                        </div>
-
-                        <!-- CTA Slider Nav - Prev -->
-                        <div class="cta_slider_nav cta_slider_prev">
-                            <svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                                <defs>
-                                    <linearGradient id='cta_grad_prev'>
-                                        <stop offset='0%' stop-color='#fa9e1b'/>
-                                        <stop offset='100%' stop-color='#8d4fff'/>
-                                    </linearGradient>
-                                </defs>
-                                <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-                                M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-                                C22.545,2,26,5.541,26,9.909V23.091z"/>
-                                <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
-                                11.042,18.219 "/>
-                            </svg>
-                        </div>
-                        
-                        <!-- CTA Slider Nav - Next -->
-                        <div class="cta_slider_nav cta_slider_next">
-                            <svg version="1.1" id="Layer_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                                <defs>
-                                    <linearGradient id='cta_grad_next'>
-                                        <stop offset='0%' stop-color='#fa9e1b'/>
-                                        <stop offset='100%' stop-color='#8d4fff'/>
-                                    </linearGradient>
-                                </defs>
-                            <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-                            M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-                            C22.545,2,26,5.541,26,9.909V23.091z"/>
-                            <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
-                            17.046,15.554 "/>
-                            </svg>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-                    
-    </div>
-
-    <!-- Offers -->
-
-    <div class="offers">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="section_title">the best offers with rooms</h2>
-                </div>
-            </div>
-            <div class="row offers_items">
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <!-- Image by https://unsplash.com/@kensuarez -->
-                                    <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
-                                    <div class="offer_name"><a href="#">grand castle</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">$70<span>per night</span></div>
-                                    <div class="rating_r rating_r_4 offers_rating">
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                    </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <!-- Image by Egzon Bytyqi -->
-                                    <div class="offers_image_background" style="background-image:url(imagenes/offer_2.jpg)"></div>
-                                    <div class="offer_name"><a href="#">turkey hills</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">$50<span>per night</span></div>
-                                    <div class="rating_r rating_r_4 offers_rating">
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                    </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <!-- Image by https://unsplash.com/@nevenkrcmarek -->
-                                    <div class="offers_image_background" style="background-image:url(imagenes/offer_3.jpg)"></div>
-                                    <div class="offer_name"><a href="#">island dream</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">$90<span>per night</span></div>
-                                    <div class="rating_r rating_r_4 offers_rating">
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                    </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offers Item -->
-                <div class="col-lg-6 offers_col">
-                    <div class="offers_item">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="offers_image_container">
-                                    <!-- Image by https://unsplash.com/@mantashesthaven -->
-                                    <div class="offers_image_background" style="background-image:url(imagenes/offer_4.jpg)"></div>
-                                    <div class="offer_name"><a href="#">travel light</a></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="offers_content">
-                                    <div class="offers_price">$30<span>per night</span></div>
-                                    <div class="rating_r rating_r_4 offers_rating">
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                        <i></i>
-                                    </div>
-                                    <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
-                                    <div class="offers_icons">
-                                        <ul class="offers_icons_list">
-                                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                    <div class="offers_link"><a href="offers.html">read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials -->
-
-    <div class="testimonials">
-        <div class="test_border"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="section_title">what our clients say about us</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    
-                    <!-- Testimonials Slider -->
-
-                    <div class="test_slider_container">
-                        <div class="owl-carousel owl-theme test_slider">
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_1.jpg" alt="https://unsplash.com/@anniegray"></div>
-                                    <div class="test_icon"><img src="imagenes/backpack.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_2.jpg" alt="https://unsplash.com/@tschax"></div>
-                                    <div class="test_icon"><img src="imagenes/island_t.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_3.jpg" alt="https://unsplash.com/@seefromthesky"></div>
-                                    <div class="test_icon"><img src="imagenes/kayak.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_2.jpg" alt=""></div>
-                                    <div class="test_icon"><img src="imagenes/island_t.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_1.jpg" alt=""></div>
-                                    <div class="test_icon"><img src="imagenes/backpack.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial Item -->
-                            <div class="owl-item">
-                                <div class="test_item">
-                                    <div class="test_image"><img src="imagenes/test_3.jpg" alt=""></div>
-                                    <div class="test_icon"><img src="imagenes/kayak.png" alt=""></div>
-                                    <div class="test_content_container">
-                                        <div class="test_content">
-                                            <div class="test_item_info">
-                                                <div class="test_name">carla smith</div>
-                                                <div class="test_date">May 24, 2017</div>
-                                            </div>
-                                            <div class="test_quote_title">" Best holliday ever "</div>
-                                            <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Testimonials Slider Nav - Prev -->
-                        <div class="test_slider_nav test_slider_prev">
-                            <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                                <defs>
-                                    <linearGradient id='test_grad_prev'>
-                                        <stop offset='0%' stop-color='#fa9e1b'/>
-                                        <stop offset='100%' stop-color='#8d4fff'/>
-                                    </linearGradient>
-                                </defs>
-                                <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-                                M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-                                C22.545,2,26,5.541,26,9.909V23.091z"/>
-                                <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
-                                11.042,18.219 "/>
-                            </svg>
-                        </div>
-                        
-                        <!-- Testimonials Slider Nav - Next -->
-                        <div class="test_slider_nav test_slider_next">
-                            <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                                <defs>
-                                    <linearGradient id='test_grad_next'>
-                                        <stop offset='0%' stop-color='#fa9e1b'/>
-                                        <stop offset='100%' stop-color='#8d4fff'/>
-                                    </linearGradient>
-                                </defs>
-                            <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-                            M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-                            C22.545,2,26,5.541,26,9.909V23.091z"/>
-                            <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
-                            17.046,15.554 "/>
-                            </svg>
-                        </div>
-
-                    </div>
-                    
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="trending">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="section_title">trending now</h2>
-                </div>
-            </div>
-            <div class="row trending_container">
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_1.png" alt="https://unsplash.com/@fransaraco"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">grand hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_2.png" alt="https://unsplash.com/@grovemade"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">mars hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_3.png" alt="https://unsplash.com/@jbriscoe"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">queen hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_4.png" alt="https://unsplash.com/@oowgnuj"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">mars hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_5.png" alt="https://unsplash.com/@mindaugas"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">grand hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_6.png" alt="https://unsplash.com/@itsnwa"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">mars hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_7.png" alt="https://unsplash.com/@rktkn"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">queen hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending Item -->
-                <div class="col-lg-3 col-sm-6">
-                    <div class="trending_item clearfix">
-                        <div class="trending_image"><img src="imagenes/trend_8.png" alt="https://unsplash.com/@thoughtcatalog"></div>
-                        <div class="trending_content">
-                            <div class="trending_title"><a href="#">mars hotel</a></div>
-                            <div class="trending_price">From $182</div>
-                            <div class="trending_location">madrid, spain</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="contact">
-        <div class="contact_background" style="background-image:url(imagenes/contact.png)"></div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="contact_image">
-                        
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="contact_form_container">
-                        <div class="contact_title">get in touch</div>
-                        <form action="#" id="contact_form" class="contact_form">
-                            <input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Name" required="required" data-error="Name is required.">
-                            <input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">
-                            <input type="text" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Subject" required="required" data-error="Subject is required.">
-                            <textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-                            <button type="submit" id="form_submit_button" class="form_submit_button button">send message<span></span><span></span><span></span></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
---}}
     <!-- Footer -->
 
     <footer class="footer">
@@ -1155,7 +531,7 @@
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li class="footer_social_item"><a href="https://www.instagram.com/francoapio"><i class="fa fa-instagram"></i></a></li>
+                                <li class="footer_social_item"><a href="https://www.instagram.com/p/BsgV3CLBsT-/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

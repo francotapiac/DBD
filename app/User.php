@@ -45,6 +45,7 @@ class User extends Authenticatable
         ->belongsTo(Historial::class,'id_historial');
     }
 
+
     public function autorizarRoles($rols){
 
         //Método que autoriza acción en rol

@@ -174,6 +174,15 @@ Route::resource('traslado', 'TrasladoController');
 Route::resource('vehiculo', 'VehiculoController');
 Route::resource('vuelo', 'VueloController');
 
+//Carrito de compra
+Route::get('carritos/show', 'CarroController@show');
+
+//Rutas de vistas
+
+Route::get('/offers', function () {
+    return view('offers');
+});
+
 
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('vistaControladores.layouts')
 @section('content')
 <div class="row">
   <section class="content">
@@ -42,8 +42,8 @@
           <table id="mytable" class="table table-bordred table-striped">
             <thead>
               <th>Nombre</th>
-              <th>Descripción</th>
               <th>Costo</th>
+              <th>Detalle</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </thead>
@@ -52,9 +52,8 @@
               @foreach($actividades as $actividad)  
               <tr>
                 <td>{{$actividad->nombre}}</td>
-                <td>{{$actividad->descripcion}}</td>
-                <td>{{$actividad->costo}}</td>
-    
+                <td>{{$actividad->costo}}</td> 
+                <td><a class="btn btn-info btn-xs" href="{{action('ActividadController@show', $actividad->id_actividad)}}" ><span class="glyphicon glyphicon-search"></span></a></td>
                 <td><a class="btn btn-primary btn-xs" href="{{action('ActividadController@edit', $actividad->id_actividad)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td>
                   <form action="{{action('ActividadController@destroy', $actividad->id_actividad)}}" method="post">
