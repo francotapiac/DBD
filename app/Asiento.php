@@ -14,4 +14,26 @@ class Asiento extends Model
    		return $this
    		->belongsToMany(Vuelo::class,'reserva_vuelos','id_asiento','id_vuelo')->withTimestamps();
     }
+
+    //Scope
+
+    public function scopeNumeroAsiento($query, $numero){
+        if($numero)
+            return $query->where('numero_asiento','=',"$numero"); //LIKE permite buscar palabras semejantes (no iguales)
+    }
+
+     public function scopeLetraAsiento($query, $letra){
+        if($letra)
+            return $query->where('letra_asiento','LIKE',"%$letra%"); //LIKE permite buscar palabras semejantes (no iguales)
+    }
+
+    public function scopeTipoAsiento($query, $tipo){
+        if($tipo)
+            return $query->where('tipo_asiento','=',"$tipo"); //= permite comparar enteros
+    }
+
+    public function scopeDisponibilidad($query, $disponibilidad){
+        if($disponibilidad)
+            return $query->where('disponibilidad','=',"$disponibilidad"); 
+    }
 }

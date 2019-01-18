@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actividad;
+use App\Lugar;
 use Validator;
 
 class ActividadController extends Controller
@@ -27,11 +28,13 @@ class ActividadController extends Controller
         $nombre = $request->get('nombre');
         $descripcion = $request->get('descripcion');
         $costo = $request->get('costo');
+        $lugar = $request->get('lugar');
 
-        $actividades = Actividad::orderBy('id_actividad','DESC')
+        $actividades = Actividad::orderBy('costo','DESC')
         ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->descripcion($descripcion)
         ->costo($costo)
+        ->lugar($lugar)
         ->paginate(3); 
         
         return view('actividad.index',compact('actividades')); 
@@ -49,7 +52,9 @@ class ActividadController extends Controller
     public function create(Request $request)
     {
         //return $this->store($request);
-       return view('actividad.create');
+
+        $lugars = Lugar::all();
+        return view('actividad.create',compact('lugars'));
     }
 
     /**
@@ -76,9 +81,9 @@ class ActividadController extends Controller
         $actividad->descripcion = $request->get('descripcion');
         $actividad->costo = $request->get('costo');
         $actividad->save();
-
+        
         $actividad->lugars()->attach($request->get('pais'));
-         return redirect()->route('actividad.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('actividad.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -91,7 +96,6 @@ class ActividadController extends Controller
     {
         $actividad = Actividad::find($id);
         return  view('actividad.show',compact('actividad'));
-        return $actividad;
     }
 
     /**

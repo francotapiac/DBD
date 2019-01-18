@@ -57,6 +57,7 @@
               @foreach($aeropuertos as $aeropuerto)  
               <tr>
                 <td>{{$aeropuerto->nombre_aeropuerto}}</td>
+                <td>{{$aeropuerto->lugar->ciudad}},{{$aeropuerto->lugar->pais}}</td>
                 <td>{{$aeropuerto->tipo_aeropuerto}}</td>
                 <td>{{$aeropuerto->numero_contacto}}</td>
     

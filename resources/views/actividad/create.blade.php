@@ -32,12 +32,28 @@
 									<div class="form-group">
 										<input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Nombre de la actividad">
 									</div>
+								<div class="form-group">
+									<label for="">Pais de la actividad</label>
+									<select name="pais" id="pais" class="form-control">
+										@foreach($lugars as $lugar)
+											<option value="{{$lugar['id_lugar']}}">{{$lugar['pais']}}</option>
+										@endforeach
+									</select>
 								</div>
-							</div>
+
+								<div class="form-group">
+									<label for="">Ciudad de la actividad</label>
+									<select name="ciudad" id="ciudad" class="form-control">
+										@foreach($lugars as $lugar)
+											<option value="{{$lugar['id_lugar']}}">{{$lugar['ciudad']}}</option>
+										@endforeach
+									</select>
+								</div>
  
-							<div class="form-group">
-								<textarea name="descripcion" class="form-control input-sm" placeholder="Descripción"></textarea>
-							</div>
+								<div class="form-group">
+									<textarea name="descripcion" class="form-control input-sm" placeholder="Descripción"></textarea>
+								</div>
+
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
 									<div class="form-group">

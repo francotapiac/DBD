@@ -25,8 +25,23 @@ class HabitacionController extends Controller
      */
     public function index()
     {
-        $habitacion = Habitacion::all();
-        return $habitacion;
+        /*$lugar = $request->get('lugar');
+        $fecha_llegada = $request->get('fecha_llegada');
+        $fecha_salida = $request->get('fecha_salida');
+        $capacidad = $request->get('capacidad');
+
+        $habitaciones = Hotel::orderBy('id_habitacion','DESC')
+    
+        ->lugar($lugar)
+        ->fechaLlegada($fecha_llegada)
+        ->fechaSalida($fecha_salida)
+        ->capacidad($capacidad)
+        ->disponibilidad(1)
+        ->paginate(3); 
+        
+        return view('hotel.index',compact('habitaciones')); */
+        $habitacions = Habitacion::all();
+        return $habitacions;
     }
 
     /**

@@ -21,10 +21,21 @@ class EscalaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $escala = Escala::all();
-        return $escala;
+        $cambio_avion = $request->get('cambio_avion');
+        $cambio_aeropuerto = $request->get('cambio_aeropuerto');
+        $duracion_escala = $request->get('duracion_escala');
+        $lugar = $request->get('lugar');
+
+        $escalas = Escala::orderBy('id_escala','DESC')
+        ->cambioAvion($cambio_avion)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        ->cambioAeropuerto($cambio_aeropuerto)
+        ->duracionEscala($duracion_escala)
+        ->lugar($lugar)
+        ->paginate(3); 
+        
+        return view('escala.index',compact('escalas')); 
     }
 
     /**
@@ -34,7 +45,7 @@ class EscalaController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        return view('escala.create');
     }
 
     /**
@@ -54,7 +65,7 @@ class EscalaController extends Controller
             $lugar = \App\Lugar::find($id);
             $escala->id_lugar = $id;
             $escala->save();
-            return $escala;
+            return redirect()->route('escala.index')->with('success','Registro creado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
@@ -70,7 +81,7 @@ class EscalaController extends Controller
     public function show($id)
     {
         $escala = Escala::find($id);
-        return $escala;
+        return  view('escala.show',compact('escala'));
     }
 
     /**
@@ -81,7 +92,8 @@ class EscalaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $escala = Escala::find($id);
+        return view('escala.edit',compact('escala'));
     }
 
     /**
@@ -102,7 +114,7 @@ class EscalaController extends Controller
             $lugar = \App\Lugar::find($id);
             $escala->id_lugar = $id;
             $escala->save();
-            return $escala;
+            return redirect()->route('escala.index')->with('success','Registro actualizado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
@@ -118,6 +130,6 @@ class EscalaController extends Controller
     public function destroy($id)
     {
         $escala = Escala::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        return redirect()->route('escala.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

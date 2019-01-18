@@ -25,6 +25,7 @@ class Actividad extends Model
         ->belongsToMany('App\Paquete','paquete_actividads','id_actividad','id_paquete')->withTimestamps(); 
     }
 
+
     //Scope
 
     public function scopeNombre($query, $nombre){
@@ -40,6 +41,15 @@ class Actividad extends Model
     public function scopeCosto($query, $costo){
         if($costo)
             return $query->where('costo','LIKE',"%$costo%"); //LIKE permite buscar palabras semejantes (no iguales)
+    }
+
+    public function scopeLugar($query, $lugar){
+        if($lugar)
+            //lugar corresponde a la función creada en este modelo
+            return $query->whereHas('lugars',function($query) use ($lugar){
+                $query->where('pais','LIKE',"%$lugar%")
+                    ->orWhere('ciudad','LIKE',"%$lugar%");
+        });   
     }
 
 }

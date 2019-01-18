@@ -8,7 +8,7 @@
           <div class="pull-left"><h3>Lista de paquetes</h3></div>
           <div class="pull-right">
             <div class="btn-group">
-              <a href="{{ route('paquete.create') }}" class="btn btn-info" >Añadir paquete</a>
+              <a href="{{ route('paquete.create')}}" class="btn btn-info" >Añadir paquete</a>
             </div>
           </div>
 

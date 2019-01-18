@@ -34,4 +34,11 @@ class Lugar extends Model
     	//hasMany el que no la tiene en el MR
     	->hasMany('App\Escala','id_escala')->withTimestamps();
     }
+
+    //Funciones de lugar
+
+    public function buscarLugar($pais,$ciudad){
+        return $this->where('pais',"$pais")
+                    ->where('ciudad',"$ciudad");
+    }
 }

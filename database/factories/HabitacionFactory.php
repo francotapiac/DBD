@@ -11,5 +11,6 @@ $factory->define(App\Habitacion::class, function (Faker $faker) {
         'disponibilidad' => $faker->boolean,
         'fecha_llegada' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+2 years', $timezone = null),
         'fecha_ida' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+2 years', $timezone = null),
+        'id_hotel' => rand(1,20),
     ];
 });

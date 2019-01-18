@@ -31,7 +31,7 @@ class Aeropuerto extends Model
 
      public function scopeTipo($query, $tipo){
         if($tipo)
-            return $query->where('tipo_aeropuerto','LIKE',"%$tipo%"); //LIKE permite buscar palabras semejantes (no iguales)
+            return $query->where('tipo_aeropuerto','=',"$tipo"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
     public function scopeNumero($query, $numero){
@@ -39,13 +39,14 @@ class Aeropuerto extends Model
             return $query->where('numero_contacto','LIKE',"%$numero%"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
-    public function scopePais($query,$pais){
-        if($pais)
-            return $this->lugar()->where('pais','LIKE',"%$pais%");
+    //Scope que busca nombre de un pais o ciudad en una misma consulta
+    public function scopeLugar($query,$lugar){
+        if($lugar)
+            //lugar corresponde a la función creada en este modelo
+            return $query->whereHas('lugar',function($query) use ($lugar){
+                $query->where('pais','LIKE',"%$lugar%")
+                    ->orWhere('ciudad','LIKE',"%$lugar%");
+        });   
     }
 
-    public function scopeCiudad($query,$ciudad){
-        if($ciudad)
-            return $this->lugar()->where('ciudad','LIKE',"%$ciudad%");
-    }
 }

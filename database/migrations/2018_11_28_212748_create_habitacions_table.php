@@ -22,6 +22,10 @@ class CreateHabitacionsTable extends Migration
             $table->date('fecha_llegada');
             $table->date('fecha_ida');
             $table->timestamps();
+
+            $table->integer('id_hotel')->unsigned()->nullable();
+        
+            $table->foreign('id_hotel')->references('id_hotel')->on('hotels')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
