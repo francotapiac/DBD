@@ -23,15 +23,14 @@ class ActividadController extends Controller
      */
     public function index(Request $request)
     {
-       
         //Se recibe lo buscado en vista
         $nombre = $request->get('nombre');
         $descripcion = $request->get('descripcion');
         $costo = $request->get('costo');
         $lugar = $request->get('lugar');
 
-        $actividades = Actividad::orderBy('costo','DESC')
-        ->nombre($nombre)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        $actividades = Actividad::orderBy('id_actividad','DESC')
+        ->nombre($nombre)               //Se realiza query 4 desde el modelo (con función scopeNombre)
         ->descripcion($descripcion)
         ->costo($costo)
         ->lugar($lugar)
@@ -40,8 +39,8 @@ class ActividadController extends Controller
         return view('actividad.index',compact('actividades')); 
         //return $actividades;
         
-        /*$actividades = Actividad::all();
-        return $actividades;*/
+        //$actividades = Actividad::all();
+        //return $actividades;
     }
 
     /**
