@@ -12,7 +12,7 @@
             </div>
           </div>
 
-          <!-- Buscador de paquetes -->
+          <!-- Buscador de paquete -->
           <form class="form-group" method="GET" action="/paquete">
             <div class="row">
               <div class="col-md-12"></div>
