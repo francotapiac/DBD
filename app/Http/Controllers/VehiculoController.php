@@ -24,13 +24,40 @@ class VehiculoController extends Controller
             'nombre' => 'required|string',
             'capacidad' => 'required|numeric',
             'disponibilidad' => 'required|boolean', 
+            'id_lugar' => 'required|numeric'
         ];
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $vehiculo = Vehiculo::all();
-        return $vehiculo;
+        //Se recibe lo buscado en vista
+        $fechaRecogida = $request->get('fecha_recogida');
+        $fechaDevolucion = $request->get('fecha_devolucion');
+        $compania = $request->get('compania');
+        $precioDiario = $request->get('precio_diario');
+        $nombre = $request->get('nombre');
+        $capacidad = $request->get('capacidad');
+        $disponibilidad = $request->get('disponibilidad');
+        $ciudad = $request->get('ciudad');
+        $pais = $request->get('pais');
+
+        $vehiculos = Vehiculo::orderBy('id_vehiculo','DESC')
+        ->fechaRecogida($fechaRecogida)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        ->fechaDevolucion($fechaDevolucion)
+        ->compania($compania)
+        ->precioDiario($precioDiario)
+        ->nombre($nombre)
+        ->capacidad($capacidad)
+        ->disponibilidad($disponibilidad)
+        ->ciudad($ciudad)
+        ->pais($pais)
+        ->paginate(3); 
+        
+        return view('vehiculo.index',compact('vehiculos')); 
+        //return $actividades;
+
+        /*$vehiculo = Vehiculo::all();
+        return $vehiculo;*/
     }
 
     /**
@@ -40,7 +67,8 @@ class VehiculoController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        //return $this->store($request);
+        return view('vehiculo.create');
     }
 
     /**
@@ -58,7 +86,7 @@ class VehiculoController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $vehiculo = new \App\Vehiculo;
+        $vehiculo = new Vehiculo();
         $vehiculo->fecha_recogida=$request->get('fecha_recogida');
         $vehiculo->fecha_devolucion= $request->get('fecha_devolucion');
         $vehiculo->compania=$request->get('compania');
@@ -71,7 +99,8 @@ class VehiculoController extends Controller
             $lugar = \App\Lugar::find($id);
             $vehiculo->id_lugar = $id;
             $vehiculo->save();
-            return $vehiculo;
+            return redirect()->route('vehiculo.index')->
+                with('success','Registro creado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
@@ -86,8 +115,8 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        $vehiculo = vehiculo::find($id);
-        return $vehiculo;
+        $vehiculo = Vehiculo::find($id);
+        return view('vehiculo.show',compact('vehiculos'));
     }
 
     /**
@@ -98,7 +127,8 @@ class VehiculoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehiculo = Vehiculo::find($id);
+        return view('vehiculo.edit',compact('vehiculo'));
     }
 
     /**
@@ -128,7 +158,7 @@ class VehiculoController extends Controller
             $lugar = \App\Lugar::find($id);
             $vehiculo->id_lugar = $id;
             $vehiculo->save();
-            return $vehiculo;
+            return redirect()->route('vehiculo.index')->with('success','Registro actualizado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
@@ -144,6 +174,6 @@ class VehiculoController extends Controller
     public function destroy($id)
     {
         $vehiculo = Vehiculo::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        return redirect()->route('vehiculo.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }
