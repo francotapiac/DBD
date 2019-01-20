@@ -1261,6 +1261,7 @@ section
 	width: 100%;
 	padding-top: 115px;
 	padding-bottom: 115px;
+	
 }
 
 /*********************************
@@ -1270,6 +1271,7 @@ section
 .offers_sorting
 {
 	display: inline-block;
+
 }
 .offers_sorting > li
 {

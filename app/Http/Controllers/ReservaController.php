@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reserva;
+use App\Actividad;
+use App\Usuario;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class ReservaController extends Controller
@@ -38,7 +41,8 @@ class ReservaController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+    
+        return view('reserva.create');
     }
 
     /**
@@ -140,4 +144,27 @@ class ReservaController extends Controller
         $reserva = Reserva::find($id)->delete();
         return response()->json("Eliminado exitosamente");
     }
-}
+
+
+    //Nota: rutas agregarCarro corresponden a controlador CarroController
+    //Ver ese controlador.
+
+    //Función para realizar reserva de actividad
+    public function reservaActividad(Request $request){
+
+        $id_actividad = $request->id_actividad;
+        $actividad = Actividad::where('id_actividad',$id_actividad)->first();
+        $id_usuario = Auth::user()->id;
+
+        $reserva = Reserva::where('id_usuario',$id_usuario)->first();
+
+        $pago_actual = $reserva->pago_actual;
+        $pago_actual += $request->costo;
+
+        $reserva->actividads()->attach($id_actividad);
+        $reserva->save();
+
+        return redirect()->route('agregarCarro');
+    }
+
+    }

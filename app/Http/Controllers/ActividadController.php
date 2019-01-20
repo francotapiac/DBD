@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Actividad;
 use App\Lugar;
+use App\Reserva;
 use Validator;
 
 class ActividadController extends Controller
@@ -152,4 +153,5 @@ class ActividadController extends Controller
         $actividades = Actividad::find($id)->delete();
        return redirect()->route('actividad.index')->with('success','Registro eliminado satisfactoriamente');
     }
+
 }

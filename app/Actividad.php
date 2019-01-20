@@ -8,7 +8,7 @@ class Actividad extends Model
 {
     protected $primaryKey = 'id_actividad';
     protected $fillable = [
-        'nombre', 'descripcion', 'costo',
+        'nombre', 'descripcion', 'costo','cantidad',
     ];
     public function reservas(){
     	return $this
