@@ -11,15 +11,82 @@
 |
 */
 
+
+/******************************
+
+[Tabla de contenidos]
+
+1. Rutas de sistema
+2. Rutas de CRUD
+3. Carrito de compras
+4. Rutas de vistas
+5. Rutas postman
+
+******************************/
+
+
+/*********************************
+1. Rutas de sistema
+*********************************/
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*********************************
+2. Rutas de CRUD
+*********************************/
+
+/*********************************
+2.1. Rutas de reserva
+*********************************/
+Route::resource('reserva','ReservaController');
+Route::post('/reserva/actividad', 'ReservaController@reservaActividad')->name('reservaActividad');
+
+
+Route::resource('actividad', 'ActividadController');  
+Route::resource('aeropuerto', 'AeropuertoController');
+Route::resource('asiento', 'AsientoController');
+Route::resource('escala', 'EscalaController');
+Route::resource('habitacion', 'HabitacionController');
+Route::resource('historial', 'HistorialController');
+Route::resource('hotel', 'HotelController');
+Route::resource('lugar', 'LugarController');
+Route::resource('paquete', 'PaqueteController');
+Route::resource('permiso', 'PermisoController');
+
+Route::resource('rol', 'RolController');
+Route::resource('seguro', 'SeguroController');
+Route::resource('traslado', 'TrasladoController');
+Route::resource('vehiculo', 'VehiculoController');
+Route::resource('vuelo', 'VueloController');
+
+/*********************************
+3. Carrito de compras
+*********************************/
+
+//Inyección de dependecia (evita repetir funcionalidad)
+
+Route::get('carritos/show', 'CarroController@show')->name('carritos.show');
+Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
+Route::get('carrito','CarroController@carroCompra')->name('agregarCarro');
+
+/*********************************
+4. Rutas de vistas
+*********************************/
+
+Route::get('/offers', function () {
+    return view('offers');
+});
+
+
+/*********************************
+5. Rutas postman
+*********************************/
 
 //Ruta Actividad
 /*Route::get('/actividad','ActividadController@index');
@@ -157,31 +224,7 @@ Route::post('/paquete/store','PaqueteController@store');
 Route::post('/paquete/update/{id}','PaqueteController@update');
 Route::get('/paquete/create','PaqueteController@create');
 */
-Route::resource('actividad', 'ActividadController');  
-Route::resource('aeropuerto', 'AeropuertoController');
-Route::resource('asiento', 'AsientoController');
-Route::resource('escala', 'EscalaController');
-Route::resource('habitacion', 'HabitacionController');
-Route::resource('historial', 'HistorialController');
-Route::resource('hotel', 'HotelController');
-Route::resource('lugar', 'LugarController');
-Route::resource('paquete', 'PaqueteController');
-Route::resource('permiso', 'PermisoController');
-Route::resource('reserva', 'ReservaController');
-Route::resource('rol', 'RolController');
-Route::resource('seguro', 'SeguroController');
-Route::resource('traslado', 'TrasladoController');
-Route::resource('vehiculo', 'VehiculoController');
-Route::resource('vuelo', 'VueloController');
 
-//Carrito de compra
-Route::get('carritos/show', 'CarroController@show');
-
-//Rutas de vistas
-
-Route::get('/offers', function () {
-    return view('offers');
-});
 
 
 

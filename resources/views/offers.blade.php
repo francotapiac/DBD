@@ -10,7 +10,9 @@
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
 <link href="{{ URL::asset('css/offers_styles.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('css/main_styles.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('css/offers_responsive.css')}}" rel="stylesheet">
 </head>
 
@@ -877,6 +879,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</div>
+
+	
 
 </div>
 
