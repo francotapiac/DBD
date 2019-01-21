@@ -34,8 +34,11 @@ class VueloController extends Controller
      */
     public function index()
     {
-        $vuelos = Vuelo::all();
-        return $vuelos;
+        //$vuelos = Vuelo::all();
+        //return $vuelos;
+        $vuelos = Vuelo::orderBy('id_vuelo','DESC')->paginate(3); 
+        return view('vuelo.index',compact('vuelos')); 
+
     }
 
     /**
