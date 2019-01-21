@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     protected $primaryKey = 'id_reserva';
     protected $fillable = [
-        'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago','pago_actual','id_usuario'
+        'fecha_reserva','hora_reserva','detalle_reserva','tipo_pago','pago_actual','id_usuario','reserva_realizada'
     ];
 
 

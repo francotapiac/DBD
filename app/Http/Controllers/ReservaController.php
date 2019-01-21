@@ -156,15 +156,44 @@ class ReservaController extends Controller
         $actividad = Actividad::where('id_actividad',$id_actividad)->first();
         $id_usuario = Auth::user()->id;
 
-        $reserva = Reserva::where('id_usuario',$id_usuario)->first();
 
-        $pago_actual = $reserva->pago_actual;
-        $pago_actual += $request->costo;
-
-        $reserva->actividads()->attach($id_actividad);
+        //Crear nueva reserva
+        $reserva = new Reserva();
+        $reserva->fecha_reserva = new \DateTime();
+        $reserva->hora_reserva = new \DateTime();
+        $reserva->detalle_reserva = "reserva actividad";
+        $reserva->tipo_pago = 1;
+        $reserva->id_usuario = $id_usuario;
+        $reserva->pago_actual = 0;
+        $reserva->pago_actual +=$request->costo;
+        $reserva->reserva_realizada = false;
         $reserva->save();
 
+        //Guardar datos en tabla intermedia
+        $reserva = Reserva::where('id_usuario',$id_usuario)
+        //->where('reserva_realizada',false)
+        ->first();
+        $reserva->actividads()->attach($id_actividad);
+     
         return redirect()->route('agregarCarro');
     }
 
+    public function comprar(Request $request){
+
+       /* $reserva = Reserva::where([
+            ['id_usuario', $request->User()->id],
+            ['reserva_realizada', false],
+        ])->first();
+
+        $reserva->reserva_realizada = true;
+        $reserva->save();
+
+        //Actividad
+        $actividads = $reserva->actividads();
+       
+
+        return view('usuario.carroCompra', ['actividads' => $actividads,
+            'usuarios' => $request->user()]);*/
     }
+
+}
