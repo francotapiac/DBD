@@ -29,7 +29,9 @@
 1. Rutas de sistema
 *********************************/
 Route::get('/', function () {
-    return view('welcome');
+	$lugars = App\Lugar::all();
+	$actividads = App\Actividad::all();
+    return view('welcome',compact('lugars','actividads'));
 });
 
 Auth::routes();
@@ -46,7 +48,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 *********************************/
 Route::resource('reserva','ReservaController');
 Route::post('/reserva/actividad', 'ReservaController@reservaActividad')->name('reservaActividad');
-
+Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
 
 Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
@@ -74,6 +76,7 @@ Route::resource('vuelo', 'VueloController');
 Route::get('carritos/show', 'CarroController@show')->name('carritos.show');
 Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
 Route::get('carrito','CarroController@carroCompra')->name('agregarCarro');
+Route::get('eliminarElemento','CarroController@borrarElementos')->name('borrarCarro');
 
 /*********************************
 4. Rutas de vistas

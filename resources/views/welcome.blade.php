@@ -63,7 +63,7 @@
                                 <li class="main_nav_item"><a href="about.html">about us</a></li>
                                 <li class="main_nav_item"><a href="offers">offers</a></li>
                                 <li class="main_nav_item"><a href="blog.html">news</a></li>
-                                <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                                <li class="main_nav_item"><a href="carrito">Carro</a></li>
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -113,7 +113,7 @@
                 <li class="menu_item"><a href="about.html">about us</a></li>
                 <li class="menu_item"><a href="offers">offers</a></li>
                 <li class="menu_item"><a href="blog.html">news</a></li>
-                <li class="menu_item"><a href="contact.html">contact</a></li>
+                <li class="menu_item"><a href="carrito">Carro</a></li>
             </ul>
         </div>
     </div>
@@ -395,12 +395,24 @@
                         <form method="GET" action="/actividad"  id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <div class="search_item">
                                 <div>Nombre de actividad</div>
-                                <input type="text" class="destination search_input" name="nombre">
+                                <select name="nombre" id="nombre" class="destination search_input">
+                                    <option value="">Ver todas</option>
+                                    @foreach($actividads as $actividad)
+                                        <option value="{{$actividad['nombre']}}">{{$actividad['nombre']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                             <div class="search_item">
-                                <div>Lugar de actividad</div>
-                                <input type="text" class="destination search_input" required="required" name="lugar">
+                                <div>Pais de la actividad</div>
+                                <select name="lugar" id="lugar" class="destination search_input">
+                                    <option value="">---</option>
+                                    @foreach($lugars as $lugar)
+                                        <option value="{{$lugar['pais']}}">{{$lugar['pais']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                             <div class="search_item">
                                 <div>Costo de actividad</div>
                                 <input type="number" class="destination search_input" name="costo">

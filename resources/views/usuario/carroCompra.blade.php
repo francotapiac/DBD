@@ -20,8 +20,14 @@
                 <td>{{$actividad->nombre}}</td>
                 <td>{{$actividad->costo}}</td>
                 <td>
-                   <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                    <form method="DELETE" action="{{ route('borrarCarro') }}"  role="form">
+                        {{ csrf_field() }}
+                        <input type='hidden' name="tipo" value = "actividad" class="form-control">
+                        <input type='hidden' name="id_actividad" value = "{{$actividad->id_actividad}}" class="form-control">
+                        <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                    </form>
                 </td>
+
 
                </tr>
                @endforeach 
@@ -34,6 +40,8 @@
  
           </table>
         </div>
+
+        
     </div>
 </div>  
 

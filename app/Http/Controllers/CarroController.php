@@ -37,13 +37,24 @@ class CarroController extends Controller
         ])->first();
 
         $reserva_actividad = $reserva->actividads;
-
         return view('usuario.carroCompra', ['actividads' => $reserva_actividad,
             'usuarios' => $request->user()]);
     }
 
-    public function agregarArregloReservas(Request $request){
-        
+    public function borrarElementos(Request $request){
+
+         $tipo = $request->tipo;
+         $reserva = Reserva::where([
+            ['id_usuario', Auth::user()->id],
+            //['reserva_realizada', false],
+        ])->first();
+
+         if($tipo == 'actividad'){
+            $reserva->actividads()->detach($request->id_actividad);
+            return redirect('carrito')->with('status','Actividad removida');
+         }
+
+
     }
 
 }
