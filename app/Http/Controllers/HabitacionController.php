@@ -23,7 +23,7 @@ class HabitacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,$id)
     {
         /*$lugar = $request->get('lugar');
         $fecha_llegada = $request->get('fecha_llegada');
@@ -40,7 +40,9 @@ class HabitacionController extends Controller
         ->paginate(3); 
         
         return view('hotel.index',compact('habitaciones')); */
-        $habitacions = Habitacion::all();
+   
+        $habitacions = Habitacion::orderBy('id_habitacion','DESC')
+        ->paginate(3); 
         return $habitacions;
     }
 
@@ -86,7 +88,8 @@ class HabitacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+            
         $habitacion = Habitacion::find($id);
         return $habitacion;
     }
@@ -99,7 +102,8 @@ class HabitacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $habitacion = Habitacion::find($id);
+        return view('habitacion.edit',compact('habitacion'));
     }
 
     /**

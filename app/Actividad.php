@@ -8,7 +8,7 @@ class Actividad extends Model
 {
     protected $primaryKey = 'id_actividad';
     protected $fillable = [
-        'nombre', 'descripcion', 'costo','cantidad',
+        'nombre', 'descripcion', 'costo','cantidad','fecha_inicio','ninos'
     ];
     public function reservas(){
     	return $this
@@ -38,9 +38,10 @@ class Actividad extends Model
             return $query->where('descripcion','LIKE',"%$descripcion%"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
+    //Costo base para pagar
     public function scopeCosto($query, $costo){
         if($costo)
-            return $query->where('costo','LIKE',"%$costo%"); //LIKE permite buscar palabras semejantes (no iguales)
+            return $query->where('costo','>=',"$costo"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
     public function scopeLugar($query, $lugar){
@@ -50,6 +51,15 @@ class Actividad extends Model
                 $query->where('pais','LIKE',"%$lugar%")
                     ->orWhere('ciudad','LIKE',"%$lugar%");
         });   
+    }
+
+    public function scopeCantidad($query){
+            return $query->where('cantidad','>=',1);   
+    }
+
+    public function scopeNinos($query,$ninos){
+        if($ninos)
+            return $query->where('ninos','=',$ninos);   
     }
 
 }

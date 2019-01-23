@@ -19,6 +19,8 @@ class CreateActividadsTable extends Migration
             $table->text('descripcion');
             $table->decimal('costo');
             $table->integer('cantidad');
+            $table->boolean('ninos');
+            $table->date('fecha_inicio');
             $table->timestamps();
         });
     }

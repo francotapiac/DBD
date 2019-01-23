@@ -414,8 +414,17 @@
                             </div>
 
                             <div class="search_item">
-                                <div>Costo de actividad</div>
-                                <input type="number" class="destination search_input" name="costo">
+                                <div>Niños</div>
+                                <select name="ninos" id="ninos" class="dropdown_item_select search_input">
+                                    <option value = "">---</option>
+                                    <option value = true>Si</option>
+                                    <option value = false>No</option>
+                                </select>
+                            </div>
+
+                            <div class="search_item">
+                                <div>Precio desde</div>
+                                <input type="number" min= 0.00 class="destination search_input" name="costo">
                             </div>
                            
                             <button class="button search_button" type="submit">search<span></span><span></span><span></span></button>

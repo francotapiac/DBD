@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Reserva;
 use App\Actividad;
+use App\Habitacion;
+use App\Traslado;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -80,6 +82,68 @@ class CarroController extends Controller
         Session::put("carro", json_encode($carro));
         return $this->mostrarCarro();
     }
+
+    /*public function agregarHabitacion(Request $request){
+
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $nomb}reHotel = $request->input("nombre_hotel")
+        $fecha_llegada = $request->input("fecha_llegada");
+        $fecha_salida = $request->input("fecha_salida");
+        $cantidad = $request->input("cantidad");
+
+        $habitacion = Habitacion::findOrFail($id);
+
+        $reservaHabitacion = new \stdClass();
+        $reservaHabitacion->id = $id;
+        $reservaHabitacion->categoria = 'Habitacion';
+        $reservaHabitacion->subcategoria = 'Reservas';
+        $reservaHabitacion->precio = $habitacion->precio_noche;
+        $reservaHabitacion->nombre = $id;
+        $reservaHabitacion->fecha_llegada = $fecha_llegada;
+        $reservaHabitacion->fecha_salida = $fecha_salida;
+        $reservaHabitacion->cantidad = $cantidad;
+        $reservaHabitacion->subtotal= $reservaHabitacion->precio * $cantidad;
+        array_push($carro->servicios, $reservaHabitacion);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+    }
+
+    public function agregarTraslado(Request $request){
+
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $capacidad = $request->input("capacidad")
+        $fecha_traslado = $request->input("fecha_traslado");
+        $cantidad = $request->input("cantidad");    
+
+        $traslado = Traslado::findOrFail($id);
+
+        $reservaTraslado = new \stdClass();
+        $reservaTraslado->id = $id;
+        $reservaTraslado->categoria = 'Habitacion';
+        $reservaTraslado->subcategoria = 'Reservas';
+        $reservaTraslado->precio = $traslado->precio;
+        $reservaTraslado->nombre = $traslado->compania;
+        $reservaTraslado->cantidad = $cantidad;
+        $reservaTraslado->subtotal= $reservaTraslado->precio * $cantidad;
+        array_push($carro->servicios, $reservaTraslado);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+    }*/
+
 
 
 	/*//Crear variable de sesión carrito

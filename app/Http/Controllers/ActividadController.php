@@ -29,12 +29,15 @@ class ActividadController extends Controller
         $descripcion = $request->get('descripcion');
         $costo = $request->get('costo');
         $lugar = $request->get('lugar');
+        $ninos = $request->get('ninos');
 
         $actividades = Actividad::orderBy('id_actividad','DESC')
         ->nombre($nombre)               //Se realiza query 4 desde el modelo (con función scopeNombre)
         ->descripcion($descripcion)
         ->costo($costo)
         ->lugar($lugar)
+        ->cantidad()
+        ->ninos($ninos)
         ->paginate(3); 
         
         return view('actividad.index',compact('actividades')); 
