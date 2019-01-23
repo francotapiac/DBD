@@ -20,7 +20,7 @@ class CreateReservasTable extends Migration
             $table->text('detalle_reserva');
             $table->integer('tipo_pago');
             $table->decimal('pago_actual');
-            $table->boolean('reserva_realizada');
+            $table->string('reserva_realizada',100);
             $table->timestamps();
 
             $table->integer('id_usuario')->unsigned()->nullable();

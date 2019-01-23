@@ -9,21 +9,24 @@
             <thead>
               <th>Tipo</th>
               <th>Nombre</th>
-              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
               <th>Quitar</th>
             </thead>
             <tbody>
-              @if($actividads->count())  
-              @foreach($actividads as $actividad)  
+             
+              @foreach($carro->servicios as $key=>$item)  
               <tr>
                 <td>Actividad</td>
-                <td>{{$actividad->nombre}}</td>
-                <td>{{$actividad->costo}}</td>
+                <td>{{$item->nombre}}</td>
+                <td>{{$item->cantidad}}</td>
+                <td>{{$item->subtotal}}</td>
+
                 <td>
                     <form method="DELETE" action="{{ route('borrarCarro') }}"  role="form">
                         {{ csrf_field() }}
-                        <input type='hidden' name="tipo" value = "actividad" class="form-control">
-                        <input type='hidden' name="id_actividad" value = "{{$actividad->id_actividad}}" class="form-control">
+                        <input type='hidden' name="indice" value = {{$key}} class="form-control">
+                        
                         <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
                     </form>
                 </td>
@@ -31,14 +34,12 @@
 
                </tr>
                @endforeach 
-               @else
-               <tr>
-                <td colspan="8">No hay registro !!</td>
-              </tr>
-              @endif
+              
+
             </tbody>
  
           </table>
+          <p1>Total: </p1>{{$carro->total}}
         </div>
 
         

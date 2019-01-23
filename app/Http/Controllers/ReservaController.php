@@ -146,9 +146,23 @@ class ReservaController extends Controller
     }
 
 
+
+    /*public function reservaActividad(Request $request){
+
+        $actividad = Actividad::where('id_actividad',$id_actividad)->first();
+        request()->session()->put('busqueda.autos', [
+          'costo' => $actividad->costo,
+        ]);
+        
+        $reserva = new Reserva([
+            'costo' => request()->session()->get('')]
+        );
+    }*/
+
     //Nota: rutas agregarCarro corresponden a controlador CarroController
     //Ver ese controlador.
 
+    
     //Función para realizar reserva de actividad
     public function reservaActividad(Request $request){
 
@@ -188,7 +202,7 @@ class ReservaController extends Controller
 
     public function comprar(Request $request){
 
-       /* $reserva = Reserva::where([
+       $reserva = Reserva::where([
             ['id_usuario', $request->User()->id],
             ['reserva_realizada', false],
         ])->first();
@@ -201,7 +215,7 @@ class ReservaController extends Controller
        
 
         return view('usuario.carroCompra', ['actividads' => $actividads,
-            'usuarios' => $request->user()]);*/
+            'usuarios' => $request->user()]);
     }
 
 }

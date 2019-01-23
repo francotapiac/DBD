@@ -75,8 +75,10 @@ Route::resource('vuelo', 'VueloController');
 
 //Inyección de dependecia (evita repetir funcionalidad)
 
-Route::get('carritos/show', 'CarroController@show')->name('carritos.show');
-Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
+Route::get('carros', 'CarroController@mostrarCarro')->name('carritos.show');
+
+Route::post('carros', 'CarroController@agregarActividad')->name('agregarActividad');
+//Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
 Route::get('carrito','CarroController@carroCompra')->name('agregarCarro');
 Route::get('eliminarElemento','CarroController@borrarElementos')->name('borrarCarro');
 
