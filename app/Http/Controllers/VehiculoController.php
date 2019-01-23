@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vehiculo;
 use Validator;
+use App\Lugar;
 
 class VehiculoController extends Controller
 {
@@ -68,7 +69,9 @@ class VehiculoController extends Controller
     public function create(Request $request)
     {
         //return $this->store($request);
-        return view('vehiculo.create');
+        //return view('vehiculo.create');
+        $lugars = Lugar::all();
+        return view('vehiculo.create',compact('lugars'));
     }
 
     /**
@@ -116,7 +119,7 @@ class VehiculoController extends Controller
     public function show($id)
     {
         $vehiculo = Vehiculo::find($id);
-        return view('vehiculo.show',compact('vehiculos'));
+        return view('vehiculo.show',compact('vehiculo'));
     }
 
     /**

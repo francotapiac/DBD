@@ -48,6 +48,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 *********************************/
 Route::resource('reserva','ReservaController');
 Route::post('/reserva/actividad', 'ReservaController@reservaActividad')->name('reservaActividad');
+Route::post('/reserva/vehiculo', 'ReservaController@reservaVehiculo')->name('reservaVehiculo');
+Route::post('/reserva/vuelo', 'ReservaController@reservaVuelo')->name('reservaVuelo');
 Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
 
 Route::resource('actividad', 'ActividadController');  

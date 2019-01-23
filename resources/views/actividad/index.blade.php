@@ -99,9 +99,5 @@
     @endif
   </div>
   {{ $actividades->links() }}
-</div>
-
-
-
- 
+</div> 
 @endsection

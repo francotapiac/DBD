@@ -65,6 +65,7 @@
             <div class="col-lg-8">
                 <div class="offers_content">
                     <div class="offers_price">${{$vehiculo->precio_diario}}</div>
+                    <p class="offers_text">Nombre: {{$vehiculo->nombre}}</p>
                     <p class="offers_text">Capacidad: {{$vehiculo->capacidad}}</p>
                     <div class="offers_icons">
                         <ul class="offers_icons_list">

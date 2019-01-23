@@ -144,7 +144,7 @@
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li class="footer_social_item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li class="footer_social_item"><a href="https://www.instagram.com/p/BsgV3CLBsT-/"><i class="fa fa-instagram"></i></a></li>
+                                <li class="footer_social_item"><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

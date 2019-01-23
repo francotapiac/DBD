@@ -178,6 +178,14 @@ class ReservaController extends Controller
         return redirect()->route('agregarCarro');
     }
 
+    public function reservaVehiculo(Request $request){
+        return 'hola';
+    }
+
+    public function reservaVuelo(Request $request){
+        return 'hola';
+    }
+
     public function comprar(Request $request){
 
        /* $reserva = Reserva::where([

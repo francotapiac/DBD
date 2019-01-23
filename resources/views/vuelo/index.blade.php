@@ -65,12 +65,15 @@
             <div class="col-lg-8">
                 <div class="offers_content">
                     <div class="offers_price">${{$vuelo->precio}}</div>
+                    @if($vuelo->tipo_vuelo == 1)
+                    <div class="offers_text">Tipo: Clase turista</div>
+                    @else
+                    <div class="oofers_text">Tipo: Primera clase</div>
+                    @endif
+                    <p class="offers_text">Aerolinea: {{$vuelo->aerolinea}}</p>
                     <p class="offers_text">Fecha ida: {{$vuelo->fecha_ida}}</p>
                     <p class="offers_text">Fecha vuelta: {{$vuelo->fecha_vuelta}}</p>
-                    <p class="offers_text">Nº de paradas: {{$vuelo->numero_paradas}}</p>
                     <p class="offers_text">Hora salida: {{$vuelo->hora_salida}}</p>
-                    <p class="offers_text">Hora llegada: {{$vuelo->hora_llegada}}</p>
-                    <p class="offers_text">Aerolinea: {{$vuelo->aerolinea}}</p>
                     <div class="offers_icons">
                         <ul class="offers_icons_list">
                             <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>

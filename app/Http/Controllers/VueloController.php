@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vuelo;
 use Validator;
+use App\Lugar;
 
 class VueloController extends Controller
 {
@@ -102,8 +103,10 @@ class VueloController extends Controller
      */
     public function show($id)
     {
+        /*$vuelo = Vuelo::find($id);
+        return $vuelo;*/
         $vuelo = Vuelo::find($id);
-        return $vuelo;
+        return view('vuelo.show',compact('vuelo'));
     }
 
     /**
@@ -114,7 +117,8 @@ class VueloController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vuelo = Vuelo::find($id);
+        return view('vuelo.edit',compact('vuelo'));
     }
 
     /**
@@ -154,7 +158,8 @@ class VueloController extends Controller
             $vuelo->id_aeropuerto_destino = $id;
 
             $vuelo->save();
-            return $vuelo;
+            //return $vuelo;
+            return redirect()->route('vuelo.index')->with('success','Registro actualizado satisfactoriamente');
         }
         catch(\Exception $e){
             return 'Todo esta malo';
