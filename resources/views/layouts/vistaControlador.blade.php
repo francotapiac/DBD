@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Offers</title>
+<title>Reserva</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap4/bootstrap.min.css">
+<link href="{{ URL::asset('css/bootstrap4/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="/"><img src="imagenes/logo.png" alt="">travelix</a></div>
+                            <div class="logo"><a href="/"><img src="{{URL::asset('imagenes/logo.png')}}">travelix</a></div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
@@ -56,7 +56,7 @@
                                 <li class="main_nav_item"><a href="about.html">about us</a></li>
                                 <li class="main_nav_item"><a href="#">offers</a></li>
                                 <li class="main_nav_item"><a href="blog.html">news</a></li>
-                                <li class="main_nav_item"><a href="carrito">Carro</a></li>
+                                <li class="main_nav_item"><a href="carros">Carro</a></li>
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -100,13 +100,13 @@
     <div class="menu trans_500">
         <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
             <div class="menu_close_container"><div class="menu_close"></div></div>
-            <div class="logo menu_logo"><a href="#"><img src="imagenes/logo.png" alt=""></a></div>
+            <div class="logo menu_logo"><a href="#"><img src="{{URL::asset('imagenes/logo.png')}}"></a></div>
             <ul>
                 <li class="menu_item"><a href="/">Inicio</a></li>
                 <li class="menu_item"><a href="about.html">about us</a></li>
                 <li class="menu_item"><a href="offers.html">offers</a></li>
                 <li class="menu_item"><a href="blog.html">news</a></li>
-                <li class="menu_item"><a href="carrito">Carro</a></li>
+                <li class="menu_item"><a href="carros">Carro</a></li>
             </ul>
         </div>
     </div>

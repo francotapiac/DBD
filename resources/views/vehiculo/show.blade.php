@@ -32,9 +32,14 @@
                     <!-- Botón Reservar -
                     <div class="button book_button"><a href="{{action('VehiculoController@show', $vehiculo->id_vehiculo)}}">Reservar<span></span><span></span><span></span></a></div>-->
                     
-			<form method="POST" action="{{ route('reservaVehiculo') }}"  role="form">
+			<form method="POST" action="{{ route('agregarVehiculo') }}"  role="form">
 				{{ csrf_field() }}
-				<input type='hidden' name="id_vehiculo" value = "{{$vehiculo->id_vehiculo}}" class="form-control" />
+				<input type='hidden' name="id" value = "{{$vehiculo->id_vehiculo}}" class="form-control" />
+                <input type='hidden' name="nombre_vehiculo" value = "{{$vehiculo->nombre}}" class="form-control" />
+                <input type='hidden' name="fecha_llegada" value = "0" class="form-control" />
+                <input type='hidden' name="fecha_devolucion" value = "0" class="form-control" />
+                <input type='hidden' name="cantidad" value = 1 class="form-control" />
+
 				<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
 								</div>

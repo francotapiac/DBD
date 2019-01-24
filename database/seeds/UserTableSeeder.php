@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         $user->ciudad_residencia = "santiago";
         $user->calle_residencia = "cale falsa 1234";
         $user->pais_residencia = "santiago";
-        $user->password = bcrypt('usuario'); //Se encripta contraseña
+        $user->password = bcrypt('user'); //Se encripta contraseña
         $user->numero_celular = "+56-999999999";
         $user->tipo_documento = true;
         $user->tipo_pago = 1;

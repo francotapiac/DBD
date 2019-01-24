@@ -26,8 +26,15 @@ class HotelController extends Controller
         ];
     }
 
-    public function index()
-    {
+    public function index(Request $request)
+
+    {   /*$fecha_inicio = $request->get('fecha_inicio');
+        $fecha_final = $request->get('fecha_final');
+        $cantidad_personas = $request->get('cantidad_personas');
+        $habitacions = Habitacion::orderBy('id_habitacion','DESC')
+        ->fecha($fecha_inicio,$fecha_final)
+        ->cantidad($cantidad_personas)
+        ->get();*/
         $hotels = Hotel::orderBy('id_hotel','DESC')
         ->paginate(3); 
         return view('hotel.index',compact('hotels'));

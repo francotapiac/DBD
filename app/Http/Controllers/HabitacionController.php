@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Habitacion;
+use App\Hotel;
 use Validator;
 
 class HabitacionController extends Controller
@@ -23,7 +24,7 @@ class HabitacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,$id)
+    public function index(Request $request)
     {
         /*$lugar = $request->get('lugar');
         $fecha_llegada = $request->get('fecha_llegada');
@@ -91,7 +92,8 @@ class HabitacionController extends Controller
     {   
             
         $habitacion = Habitacion::find($id);
-        return $habitacion;
+        $hotel = Hotel::find($habitacion->id_hotel);
+        return view('habitacion.show',compact('habitacion','hotel'));
     }
 
     /**

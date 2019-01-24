@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use App\Reserva;
 use App\Actividad;
 use App\Habitacion;
+use App\Vehiculo;
+use App\Vuelo;
 use App\Traslado;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +37,7 @@ class CarroController extends Controller
     public function mostrarCarro(){
 
         $carro = $this->crearCarro();
-        $actividads = Actividad::all();
-        return view('usuario.carroCompra',compact("carro","actividads"));
+        return view('usuario.carroCompra',compact("carro"));
 
     }
 
@@ -83,12 +84,12 @@ class CarroController extends Controller
         return $this->mostrarCarro();
     }
 
-    /*public function agregarHabitacion(Request $request){
+    public function agregarHabitacion(Request $request){
 
         $carro = $this->crearCarro();
 
         $id = $request->input("id");
-        $nomb}reHotel = $request->input("nombre_hotel")
+        $nombre_vehiculo = $request->input("nombre_hotel");
         $fecha_llegada = $request->input("fecha_llegada");
         $fecha_salida = $request->input("fecha_salida");
         $cantidad = $request->input("cantidad");
@@ -100,7 +101,7 @@ class CarroController extends Controller
         $reservaHabitacion->categoria = 'Habitacion';
         $reservaHabitacion->subcategoria = 'Reservas';
         $reservaHabitacion->precio = $habitacion->precio_noche;
-        $reservaHabitacion->nombre = $id;
+        $reservaHabitacion->nombre = $nombre_vehiculo;
         $reservaHabitacion->fecha_llegada = $fecha_llegada;
         $reservaHabitacion->fecha_salida = $fecha_salida;
         $reservaHabitacion->cantidad = $cantidad;
@@ -115,7 +116,68 @@ class CarroController extends Controller
         return $this->mostrarCarro();
     }
 
-    public function agregarTraslado(Request $request){
+     public function agregarVehiculo(Request $request){
+
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $nombreVehiculo = $request->input("nombre_vehiculo");
+        $fechaRecogida = $request->input("fecha_llegada");
+        $fechaDevolucion = $request->input("fecha_devolucion");
+        $cantidad = $request->input("cantidad");
+
+        $vehiculo = Vehiculo::findOrFail($id);
+
+        $reservaVehiculo = new \stdClass();
+        $reservaVehiculo->id = $id;
+        $reservaVehiculo->categoria = 'Vehiculo';
+        $reservaVehiculo->subcategoria = 'Reservas';
+        $reservaVehiculo->precio = $vehiculo->precio_diario;
+        $reservaVehiculo->nombre = $nombreVehiculo;
+        $reservaVehiculo->fecha_llegada = $fechaRecogida;
+        $reservaVehiculo->fecha_salida = $fechaDevolucion;
+        $reservaVehiculo->cantidad = $cantidad;
+        $reservaVehiculo->subtotal= $reservaVehiculo->precio * $cantidad;
+        array_push($carro->servicios, $reservaVehiculo);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+    }
+
+    public function agregarVuelo(Request $request){
+
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $aerolinea = $request->input("aerolinea");
+        $cantidad = $request->input("cantidad");
+
+        $vuelo = Vuelo::findOrFail($id);
+        
+        $reservaVuelo = new \stdClass();
+        $reservaVuelo->id = $id;
+        $reservaVuelo->categoria = 'Vuelo';
+        $reservaVuelo->subcategoria = 'Reservas';
+        $reservaVuelo->precio = $vuelo->precio_diario;
+        $reservaVuelo->nombre = $aerolinea;
+        $reservaVuelo->cantidad = $cantidad;
+        $reservaVuelo->subtotal= $reservaVuelo->precio * $cantidad;
+        array_push($carro->servicios, $reservaVuelo);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+    }
+
+    
+    /*public function agregarTraslado(Request $request){
 
         $carro = $this->crearCarro();
 
@@ -142,8 +204,8 @@ class CarroController extends Controller
         $carro->total = $total;
         Session::put("carro", json_encode($carro));
         return $this->mostrarCarro();
-    }*/
-
+    }
+*/
 
 
 	/*//Crear variable de sesión carrito

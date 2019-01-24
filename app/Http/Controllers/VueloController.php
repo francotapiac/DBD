@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Vuelo;
 use Validator;
 use App\Lugar;
+use App\Aeropuerto;
+
 
 class VueloController extends Controller
 {
@@ -106,7 +108,8 @@ class VueloController extends Controller
         /*$vuelo = Vuelo::find($id);
         return $vuelo;*/
         $vuelo = Vuelo::find($id);
-        return view('vuelo.show',compact('vuelo'));
+        $aeropuerto = Aeropuerto::find($vuelo->id_aeropuerto_destino);
+        return view('vuelo.show',compact('vuelo','aeropuerto'));
     }
 
     /**
@@ -177,4 +180,5 @@ class VueloController extends Controller
         $vuelo = Vuelo::find($id)->delete();
         return response()->json("Eliminado exitosamente");
     }
+
 }

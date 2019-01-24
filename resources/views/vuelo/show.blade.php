@@ -9,18 +9,19 @@
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
                     <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
-                    <div class="offer_name"><a href="{{action('VueloController@show', $vuelo->id_vuelo)}}">Vuela a {{$vuelo->id_aeropuerto_destino}}</a></div>
+                    <div class="offer_name"><a href="{{action('VueloController@show', $vuelo->id_vuelo)}}">Vuela a {{$aeropuerto->nombre_aeropuerto}}</a></div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="offers_content">
-                    <div class="offers_price">${{$vuelo->precio_diario}}</div>
+                    <div class="offers_price">${{$vuelo->precio}}</div>
                     <p class="offers_text">Fecha ida: {{$vuelo->fecha_ida}}</p>
                     <p class="offers_text">Fecha vuelta: {{$vuelo->fecha_vuelta}}</p>
                     <p class="offers_text">Nº de paradas: {{$vuelo->numero_paradas}}</p>
                     <p class="offers_text">Hora salida: {{$vuelo->hora_salida}}</p>
                     <p class="offers_text">Hora llegada: {{$vuelo->hora_llegada}}</p>
                     <p class="offers_text">Aerolinea: {{$vuelo->aerolinea}}</p>
+                    <p class="offers_text">Aeropuerto: {{$aeropuerto->nombre_aeropuerto}}</p>
                     <div class="offers_icons">
                         <ul class="offers_icons_list">
                             <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
@@ -30,15 +31,15 @@
                         </ul>
                     </div>
 
-                    <!-- Botón Reservar -
-                    <div class="button book_button"><a href="{{action('VueloController@show', $vuelo->id_vuelo)}}">Reservar<span></span><span></span><span></span></a></div>-->
                     
-			<form method="POST" action="{{ route('reservaVuelo') }}"  role="form">
+			<form method="POST" action="{{ route('agregarVuelo') }}"  role="form">
 				{{ csrf_field() }}
-				<input type='hidden' name="id_vuelo" value = "{{$vuelo->id_vuelo}}" class="form-control" />
+				<input type='hidden' name="id" value = "{{$vuelo->id_vuelo}}" class="form-control" />
+                <input type='hidden' name="aerolinea" value = "{{$vuelo->aerolinea}}" class="form-control" />
+                <input type='hidden' name="cantidad" value = 1 class="form-control" />
 				<div class="col-xs-12 col-sm-12 col-md-12">
-									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-								</div>
+					<input type="submit"  value="Guardar" class="btn btn-success btn-block">
+				</div>
 
 			</form>
 

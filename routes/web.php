@@ -77,7 +77,11 @@ Route::resource('vuelo', 'VueloController');
 
 Route::get('carros', 'CarroController@mostrarCarro')->name('carritos.show');
 
-Route::post('carros', 'CarroController@agregarActividad')->name('agregarActividad');
+Route::post('carros/actividad', 'CarroController@agregarActividad')->name('agregarActividad');
+Route::post('carros/habitacion', 'CarroController@agregarHabitacion')->name('agregarHabitacion');
+Route::post('carros/vehiculo', 'CarroController@agregarVehiculo')->name('agregarVehiculo');
+Route::post('carros/vuelo', 'CarroController@agregarVuelo')->name('agregarVuelo');
+
 //Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
 Route::get('carrito','CarroController@carroCompra')->name('agregarCarro');
 Route::get('eliminarElemento','CarroController@borrarElementos')->name('borrarCarro');

@@ -43,7 +43,7 @@ class Paquete extends Model
 
      public function scopePrecio($query, $precio){
         if($precio)
-            return $query->where('precio_por_persona','LIKE',"%$precio%"); //LIKE permite buscar palabras semejantes (no iguales)
+            return $query->where('precio_por_persona','<=',"$precio"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 
      public function scopeDescripcion($query, $descripcion){
@@ -53,6 +53,6 @@ class Paquete extends Model
 
     public function scopeDescuento($query, $descuento){
         if($descuento)
-            return $query->where('descuento','LIKE',"%$descuento%"); //LIKE permite buscar palabras semejantes (no iguales)
+            return $query->where('descuento','>=',"$descuento"); //LIKE permite buscar palabras semejantes (no iguales)
     }
 }

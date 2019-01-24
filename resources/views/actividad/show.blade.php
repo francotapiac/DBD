@@ -1,37 +1,4 @@
-<!--<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">{{$actividad->nombre}}</h3>
-	</div>
-	<div class="panel-body">					
-		<div class="table-container">
-			<form method="POST" action="{{ route('reservaActividad') }}"  role="form">
-				{{ csrf_field() }}
-				<input type='hidden' name="id_actividad" value = "{{$actividad->id_actividad}}" class="form-control" />
-				<div class="col-xs-12 col-sm-12 col-md-12">
-									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-								</div>
 
-			</form>
-
-			<form method="POST" action="{{ route('agregarActividad') }}"  role="form">
-				{{ csrf_field() }}
-				<input type='hidden' name="id" value = "{{$actividad->id_actividad}}" class="form-control" />
-				<input type='hidden' name="cantidad" value = 1 class="form-control" />
-				<input type='hidden' name="nombre" value = "{{$actividad->nombre}}" class="form-control" />
-				<div class="col-xs-12 col-sm-12 col-md-12">
-									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-								</div>
-
-			</form>
-			 <div class="offer_name"><a href="{{action('CarroController@mostrarCarro')}}">A</a></div>
-
-			  <button onclick="addCarrito({{$actividad->id_actividad}})" class="ui teal labeled icon button">
-      <i class="cart icon"></i>
-        Agregar al carrito
-      </button>
-		</div>
-	</div>
-</div>-->
 @extends('layouts.vistaControlador')
  @section('content')
 
@@ -59,18 +26,7 @@
                             <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
                         </ul>
                     </div>
-
-                    <!-- Botón Reservar -
-                    <div class="button book_button"><a href="{{action('ActividadController@show', $actividad->id_actividad)}}">Reservar<span></span><span></span><span></span></a></div>-->
                     
-			<!-- <form method="POST" action="{{ route('reservaActividad') }}"  role="form">
-				{{ csrf_field() }}
-				<input type='hidden' name="id_actividad" value = "{{$actividad->id_actividad}}" class="form-control" />
-				<div class="col-xs-12 col-sm-12 col-md-12">
-									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-								</div>
-
-			</form>-->
 			<form method="POST" action="{{ route('agregarActividad') }}"  role="form">
 				{{ csrf_field() }}
 				<input type='hidden' name="id" value = "{{$actividad->id_actividad}}" class="form-control" />
@@ -81,7 +37,7 @@
 								</div>
 
 			</form>
-			 <div class="offer_name"><a href="{{action('CarroController@mostrarCarro')}}">A</a></div>
+			 <div class="offer_name"><a href="{{action('CarroController@mostrarCarro')}}"></a></div>
 
 
                 </div>

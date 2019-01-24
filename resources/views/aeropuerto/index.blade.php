@@ -8,7 +8,11 @@
           <div class="pull-left"><h3>Lista aeropuertos</h3></div>
           <div class="pull-right">
             <div class="btn-group">
-              <a href="{{ route('aeropuerto.create') }}" class="btn btn-info" >Añadir aeropuerto</a>
+              @if(Auth::check())
+                @if(Auth::user()->tieneRol('admin'))
+                  <a href="{{ route('aeropuerto.create') }}" class="btn btn-info" >Añadir aeropuerto</a>
+                @endif
+              @endif
             </div>
           </div>
 
@@ -60,16 +64,23 @@
                 <td>{{$aeropuerto->lugar->ciudad}},{{$aeropuerto->lugar->pais}}</td>
                 <td>{{$aeropuerto->tipo_aeropuerto}}</td>
                 <td>{{$aeropuerto->numero_contacto}}</td>
-    
-                <td><a class="btn btn-primary btn-xs" href="{{action('AeropuertoController@edit', $aeropuerto->id_aeropuerto)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td>
-                  <form action="{{action('AeropuertoController@destroy', $aeropuerto->id_aeropuerto)}}" method="post">
-                   {{csrf_field()}}
-                   <input name="_method" type="hidden" value="DELETE">
+                @if(Auth::check())
+                    @if(Auth::user()->tieneRol('admin'))
+                      <td><a class="btn btn-primary btn-xs" href="{{action('AeropuertoController@edit', $aeropuerto->id_aeropuerto)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                      @endif
+                    @endif
+                  @if(Auth::check())
+                    @if(Auth::user()->tieneRol('admin'))
+                      <td>
+                        <form action="{{action('AeropuertoController@destroy', $aeropuerto->id_aeropuerto)}}" method="post">
+                        {{csrf_field()}}
+                        <input name="_method" type="hidden" value="DELETE">
  
-                   <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
-                 </td>
-               </tr>
+                          <button class="btn btn-danger btn-xs" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                      </td>
+                      @endif
+                    @endif
+                </tr>
                @endforeach 
                @else
                <tr>

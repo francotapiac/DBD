@@ -43,7 +43,11 @@
           </li>
 
           <!-- Botón crear -->
-          <a href="{{ route('habitacion.create') }}" class="btn btn-info btn-lg" >Añadir Habitacion</a>
+          @if(Auth::check())
+            @if(Auth::user()->tieneRol('admin'))
+              <a href="{{ route('habitacion.create') }}" class="btn btn-info btn-lg" >Añadir Habitacion</a>
+            @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -59,7 +63,7 @@
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
                     <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
-                    <div class="offer_name"><a href="{{action('HotelController@show', $hotel->id_hotel)}}">{{$hotel->nombre}}</a></div>
+                    <div class="offer_name"><a href="{{action('HabitacionController@show', $hotel->id_hotel)}}">{{$habitacion->id_habitacion}}</a></div>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -77,7 +81,11 @@
                     </div>
 
                     <!-- Botón editar -->
-                    <div class="button book_button"><a href="{{action('HabitacionController@edit', $habitacion->id_habitacion)}}">Editar<span></span><span></span><span></span></a></div>
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
+                        <div class="button book_button"><a href="{{action('HabitacionController@edit', $habitacion->id_habitacion)}}">Editar<span></span><span></span><span></span></a></div>
+                      @endif
+                    @endif
 
                     <!-- Botón Reservar -->
                     <div class="button book_button"><a href="{{action('HabitacionController@show', $habitacion->id_habitacion)}}">Reservar<span></span><span></span><span></span></a></div>
@@ -85,10 +93,14 @@
                     <div class="offer_reviews">
 
                         <!-- Botón Borrar -->
-                        <form action="{{action('HabitacionController@destroy', $habitacion->id_habitacion)}}" method="post">
-                        {{csrf_field()}}
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        @if(Auth::check())
+                          @if(Auth::user()->tieneRol('admin'))
+                            <form action="{{action('HabitacionController@destroy', $habitacion->id_habitacion)}}" method="post">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                          @endif
+                         @endif
                     </div>
                 </div>
             </div>

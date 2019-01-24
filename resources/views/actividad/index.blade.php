@@ -43,7 +43,11 @@
           </li>
 
           <!-- Botón crear -->
-          <a href="{{ route('actividad.create') }}" class="btn btn-info btn-lg" >Añadir Actividad</a>
+          @if(Auth::check())
+            @if(Auth::user()->tieneRol('admin'))
+              <a href="{{ route('actividad.create') }}" class="btn btn-info btn-lg" >Añadir Actividad</a>
+            @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -74,9 +78,13 @@
                             <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
                         </ul>
                     </div>
-
+                    
                     <!-- Botón editar -->
-                    <div class="button book_button"><a href="{{action('ActividadController@edit', $actividad->id_actividad)}}">Editar<span></span><span></span><span></span></a></div>
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
+                        <div class="button book_button"><a href="{{action('ActividadController@edit', $actividad->id_actividad)}}">Editar<span></span><span></span><span></span></a></div>
+                      @endif
+                    @endif
 
                     <!-- Botón Reservar -->
                     <div class="button book_button"><a href="{{action('ActividadController@show', $actividad->id_actividad)}}">Reservar<span></span><span></span><span></span></a></div>
@@ -84,10 +92,14 @@
                     <div class="offer_reviews">
 
                         <!-- Botón Borrar -->
-                        <form action="{{action('ActividadController@destroy', $actividad->id_actividad)}}" method="post">
-                        {{csrf_field()}}
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        @if(Auth::check())
+                          @if(Auth::user()->tieneRol('admin'))
+                            <form action="{{action('ActividadController@destroy', $actividad->id_actividad)}}" method="post">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                          @endif
+                        @endif
                     </div>
                 </div>
             </div>

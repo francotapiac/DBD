@@ -42,8 +42,12 @@
               </ul>
           </li>
 
-          <!-- Botón crear -->
-          <a href="{{ route('vuelo.create') }}" class="btn btn-info btn-lg" >Añadir vuelo</a>
+          <!-- Botón crear si usuario ha iniciado sesión y es admin-->
+          @if(Auth::check())
+            @if(Auth::user()->tieneRol('admin'))
+              <a href="{{ route('vuelo.create') }}" class="btn btn-info btn-lg" >Añadir vuelo</a>
+            @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -82,20 +86,27 @@
                             <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
                         </ul>
                     </div>
+                    
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
+                        <div class="button book_button"><a href="{{action('VueloController@edit', $vuelo->id_vuelo)}}">Editar<span></span><span></span><span></span></a></div>
+                      @endif
+                    @endif
 
-                    <!-- Botón editar -->
-                    <div class="button book_button"><a href="{{action('VueloController@edit', $vuelo->id_vuelo)}}">Editar<span></span><span></span><span></span></a></div>
-
-                    <!-- Botón Reservar -->
+                    <!-- Botón Reservar si usuario ha iniciado sesión y es admin-->
                     <div class="button book_button"><a href="{{action('VueloController@show', $vuelo->id_vuelo)}}">Reservar<span></span><span></span><span></span></a></div>
                     
                     <div class="offer_reviews">
 
-                        <!-- Botón Borrar -->
-                        <form action="{{action('VueloController@destroy', $vuelo->id_vuelo)}}" method="post">
-                        {{csrf_field()}}
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        <!-- Botón Borrar si usuario ha iniciado sesión y es admin-->
+                        @if(Auth::check())
+                          @if(Auth::user()->tieneRol('admin'))
+                            <form action="{{action('VueloController@destroy', $vuelo->id_vuelo)}}" method="post">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                          @endif
+                        @endif
                     </div>
                 </div>
             </div>

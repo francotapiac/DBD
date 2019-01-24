@@ -25,15 +25,25 @@ class PaqueteController extends Controller
 
     public function index(Request $request)
     {
-        $precio_por_persona = $request->get('precio_por_persona');
-        $descripcion = $request->get('descripcion');
-        $descuento = $request->get('descuento');
+        $fecha_ida = $request->get('fecha_ida');
+        $fecha_regreso = $request->get('fecha_regreso');
+        $origen = $request->get('origen');
+        $destino = $request->get('destino');
 
-        $paquetes = Paquete::orderBy('id_paquete','DESC')
-        ->precio($precio_por_persona)               //Se realiza query scope desde el modelo (con función scopeNombre)
-        ->descripcion($descripcion)
-        ->descuento($descuento)
+        $paquetes =  Paquete::orderBy('id_paquete','DESC')
         ->paginate(3); 
+        //Paquete Vuelo + Actividad 
+        /*if($request->get('tipo') == 1){
+            $actividads = $this->actividads()->get();
+            $vuelos = $this->vuelos()->get();
+            $lugar = $actividad->lugar($destino);
+            return $lugar;
+
+
+        }*/
+        
+
+       
         
         return view('paquete.index',compact('paquetes')); 
     }

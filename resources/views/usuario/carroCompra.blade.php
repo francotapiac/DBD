@@ -17,7 +17,7 @@
              
               @foreach($carro->servicios as $key=>$item)  
               <tr>
-                <td>Actividad</td>
+                <td>{{$item->categoria}}</td>
                 <td>{{$item->nombre}}</td>
                 <td>{{$item->cantidad}}</td>
                 <td>{{$item->subtotal}}</td>
