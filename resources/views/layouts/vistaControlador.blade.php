@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="/"><img src="{{URL::asset('imagenes/logo.png')}}">travelix</a></div>
+                            <div class="logo"><a href="/"><img src="{{URL::asset('imagenes/logo.png')}}">Little Cisterna</a></div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
