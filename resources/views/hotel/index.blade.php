@@ -43,7 +43,11 @@
           </li>
 
           <!-- Botón crear -->
+          @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
           <a href="{{ route('hotel.create') }}" class="btn btn-info btn-lg" >Añadir Hotel</a>
+            @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -58,15 +62,17 @@
             <div class="col-lg-3 col-1680-4">
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
-                    <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
-                    <div class="offer_name"><a href="{{action('HotelController@show', $hotel->id_hotel)}}">{{$hotel->nombre}}</a></div>
+                    <div class="offers_image_background" style="background-image:url(/imagenes/hotel.jpg)"></div>
+                    <div class="offer_name"><a href="{{action('HotelController@show', $hotel->id_hotel)}}">Hotel {{$hotel->nombre}}</a></div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="offers_content">
-                    <div class="offers_text">{{$hotel->nombre}}</div>
-                    <div class="offers_text">{{$hotel->compania}}</div>
-                    <p class="offers_text">{{$hotel->descripcion}}</p>
+                    <div class="offers_text">Nombre: Hotel {{$hotel->nombre}}</div>
+                    <div class="offers_text">Compañía: {{$hotel->compania}}</div>
+                    <p class="offers_text">Descripción: {{$hotel->descripcion}}</p>
+                    <p class="offers_text">Teléfono: {{$hotel->telefono}}</p>
+                    <p class="offers_text">Calificación: {{$hotel->calificacion}}</p>
                     <div class="offers_icons">
                         <ul class="offers_icons_list">
                             <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
@@ -77,7 +83,11 @@
                     </div>
 
                     <!-- Botón editar -->
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
                     <div class="button book_button"><a href="{{action('HotelController@edit', $hotel->id_hotel)}}">Editar<span></span><span></span><span></span></a></div>
+                      @endif
+                    @endif
 
                     <!-- Botón Reservar -->
                     <div class="button book_button"><a href="{{action('HotelController@show', $hotel->id_hotel)}}">Reservar<span></span><span></span><span></span></a></div>
@@ -85,10 +95,14 @@
                     <div class="offer_reviews">
 
                         <!-- Botón Borrar -->
+                        @if(Auth::check())
+                          @if(Auth::user()->tieneRol('admin'))
                         <form action="{{action('HotelController@destroy', $hotel->id_hotel)}}" method="post">
                         {{csrf_field()}}
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        @endif
+                        @endif
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Hotel;
 use App\Habitacion;
 use Validator;
+use App\Lugar;
 
 class HotelController extends Controller
 {
@@ -47,7 +48,8 @@ class HotelController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        $lugars = Lugar::all();
+        return view('hotel.create',compact('lugars'));
     }
 
     /**
@@ -72,7 +74,9 @@ class HotelController extends Controller
         $hotel->calificacion=$request->get('calificacion');
         $hotel->descripcion=$request->get('descripcion');
         $hotel->save();
-        return $hotel;
+        //return $hotel;
+        return redirect()->route('hotel.index')->
+                with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -98,7 +102,8 @@ class HotelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hotel = Hotel::find($id);
+        return view('hotel.edit',compact('hotel'));
     }
 
     /**
@@ -122,7 +127,8 @@ class HotelController extends Controller
         $hotel->calificacion = $request->get('calificacion');
         $hotel->descripcion = $request->get('descripcion');
         $hotel->save();
-        return $hotel;
+        //return $hotel;
+        return redirect()->route('hotel.index')->with('success','Registro actualizado satisfactoriamente');
     }
 
     /**
@@ -133,7 +139,9 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        $hotels = Hotel::find($id)->delete();
-        return response()->json("Eliminado exitosamente");
+        //$hotels = Hotel::find($id)->delete();
+        //return response()->json("Eliminado exitosamente");
+        $hotel = Hotel::find($id)->delete();
+        return redirect()->route('hotel.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }

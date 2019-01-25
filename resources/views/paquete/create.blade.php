@@ -29,19 +29,19 @@
 							{{ csrf_field() }}
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
+									<div class="form-group">Precio del paquete
 										<input type="number" name="precio_por_persona" id="precio_por_persona" class="form-control input-sm" placeholder="Precio del paquete">
 									</div>
 								</div>
 							</div>
  
-							<div class="form-group">
+							<div class="form-group">Descripción
 								<textarea name="descripcion" class="form-control input-sm" placeholder="Descripción"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="number" name="descuento" id="descuento" class="form-control input-sm" placeholder="Costo del paquete">
+									<div class="form-group">Descuento
+										<input type="number" name="descuento" id="descuento" class="form-control input-sm" placeholder="Descuento">
 									</div>
 								</div>
 							</div>

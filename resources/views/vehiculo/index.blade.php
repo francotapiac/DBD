@@ -43,7 +43,11 @@
           </li>
 
           <!-- Botón crear -->
+          @if(Auth::check())
+            @if(Auth::user()->tieneRol('admin'))
           <a href="{{ route('vehiculo.create') }}" class="btn btn-info btn-lg" >Añadir Vehiculo</a>
+            @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -67,17 +71,14 @@
                     <div class="offers_price">${{$vehiculo->precio_diario}}</div>
                     <p class="offers_text">Nombre: {{$vehiculo->nombre}}</p>
                     <p class="offers_text">Capacidad: {{$vehiculo->capacidad}}</p>
-                    <div class="offers_icons">
-                        <ul class="offers_icons_list">
-                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                        </ul>
-                    </div>
+
 
                     <!-- Botón editar -->
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
                     <div class="button book_button"><a href="{{action('VehiculoController@edit', $vehiculo->id_vehiculo)}}">Editar<span></span><span></span><span></span></a></div>
+                      @endif
+                    @endif
 
                     <!-- Botón Reservar -->
                     <div class="button book_button"><a href="{{action('VehiculoController@show', $vehiculo->id_vehiculo)}}">Reservar<span></span><span></span><span></span></a></div>
@@ -85,10 +86,14 @@
                     <div class="offer_reviews">
 
                         <!-- Botón Borrar -->
+                        @if(Auth::check())
+                          @if(Auth::user()->tieneRol('admin'))
                         <form action="{{action('VehiculoController@destroy', $vehiculo->id_vehiculo)}}" method="post">
                         {{csrf_field()}}
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        @endif
+                        @endif
                     </div>
                 </div>
             </div>

@@ -43,7 +43,11 @@
           </li>
 
           <!-- Botón crear -->
+          @if(Auth::check())
+            @if(Auth::user()->tieneRol('admin'))
           <a href="{{ route('paquete.create') }}" class="btn btn-info btn-lg" >Añadir paquete</a>
+           @endif
+          @endif
       </ul>
   </div>
 </div>
@@ -76,7 +80,11 @@
                     </div>
 
                     <!-- Botón editar -->
+                    @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
                     <div class="button book_button"><a href="{{action('PaqueteController@edit', $paquete->id_paquete)}}">Editar<span></span><span></span><span></span></a></div>
+                    @endif
+                    @endif
 
                     <!-- Botón Reservar -->
                     <div class="button book_button"><a href="{{action('PaqueteController@show', $paquete->id_paquete)}}">Reservar<span></span><span></span><span></span></a></div>
@@ -84,10 +92,14 @@
                     <div class="offer_reviews">
 
                         <!-- Botón Borrar -->
+                        @if(Auth::check())
+                      @if(Auth::user()->tieneRol('admin'))
                         <form action="{{action('PaqueteController@destroy', $paquete->id_paquete)}}" method="post">
                         {{csrf_field()}}
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn btn-danger btn-lg" type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+                        @endif
+                    @endif
                     </div>
                 </div>
             </div>

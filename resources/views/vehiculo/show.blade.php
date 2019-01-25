@@ -9,7 +9,7 @@
             <div class="col-lg-3 col-1680-4">
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
-                    <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
+                    <div class="offers_image_background" style="background-image:url(/imagenes/car.jpg)"></div>
                     <div class="offer_name"><a href="{{action('VehiculoController@show', $vehiculo->id_vehiculo)}}">{{$vehiculo->nombre}}</a></div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <p class="offers_text">Precio diario: {{$vehiculo->precio_diario}}</p>
                     <div class="offers_icons">
                         <ul class="offers_icons_list">
-                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
+                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
                             <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
                             <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
                             <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>

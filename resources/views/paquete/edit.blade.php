@@ -21,7 +21,7 @@
  
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Nuevo paquete</h3>
+					<h3 class="panel-title">Editar Paquete</h3>
 				</div>
 				<div class="panel-body">					
 					<div class="table-container">
@@ -30,19 +30,19 @@
 							<input name="_method" type="hidden" value="PATCH">
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
+									<div class="form-group">Precio del paquete
 										<input type="text" name="precio_por_persona" id="precio_por_persona" class="form-control input-sm" value="{{$paquete->precio_por_persona}}" placeholder="Precio del paquete">
 									</div>
 								</div>
 							</div>
  
-							<div class="form-group">
+							<div class="form-group">Descripción
 								<textarea name="descripcion" class="form-control input-sm" placeholder="Descripción" >{{$paquete->descripcion}}</textarea>
 							</div>
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="number" name="descuento" id="descuento" class="form-control input-sm" placeholder="Descuento del paquete" value="{{$paquete->descuento}}">
+									<div class="form-group">Descuento
+										<input type="number" name="descuento" id="descuento" class="form-control input-sm" placeholder="Descuento" value="{{$paquete->descuento}}">
 									</div>
 								</div>
 							</div>

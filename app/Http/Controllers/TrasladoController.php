@@ -26,8 +26,9 @@ class TrasladoController extends Controller
      */
     public function index()
     {
-        $traslados = Traslado::all();
-        return $traslados;
+        $traslados = Traslado::orderBy('id_traslado','DESC')->paginate(3);
+        //return $traslados;
+        return view('traslado.index',compact('traslados')); 
     }
 
     /**
@@ -37,7 +38,9 @@ class TrasladoController extends Controller
      */
     public function create(Request $request)
     {
-        return $this->store($request);
+        //return $this->store($request);
+        $lugars = Lugar::all();
+        return view('traslado.create',compact('lugars'));
     }
 
     /**
@@ -82,7 +85,7 @@ class TrasladoController extends Controller
     public function show($id)
     {
         $traslado = Traslado::find($id);
-        return $traslado;
+        return  view('traslado.show',compact('traslado'));
     }
 
     /**
