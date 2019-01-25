@@ -82,6 +82,7 @@ Route::post('carros/actividad', 'CarroController@agregarActividad')->name('agreg
 Route::post('carros/habitacion', 'CarroController@agregarHabitacion')->name('agregarHabitacion');
 Route::post('carros/vehiculo', 'CarroController@agregarVehiculo')->name('agregarVehiculo');
 Route::post('carros/vuelo', 'CarroController@agregarVuelo')->name('agregarVuelo');
+Route::post('carros/paquete', 'CarroController@agregarPaquete')->name('agregarPaquete');
 
 //Route::get('carritos/add/{reserva}', 'CarroController@add')->name('carritos.add');;
 Route::get('carrito','CarroController@carroCompra')->name('agregarCarro');

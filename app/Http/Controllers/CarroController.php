@@ -11,6 +11,7 @@ use App\Vehiculo;
 use App\Vuelo;
 use App\Traslado;
 use App\Usuario;
+use App\Paquete;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -174,6 +175,60 @@ class CarroController extends Controller
         $carro->total = $total;
         Session::put("carro", json_encode($carro));
         return $this->mostrarCarro();
+    }
+
+    public function agregarPaquete1(Request $request){
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $cantidad = $request->input("cantidad");
+
+        $paquete = Paquete::findOrFail($id);
+        
+        $reservaPaquete = new \stdClass();
+        $reservaPaquete->id = $id;
+        $reservaPaquete->categoria = 'Paquete 1';
+        $reservaPaquete->subcategoria = 'Paquete';
+        $reservaPaquete->precio = $paquete->precio_por_persona;
+        $reservaPaquete->nombre = 'Paquete Vuelo+Actividad';
+        $reservaPaquete->cantidad = $cantidad;
+        $reservaPaquete->subtotal= $reservaPaquete->precio * $cantidad;
+        array_push($carro->servicios, $reservaPaquete);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+
+    }
+
+        public function agregarPaquete2(Request $request){
+        $carro = $this->crearCarro();
+
+        $id = $request->input("id");
+        $cantidad = $request->input("cantidad");
+
+        $paquete = Paquete::findOrFail($id);
+        
+        $reservaPaquete = new \stdClass();
+        $reservaPaquete->id = $id;
+        $reservaPaquete->categoria = 'Paquete 2';
+        $reservaPaquete->subcategoria = 'Paquete';
+        $reservaPaquete->precio = $paquete->precio_por_persona;
+        $reservaPaquete->nombre = 'Paquete Vuelo+Vehiculo';
+        $reservaPaquete->cantidad = $cantidad;
+        $reservaPaquete->subtotal= $reservaPaquete->precio * $cantidad;
+        array_push($carro->servicios, $reservaPaquete);
+        $total = 0;
+        foreach ($carro->servicios as $item) {
+            $total = $total + $item->subtotal;
+        }
+        $carro->total = $total;
+        Session::put("carro", json_encode($carro));
+        return $this->mostrarCarro();
+
     }
 
     
