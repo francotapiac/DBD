@@ -25,7 +25,7 @@
             <div class="col-lg-3 col-1680-4">
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
-                    <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
+                    <div class="offers_image_background" style="background-image:url(imagenes/actividad.jpg)"></div>
                     <div class="offer_name"><a href="{{action('ActividadController@show', $actividad->id_actividad)}}">{{$actividad->nombre}}</a></div>
                 </div>
             </div>

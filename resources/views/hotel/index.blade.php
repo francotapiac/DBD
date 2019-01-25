@@ -25,7 +25,7 @@
             <div class="col-lg-3 col-1680-4">
                 <div class5000offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
-                    <div class="offers_image_background" style="background-image:url(/imagenes/hotel.jpg)"></div>
+                    <div class="offers_image_background" style="background-image:url(imagenes/car.jpg)"></div>
                     <div class="offer_name"><a href="{{action('HotelController@show', $hotel->id_hotel)}}">Hotel {{$hotel->nombre}}</a></div>
                 </div>
             </div>

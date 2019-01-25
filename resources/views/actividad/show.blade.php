@@ -10,22 +10,16 @@
             <div class="col-lg-3 col-1680-4">
                 <div class="offers_image_container">
                     <!-- Image by https://unsplash.com/@kensuarez -->
-                    <div class="offers_image_background" style="background-image:url(imagenes/offer_1.jpg)"></div>
+                    <div class="offers_image_background" style="background-image:url(/imagenes/actividad.jpg)"></div>
                     <div class="offer_name"><a href="{{action('ActividadController@show', $actividad->id_actividad)}}">{{$actividad->nombre}}</a></div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="offers_content">
                     <div class="offers_price">${{$actividad->costo}}</div>
-                    <p class="offers_text">{{$actividad->descripcion}}</p>
-                    <div class="offers_icons">
-                        <ul class="offers_icons_list">
-                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                        </ul>
-                    </div>
+                    <p class="offers_text">Descripción: {{$actividad->descripcion}}</p>
+                    <p class="offers_text">*El precio es por persona</p>
+            </div>
                     
 			<form method="POST" action="{{ route('agregarActividad') }}"  role="form">
 				{{ csrf_field() }}
@@ -35,10 +29,6 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 									<input type="submit"  value="Guardar" class="btn btn-success btn-block">
 								</div>
-
-			</form>
-			 <div class="offer_name"><a href="{{action('CarroController@mostrarCarro')}}"></a></div>
-
 
                 </div>
             </div>
