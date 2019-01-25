@@ -9,6 +9,7 @@ use App\Habitacion;
 use App\Vehiculo;
 use App\Usuario;
 use App\Vuelo;
+use App\Asiento;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -167,7 +168,7 @@ class ReservaController extends Controller
         $reserva->pago_actual = $carro->total;
             $reserva->reserva_realizada = true;
         if(Auth::user()){
-            $reserva->id_usuario = $usuario->id;
+            $reserva->id_usuario = Auth::user()->id;
         }
         else
             $reserva->id_usuario = 3;
@@ -199,8 +200,11 @@ class ReservaController extends Controller
                     break;
 
                 case 'Vuelo':
-                    $vuelo = Vuelo::findOrFail($item->id);
-                    $reserva->vuelos()->attach($item->id);
+                    
+                    $asiento = Asiento::findOrFail($item->id);
+                    $vuelo = Vuelo::findOrFail($asiento->id_vuelo);
+                    $asiento->disponibilidad = false;
+                    $reserva->vuelos()->attach($asiento->id_vuelo);
                     $vuelo->save();
                     break;
 

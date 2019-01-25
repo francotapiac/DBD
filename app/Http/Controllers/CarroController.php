@@ -12,6 +12,7 @@ use App\Vuelo;
 use App\Traslado;
 use App\Usuario;
 use App\Paquete;
+use App\Asiento;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -154,17 +155,17 @@ class CarroController extends Controller
         $carro = $this->crearCarro();
 
         $id = $request->input("id");
-        $aerolinea = $request->input("aerolinea");
         $cantidad = $request->input("cantidad");
 
-        $vuelo = Vuelo::findOrFail($id);
+        $asiento = Asiento::findOrFail($id);
+        $vuelo = Vuelo::findOrFail($asiento->id_vuelo);
         
         $reservaVuelo = new \stdClass();
         $reservaVuelo->id = $id;
         $reservaVuelo->categoria = 'Vuelo';
         $reservaVuelo->subcategoria = 'Reservas';
         $reservaVuelo->precio = $vuelo->precio_diario;
-        $reservaVuelo->nombre = $aerolinea;
+        $reservaVuelo->nombre = $vuelo->aerolinea;
         $reservaVuelo->cantidad = $cantidad;
         $reservaVuelo->subtotal= $reservaVuelo->precio * $cantidad;
         array_push($carro->servicios, $reservaVuelo);

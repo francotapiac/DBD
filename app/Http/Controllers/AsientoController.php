@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Asiento;
 use Validator;
+use App\Vuelo;
 
 class AsientoController extends Controller
 {
@@ -24,8 +25,10 @@ class AsientoController extends Controller
     public function index(Request $request)
     {
         
-        $disponibilidad = $request->get('disponibilidad');
 
+        $disponibilidad = $request->get('disponibilidad');
+        $id_vuelo = $request->get('id_vuelo');
+        $vuelo = Vuelo::find($id_vuelo);
         $asientos = Asiento::orderBy('id_asiento','DESC')
         ->numeroAsiento($numero_asiento)               
         ->letraAsiento($letra_asiento)
@@ -33,7 +36,7 @@ class AsientoController extends Controller
         ->disponibilidad($disponibilidad)
         ->paginate(3); 
         
-        return view('asiento.index',compact('asientos')); 
+        return view('asiento.index',compact('asientos','vuelo')); 
     }
 
     /**
@@ -75,9 +78,11 @@ class AsientoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+
         $asiento = Asiento::find($id);
-        return  view('asiento.show',compact('asiento'));
+        $Vuelo = Vuelo::find($asiento->id_vuelo);
+        return  view('asiento.show',compact('asiento','vuelo'));
     }
 
     /**

@@ -24,10 +24,10 @@
                     <div class="offers_text">Disponibilidad asiento: {{$asiento->disponibilidad}}</div>
 
                     
-      <form method="POST" action="{{ route('agregarAsiento') }}"  role="form">
+      <form method="POST" action="{{ route('agregarVuelo') }}"  role="form">
         {{ csrf_field() }}
-        <input type='hidden' name="id" value = "{{$asiento->id_asiento}}" class="form-control" />
-        <input type='hidden' name="numero_asiento" value = "{{$asiento->numero_asiento}}" class="form-control" />
+                <input type='hidden' name="id" value = "{{$asiento->id_asiento}}" class="form-control" />
+                <input type='hidden' name="cantidad" value = 1 class="form-control" />
         
         <div class="col-xs-12 col-sm-12 col-md-12">
                   <input type="submit"  value="Guardar" class="btn btn-success btn-block">
