@@ -26,6 +26,11 @@ class CreateVuelosTable extends Migration
             $table->integer('equipaje');
             $table->boolean('disponibilidad');
             $table->string('aerolinea',70);
+            $table->string('ciudad_origen',70);
+            $table->string('pais_origen',70);
+            $table->string('ciudad_destino',70);
+            $table->string('pais_destino',70);
+
 
             $table->integer('id_aeropuerto_origen')->unsigned()->nullable();
             $table->integer('id_aeropuerto_destino')->unsigned()->nullable();

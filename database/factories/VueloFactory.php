@@ -15,7 +15,10 @@ $factory->define(App\Vuelo::class, function (Faker $faker) {
         'equipaje' => rand(1,5),
         'disponibilidad'=> $faker->boolean,
         'aerolinea'=> $faker->company,
-
+        'ciudad_origen'=> $faker->city,
+        'pais_origen'=> $faker->country,
+        'ciudad_destino'=> $faker->city,
+        'pais_destino'=> $faker->country,
         'id_aeropuerto_origen' => rand(1,20),
         'id_aeropuerto_destino' => rand(1,20),
 

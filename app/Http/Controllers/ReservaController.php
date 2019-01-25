@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Reserva;
 use App\Actividad;
 use App\Usuario;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\Session;
 
 class ReservaController extends Controller
 {
@@ -145,77 +147,51 @@ class ReservaController extends Controller
         return response()->json("Eliminado exitosamente");
     }
 
-
-
-    /*public function reservaActividad(Request $request){
-
-        $actividad = Actividad::where('id_actividad',$id_actividad)->first();
-        request()->session()->put('busqueda.autos', [
-          'costo' => $actividad->costo,
-        ]);
-        
-        $reserva = new Reserva([
-            'costo' => request()->session()->get('')]
-        );
-    }*/
-
-    //Nota: rutas agregarCarro corresponden a controlador CarroController
-    //Ver ese controlador.
-
     
     //Función para realizar reserva de actividad
-    public function reservaActividad(Request $request){
+    public function pagar(){
+        if (Session::has("carro")){
+                $carro = json_decode(Session::get("carro"));
+        }else{
+          return redirect("/")->with('failure', 'El carro esta vacío');
+        }
 
-        $id_actividad = $request->id_actividad;
-        $actividad = Actividad::where('id_actividad',$id_actividad)->first();
-        $id_usuario = Auth::user()->id;
+        $usuario = null;
+        $reserva = new Reserva();
+        $reserva->fecha_reserva = Carbon::now();
+        $reserva->hora_reserva = Carbon::now();
+        $reserva->detalle_reserva = "---";
+        $reserva->tipo_pago = 1;
+        $reserva->pago_actual = $carro->total;
+            $reserva->reserva_realizada = true;
+        if(Auth::user()){
+            $reserva->id_usuario = $usuario->id;
+        }
+        else
+            $reserva->id_usuario = 3;
+        $reserva->save();
 
+        foreach($carro->servicios as $item){
+
+            switch($item->categoria){
+
+                case 'Actividad':
+                    $actividad = Actividad::findOrFail($item->id);
+                    $reserva->actividads()->attach($item->id);
+                    $actividad->cantidad = $actividad->cantidad - $item->cantidad;
+                    $actividad->save();
+                    break;
+                    
+            }
+
+            Session::forget("carro");
+            return redirect("/")->with('success', 'La compra fue realizada con éxito');
+        }
 
         //Crear nueva reserva
-        $reserva = new Reserva();
-        $reserva->fecha_reserva = new \DateTime();
-        $reserva->hora_reserva = new \DateTime();
-        $reserva->detalle_reserva = "reserva actividad";
-        $reserva->tipo_pago = 1;
-        $reserva->id_usuario = $id_usuario;
-        $reserva->pago_actual = 0;
-        $reserva->pago_actual +=$request->costo;
-        $reserva->reserva_realizada = false;
-        $reserva->save();
+        
 
-        //Guardar datos en tabla intermedia
-        $reserva = Reserva::where('id_usuario',$id_usuario)
-        //->where('reserva_realizada',false)
-        ->first();
-        $reserva->actividads()->attach($id_actividad);
-     
-        return redirect()->route('agregarCarro');
-    }
 
-    public function reservaVehiculo(Request $request){
-        return 'hola';
-    }
-
-    public function reservaVuelo(Request $request){
-        return 'hola';
-    }
-
-    public function comprar(Request $request){
-
-       $reserva = Reserva::where([
-            ['id_usuario', $request->User()->id],
-            ['reserva_realizada', false],
-        ])->first();
-
-        $reserva->reserva_realizada = true;
-        $reserva->save();
-
-        //Actividad
-        $actividads = $reserva->actividads();
-       
-
-        return view('usuario.carroCompra', ['actividads' => $actividads,
-            'usuarios' => $request->user()]);
     }
 
 }

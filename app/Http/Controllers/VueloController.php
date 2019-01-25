@@ -25,7 +25,11 @@ class VueloController extends Controller
         'disponibilidad' => 'required|boolean', 
         'aerolinea' => 'required|string', 
         'id_aeropuerto_origen' => 'required|numeric', 
-        'id_aeropuerto_destino' => 'required|numeric', 
+        'id_aeropuerto_destino' => 'required|numeric',
+        'ciudad_origen' => 'required|string', 
+        'pais_origen' => 'required|string', 
+        'ciudad_destino' => 'required|string', 
+        'pais_destino' => 'required|string', 
 
         ];
     }
@@ -35,11 +39,18 @@ class VueloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$vuelos = Vuelo::all();
         //return $vuelos;
-        $vuelos = Vuelo::orderBy('id_vuelo','DESC')->paginate(3); 
+        $ciudadOrigen = $request->get('origen');
+        $ciudadDestino = $request->get('destino');
+        $fecha_ida = $request->get('fecha_ida');
+        $fecha_regreso = $request->get('fecha_regreso');
+        $vuelos = Vuelo::orderBy('id_vuelo','DESC')
+        ->lugar($ciudadOrigen,$ciudadDestino)
+        ->fecha($fecha_ida,$fecha_regreso)
+        ->paginate(3); 
         return view('vuelo.index',compact('vuelos')); 
 
     }
@@ -80,6 +91,10 @@ class VueloController extends Controller
         $vuelo->equipaje = $request->get('equipaje');
         $vuelo->disponibilidad = $request->get('disponibilidad');
         $vuelo->aerolinea = $request->get('aerolinea');
+        $vuelo->tipo_vuelo = $request->get('ciudad_origen') ;
+        $vuelo->equipaje = $request->get('pais_origen');
+        $vuelo->disponibilidad = $request->get('ciudad_destino');
+        $vuelo->aerolinea = $request->get('pais_destino');
         try{
             $id = $request->get('id_aeropuerto_origen');
             $aeropuerto = \App\Aeropuerto::find($id);
@@ -139,7 +154,7 @@ class VueloController extends Controller
             return $validator->messages();
         }
         
-        $vuelo = Vuelo::find($id);
+        $vuelo = new Vuelo();
         $vuelo->fecha_ida = $request->get('fecha_ida');
         $vuelo->fecha_vuelta = $request->get('fecha_vuelta');
         $vuelo->hora_salida = $request->get('hora_salida');
@@ -151,6 +166,10 @@ class VueloController extends Controller
         $vuelo->equipaje = $request->get('equipaje');
         $vuelo->disponibilidad = $request->get('disponibilidad');
         $vuelo->aerolinea = $request->get('aerolinea');
+        $vuelo->tipo_vuelo = $request->get('ciudad_origen') ;
+        $vuelo->equipaje = $request->get('pais_origen');
+        $vuelo->disponibilidad = $request->get('ciudad_destino');
+        $vuelo->aerolinea = $request->get('pais_destino');
         try{
             $id = $request->get('id_aeropuerto_origen');
             $aeropuerto = \App\Aeropuerto::find($id);

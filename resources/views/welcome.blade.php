@@ -243,38 +243,37 @@
                         </div>      
                     </div>
 
-                    <!-- Busqueda de hoteles -->
+                    <!-- Busqueda de vuelos -->
 
                     <div class="search_panel active">
                         <form  method="GET" action="/vuelo" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                             <div class="search_item">
+                                <div>Origen</div>
+                                <select name="origen" id="origen" class="destination search_input">
+                                    <option value="">---</option>
+                                    @foreach($vuelos as $vuelo)
+                                        <option value="{{$vuelo['ciudad_origen']}}">{{$vuelo['ciudad_origen']}},{{$vuelo['pais_origen']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="search_item">
                                 <div>destino</div>
-                                <input type="text" class="destination search_input" required="required">
-                            </div>
-                            <div class="search_item">
-                                <div>fecha de ida</div>
-                                <input type="date" class="check_in search_input">
-                            </div>
-                            <div class="search_item">
-                                <div>fecha de regreso</div>
-                                <input type="date" class="check_out search_input">
-                            </div>
-                            <div class="search_item">
-                                <div>adultos</div>
-                                <select name="adults" id="adults_1" class="dropdown_item_select search_input">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
+                                <select name="destino" id="destino" class="destination search_input">
+                                    <option value="">---</option>
+                                    @foreach($vuelos as $vuelo)
+                                        <option value="{{$vuelo['ciudad_destino']}}">{{$vuelo['ciudad_destino']}},{{$vuelo['pais_destino']}} </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="search_item">
-                                <div>niños</div>
-                                <select name="children" id="children_1" class="dropdown_item_select search_input">
-                                    <option>0</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
+                                <div>Ida</div>
+                                <input type="date" class="check_in search_input" name="fecha_ida" id="fecha_ida" >
                             </div>
+                            <div class="search_item">
+                                <div>Regreso</div>
+                                <input type="date" class="check_out search_input" name="fecha_regreso" id="fecha_regreso">
+                            </div>
+                           
                             <button class="button search_button" type="submit">search<span></span><span></span><span></span></button>
                         </form>
                     </div>

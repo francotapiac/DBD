@@ -31,7 +31,8 @@
 Route::get('/', function () {
 	$lugars = App\Lugar::all();
 	$actividads = App\Actividad::all();
-    return view('welcome',compact('lugars','actividads'));
+	$vuelos = App\Vuelo::all();
+    return view('welcome',compact('lugars','actividads','vuelos'));
 });
 
 Auth::routes();
@@ -47,7 +48,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 2.1. Rutas de reserva
 *********************************/
 Route::resource('reserva','ReservaController');
-Route::post('/reserva/actividad', 'ReservaController@reservaActividad')->name('reservaActividad');
+Route::get('/pagar', 'ReservaController@pagar')->name('pagar');
 Route::post('/reserva/vehiculo', 'ReservaController@reservaVehiculo')->name('reservaVehiculo');
 Route::post('/reserva/vuelo', 'ReservaController@reservaVuelo')->name('reservaVuelo');
 Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
