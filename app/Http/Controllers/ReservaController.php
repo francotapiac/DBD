@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reserva;
 use App\Actividad;
+use App\Habitacion;
+use App\Vehiculo;
 use App\Usuario;
+use App\Vuelo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -180,8 +183,28 @@ class ReservaController extends Controller
                     $actividad->cantidad = $actividad->cantidad - $item->cantidad;
                     $actividad->save();
                     break;
-                    
-            }
+
+                case 'Habitacion':
+                    $habitacion = Habitacion::findOrFail($item->id);
+                    $reserva->habitacions()->attach($item->id);
+                    $habitacion->disponibilidad =false;
+                    $habitacion->save();
+                    break;
+
+                case 'Vehiculo':
+                    $vehiculo = Vehiculo::findOrFail($item->id);
+                    $reserva->vehiculos()->attach($item->id);
+                    $vehiculo->disponibilidad =false;
+                    $vehiculo->save();
+                    break;
+
+                case 'Vuelo':
+                    $vuelo = Vuelo::findOrFail($item->id);
+                    $reserva->vuelos()->attach($item->id);
+                    $vuelo->save();
+                    break;
+
+            }   
 
             Session::forget("carro");
             return redirect("/")->with('success', 'La compra fue realizada con éxito');
