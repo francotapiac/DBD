@@ -136,7 +136,7 @@
                     <div class="footer_col">
                         <div class="footer_content footer_about">
                             <div class="logo_container footer_logo">
-                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">LATAM</a></div>
+                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">Little Cisterna</a></div>
                             </div>
                             <p class="footer_about_text">Buscanos en todas nuestras redes sociales</p>
                             <ul class="footer_social_list">

@@ -53,6 +53,7 @@ Route::post('/reserva/vehiculo', 'ReservaController@reservaVehiculo')->name('res
 Route::post('/reserva/vuelo', 'ReservaController@reservaVuelo')->name('reservaVuelo');
 Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
 
+
 Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
 Route::resource('asiento', 'AsientoController');
@@ -238,6 +239,9 @@ Route::post('/paquete/store','PaqueteController@store');
 Route::post('/paquete/update/{id}','PaqueteController@update');
 Route::get('/paquete/create','PaqueteController@create');
 */
+
+
+
 
 
 

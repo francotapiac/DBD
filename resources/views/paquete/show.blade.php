@@ -1,7 +1,7 @@
 @extends('layouts.vistaControlador')
  @section('content')
 
-<div class="col-lg-12" style="margin-top: 200px">
+<div class="col-lg-12" style="margin-top: 300px">
   <div class="offers_grid"  method="GET" action="/paquete">  
       <div class="offers_item rating_4">
         <div class="row"> 
@@ -31,18 +31,18 @@
                     <!-- Botón Reservar -
                     <div class="button book_button"><a href="{{action('PaqueteController@show', $paquete->id_paquete)}}">Reservar<span></span><span></span><span></span></a></div>-->
             @if($paquete->id_paquete == 1)
-			<form method="POST" action="{{ route('agregarPaquete1') }}"  role="form">
-				{{ csrf_field() }}
-				<input type='hidden' name="id" value = "{{$paquete->id_paquete}}" class="form-control" />
+            <form method="POST" action="{{ route('agregarPaquete1') }}"  role="form">
+                {{ csrf_field() }}
+                <input type='hidden' name="id" value = "{{$paquete->id_paquete}}" class="form-control" />
                 <input type='hidden' name="nombre_paquete" value = "{{$paquete->nombre}}" class="form-control" />
                 <input type='hidden' name="descuento" value = {{$paquete->descuento}} class="form-control" />
                 <input type='hidden' name="fecha_devolucion" value = "0" class="form-control" />
                 <input type='hidden' name="cantidad" value = 1 class="form-control" />
 
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<input type="submit"  value="Guardar" class="btn btn-success btn-block">
-				</div>
-			</form>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <input type="submit"  value="Guardar" class="btn btn-success btn-block">
+                </div>
+            </form>
             @else
                 <form method="POST" action="{{ route('agregarPaquete2') }}"  role="form">
                 {{ csrf_field() }}
