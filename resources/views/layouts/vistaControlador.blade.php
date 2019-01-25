@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="/"><img src="{{URL::asset('imagenes/logo.png')}}">Little Cisterna</a></div>
+                            <div class="logo"><a href="/"><img src="{{URL::asset('imagenes/logo.png')}}">Air&Sea</a></div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
@@ -136,7 +136,7 @@
                     <div class="footer_col">
                         <div class="footer_content footer_about">
                             <div class="logo_container footer_logo">
-                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">Little Cisterna</a></div>
+                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">Air&Sea</a></div>
                             </div>
                             <p class="footer_about_text">Buscanos en todas nuestras redes sociales</p>
                             <ul class="footer_social_list">
