@@ -9,5 +9,7 @@ $factory->define(App\Hotel::class, function (Faker $faker) {
             'compania' => $faker->company,
             'calificacion' => rand(1,5),
             'descripcion' => $faker->realText,
+            'pais' => $faker->country,
+            'ciudad' => $faker->city,
     ];
 });

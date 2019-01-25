@@ -32,7 +32,9 @@ Route::get('/', function () {
 	$lugars = App\Lugar::all();
 	$actividads = App\Actividad::all();
 	$vuelos = App\Vuelo::all();
-    return view('welcome',compact('lugars','actividads','vuelos'));
+	$hotels = App\Hotel::all();
+	$vehiculos = App\Vehiculo::all();
+    return view('welcome',compact('lugars','actividads','vuelos','hotels','vehiculos'));
 });
 
 Route::get('/historialCompra', function () {

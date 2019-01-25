@@ -8,7 +8,7 @@ class Hotel extends Model
 {
     protected $primaryKey = 'id_hotel';
     protected $fillable = [
-        'nombre','telefono','compañia','calificacion','descripcion'
+        'nombre','telefono','compañia','calificacion','descripcion','ciudad','pais'
     ];
 
     public function habitacions(){
@@ -20,5 +20,12 @@ class Hotel extends Model
     	return $this
     	->hasOne(Lugar::class,'id_lugar')->withTimeStaps();
     }
+
+    public function scopeLugar($query, $pais){
+
+        if($pais)
+            return $query->where('pais','LIKE',"%$pais%"); 
+    }
+
     
 }

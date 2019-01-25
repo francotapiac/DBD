@@ -36,7 +36,9 @@ class HotelController extends Controller
         ->fecha($fecha_inicio,$fecha_final)
         ->cantidad($cantidad_personas)
         ->get();*/
+        $pais = $request->get('pais');
         $hotels = Hotel::orderBy('id_hotel','DESC')
+        ->lugar($pais)
         ->paginate(3); 
         return view('hotel.index',compact('hotels'));
     }

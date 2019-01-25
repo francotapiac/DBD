@@ -8,7 +8,7 @@ class Vehiculo extends Model
 {
 	protected $primaryKey = 'id_vehiculo';
     protected $fillable = [
-        'fecha_recogida', 'fecha_devolucion', 'compañia', 'precio_diario', 'nombre', 'capacidad', 'disponibilidad', 'id_lugar',
+        'fecha_recogida', 'fecha_devolucion', 'compañia', 'precio_diario', 'nombre', 'capacidad', 'disponibilidad', 'id_lugar','pais','ciudad'
     ];
 
     public function paquetes(){
@@ -71,4 +71,9 @@ class Vehiculo extends Model
         if($ciudad)
             return $this->lugar()->where('ciudad','LIKE',"%$ciudad%");
     }
+
+    public function scopeLugar($query,$ciudad){
+        if($ciudad)
+            return $query->where('ciudad','LIKE',"%$ciudad%");
+    } 
 }

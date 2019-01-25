@@ -12,5 +12,7 @@ $factory->define(App\Vehiculo::class, function (Faker $faker) {
         'capacidad' => $faker->randomElement($array = array(2,5,10)),
         'disponibilidad' => $faker->boolean,
         'id_lugar' => rand(1,20),
+        'ciudad' => $faker->city,
+        'pais' => $faker->country,
     ];
 });

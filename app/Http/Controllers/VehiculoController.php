@@ -40,18 +40,19 @@ class VehiculoController extends Controller
         $capacidad = $request->get('capacidad');
         $disponibilidad = $request->get('disponibilidad');
         $ciudad = $request->get('ciudad');
-        $pais = $request->get('pais');
+        $ciudad = $request->get('ciudad');
 
         $vehiculos = Vehiculo::orderBy('id_vehiculo','DESC')
-        ->fechaRecogida($fechaRecogida)               //Se realiza query scope desde el modelo (con función scopeNombre)
+        /*->fechaRecogida($fechaRecogida)               //Se realiza query scope desde el modelo (con función scopeNombre)
         ->fechaDevolucion($fechaDevolucion)
         ->compania($compania)
         ->precioDiario($precioDiario)
         ->nombre($nombre)
         ->capacidad($capacidad)
         ->disponibilidad($disponibilidad)
-        ->ciudad($ciudad)
-        ->pais($pais)
+        ->ciudad($ciudad)*/
+        ->lugar($ciudad)
+       // ->pais($pais)
         ->paginate(3); 
         
         return view('vehiculo.index',compact('vehiculos')); 

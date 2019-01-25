@@ -42,7 +42,7 @@
           <p1>Total: </p1>{{$carro->total}}
         </div>
         
-        <div class="button book_button"><a href="{{action('ReservaController@pagar')}}">Reservar<span></span><span></span><span></span></a></div>
+        <div class="button book_button"><a href="{{action('ReservaController@pagar')}}">Comprar<span></span><span></span><span></span></a></div>
 
         
     </div>

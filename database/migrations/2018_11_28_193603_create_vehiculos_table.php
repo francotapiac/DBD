@@ -22,6 +22,8 @@ class CreateVehiculosTable extends Migration
             $table->string('nombre',40);
             $table->integer('capacidad');
             $table->boolean('disponibilidad');
+            $table->string('ciudad',80);
+            $table->string('pais',80);
             $table->timestamps();
 
             $table->integer('id_lugar')->unsigned()->nullable();

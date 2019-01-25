@@ -20,6 +20,8 @@ class CreateHotelsTable extends Migration
             $table->string('compania',70);
             $table->integer('calificacion');
             $table->text('descripcion');
+            $table->text('ciudad',80);
+            $table->text('pais',80);
             $table->timestamps();
 
         });
