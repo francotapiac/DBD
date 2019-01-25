@@ -62,8 +62,11 @@
                                 <li class="main_nav_item"><a href="/">Inicio</a></li>
                                 <li class="main_nav_item"><a href="about.html">about us</a></li>
                                 <li class="main_nav_item"><a href="offers">offers</a></li>
-                                <li class="main_nav_item"><a href="blog.html">news</a></li>
-                                <li class="main_nav_item"><a href="carrito">Carro</a></li>
+                                @if(Auth::user())
+
+                                <li class="main_nav_item"><a href="historialCompra">Historial Compra</a></li>
+                                @endif
+                                <li class="main_nav_item"><a href="carros">Carro</a></li>
                             </ul>
                         </div>
                         <div class="content_search ml-lg-0 ml-auto">
@@ -113,7 +116,7 @@
                 <li class="menu_item"><a href="about.html">about us</a></li>
                 <li class="menu_item"><a href="offers">offers</a></li>
                 <li class="menu_item"><a href="blog.html">news</a></li>
-                <li class="menu_item"><a href="carrito">Carro</a></li>
+                <li class="menu_item"><a href="carros">Carro</a></li>
             </ul>
         </div>
     </div>

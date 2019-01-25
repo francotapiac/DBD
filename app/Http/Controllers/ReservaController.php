@@ -164,10 +164,10 @@ class ReservaController extends Controller
         $reserva = new Reserva();
         $reserva->fecha_reserva = Carbon::now();
         $reserva->hora_reserva = Carbon::now();
-        $reserva->detalle_reserva = "---";
+        $reserva->detalle_reserva = "Compras realizadas.";
         $reserva->tipo_pago = 1;
         $reserva->pago_actual = $carro->total;
-            $reserva->reserva_realizada = true;
+        $reserva->reserva_realizada = true;
         if(Auth::user()){
             $reserva->id_usuario = Auth::user()->id;
         }
@@ -226,6 +226,14 @@ class ReservaController extends Controller
             }   
 
             Session::forget("carro");
+
+            if(Auth::user()){
+                $reservas = Reserva::where('id_usuario',Auth::user()->id)->get();
+            
+                return view('usuario.historialReserva',compact('reservas'));
+
+            }
+            
             return redirect("/")->with('success', 'La compra fue realizada con éxito');
         }
 

@@ -35,6 +35,13 @@ Route::get('/', function () {
     return view('welcome',compact('lugars','actividads','vuelos'));
 });
 
+Route::get('/historialCompra', function () {
+	if(Auth::user()){
+       	$reservas = App\Reserva::where('id_usuario',Auth::user()->id)->get();
+    return view('usuario.historialReserva',compact('reservas'));
+	}
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -52,6 +59,7 @@ Route::get('/pagar', 'ReservaController@pagar')->name('pagar');
 Route::post('/reserva/vehiculo', 'ReservaController@reservaVehiculo')->name('reservaVehiculo');
 Route::post('/reserva/vuelo', 'ReservaController@reservaVuelo')->name('reservaVuelo');
 Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
+Route::get('/historialReserva', 'ReservaController@historialReserva')->name('historialReserva');
 
 Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');

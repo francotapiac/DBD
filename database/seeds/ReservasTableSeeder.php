@@ -12,7 +12,8 @@ class ReservasTableSeeder extends Seeder
     public function run()
     {
     	//Para cada servicio, agregar un factory
-        factory(App\Reserva::class,20)->create()->each(function($reserva) { //Para cada  reserva
+        factory(App\Reserva::class,20)->create();
+        /*factory(App\Reserva::class,20)->create()->each(function($reserva) { //Para cada  reserva
             $reserva->actividads()->attach(App\Actividad::all()->random(1)); //se crea tabla intermedia
         });
 
@@ -26,7 +27,7 @@ class ReservasTableSeeder extends Seeder
 
         factory(App\Reserva::class,20)->create()->each(function($reserva) { //Para cada  reserva
             $reserva->vuelos()->attach(App\Vuelo::all()->random(1)); //se crea tabla intermedia
-        });
+        });*/
 
         
     }
