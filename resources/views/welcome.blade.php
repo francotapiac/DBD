@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Little Cisterna</title>
+<title>Air&Sea</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="/"><img src="imagenes/logo.png" alt="">Little Cisterna</a></div>
+                            <div class="logo"><a href="/"><img src="imagenes/logo.png" alt="">Air&Sea</a></div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
@@ -131,12 +131,12 @@
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
                     <!-- Image by https://unsplash.com/@anikindimitry -->
-                    <div class="home_slider_background" style="background-image:url(imagenes/hawaii.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(imagenes/img1.jpg)"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                            <h1>descubre</h1>
-                            <h1>el mundo</h1>
+                            <h1>comienza</h1>
+                            <h1>tu viaje</h1>
                             <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">Explorar ahora<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
@@ -144,12 +144,12 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(imagenes/patagonia.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(imagenes/img2.jpg)"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                            <h1>discover</h1>
-                            <h1>the world</h1>
+                            <h1>comienza</h1>
+                            <h1>tu viaje</h1>
                             <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
@@ -157,12 +157,12 @@
 
                 <!-- Slider Item -->
                 <div class="owl-item home_slider_item">
-                    <div class="home_slider_background" style="background-image:url(imagenes/home_slider.jpg)"></div>
+                    <div class="home_slider_background" style="background-image:url(imagenes/img3.jpg)"></div>
 
                     <div class="home_slider_content text-center">
                         <div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-                            <h1>discover</h1>
-                            <h1>the world</h1>
+                            <h1>start</h1>
+                            <h1>your trip</h1>
                             <div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
                         </div>
                     </div>
@@ -423,7 +423,7 @@
                     <div class="footer_col">
                         <div class="footer_content footer_about">
                             <div class="logo_container footer_logo">
-                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">Little Cisterna</a></div>
+                                <div class="logo"><a href="#"><img src="imagenes/logo.png" alt="">Air&Sea</a></div>
                             </div>
                             <p class="footer_about_text">Buscanos en todas nuestras redes sociales</p>
                             <ul class="footer_social_list">
