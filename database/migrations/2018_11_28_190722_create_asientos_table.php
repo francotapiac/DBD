@@ -19,6 +19,9 @@ class CreateAsientosTable extends Migration
             $table->string('letra_asiento',3);
             $table->integer('tipo_asiento');
             $table->boolean('disponibilidad');
+
+            $table->integer('id_vuelo')->unsigned()->nullable();
+            $table->foreign('id_vuelo')->references('id_vuelo')->on('vuelos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

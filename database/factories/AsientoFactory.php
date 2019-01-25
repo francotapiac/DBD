@@ -9,5 +9,6 @@ $factory->define(App\Asiento::class, function (Faker $faker) {
         'letra_asiento' => $faker->randomElement($array = array ('A','B','C','D','E','F','G','H')),
         'tipo_asiento' => rand(1,3),
         'disponibilidad' => $faker->boolean,
+        'id_vuelo' => rand(1,23),
     ];
 });

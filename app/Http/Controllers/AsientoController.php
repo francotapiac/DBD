@@ -23,9 +23,7 @@ class AsientoController extends Controller
      */
     public function index(Request $request)
     {
-        $numero_asiento = $request->get('numero_asiento');
-        $letra_asiento = $request->get('letra_asiento');
-        $tipo_asiento = $request->get('tipo_asiento');
+        
         $disponibilidad = $request->get('disponibilidad');
 
         $asientos = Asiento::orderBy('id_asiento','DESC')

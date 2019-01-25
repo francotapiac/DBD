@@ -14,7 +14,7 @@ class Vuelo extends Model
 
     public function asientos(){
    		return $this
-   		->belongsToMany('App\Asiento','vuelo_asientos','id_vuelo','id_asiento')->withTimestamps();
+   		->hasMany('App\Asiento','vuelo_asientos','id_vuelo','id_asiento')->withTimestamps();
     }
 
     public function seguros(){

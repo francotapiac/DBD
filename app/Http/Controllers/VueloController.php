@@ -7,6 +7,7 @@ use App\Vuelo;
 use Validator;
 use App\Lugar;
 use App\Aeropuerto;
+use App\Asiento;
 
 
 class VueloController extends Controller
@@ -123,8 +124,10 @@ class VueloController extends Controller
         /*$vuelo = Vuelo::find($id);
         return $vuelo;*/
         $vuelo = Vuelo::find($id);
-        $aeropuerto = Aeropuerto::find($vuelo->id_aeropuerto_destino);
-        return view('vuelo.show',compact('vuelo','aeropuerto'));
+        $asientos = Asiento::where('id_vuelo',$id)
+        ->where('disponibilidad',true)->paginate(3); ;
+        return view('asiento.index',compact('asientos','vuelo'));
+        
     }
 
     /**

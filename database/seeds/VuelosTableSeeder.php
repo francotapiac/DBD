@@ -12,7 +12,7 @@ class VuelosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Vuelo::class,40)->create();
+        factory(App\Vuelo::class,1)->create();
         /*factory(App\Vuelo::class,20)->create()
         ->each(function($asiento) { //Para cada  reserva
             $asiento->asientos()->attach(App\Asiento::all()->random(1)); //se crea tabla intermedia
