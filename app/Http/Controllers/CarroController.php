@@ -164,7 +164,7 @@ class CarroController extends Controller
         $reservaVuelo->id = $id;
         $reservaVuelo->categoria = 'Vuelo';
         $reservaVuelo->subcategoria = 'Reservas';
-        $reservaVuelo->precio = $vuelo->precio_diario;
+        $reservaVuelo->precio = $vuelo->precio;
         $reservaVuelo->nombre = $vuelo->aerolinea;
         $reservaVuelo->cantidad = $cantidad;
         $reservaVuelo->subtotal= $reservaVuelo->precio * $cantidad;
@@ -183,6 +183,7 @@ class CarroController extends Controller
 
         $id = $request->input("id");
         $cantidad = $request->input("cantidad");
+        $descuento = $request->input("descuento");
 
         $paquete = Paquete::findOrFail($id);
         
@@ -190,7 +191,7 @@ class CarroController extends Controller
         $reservaPaquete->id = $id;
         $reservaPaquete->categoria = 'Paquete 1';
         $reservaPaquete->subcategoria = 'Paquete';
-        $reservaPaquete->precio = $paquete->precio_por_persona;
+        $reservaPaquete->precio = $paquete->precio_por_persona - $descuento;
         $reservaPaquete->nombre = 'Paquete Vuelo+Actividad';
         $reservaPaquete->cantidad = $cantidad;
         $reservaPaquete->subtotal= $reservaPaquete->precio * $cantidad;
@@ -210,6 +211,7 @@ class CarroController extends Controller
 
         $id = $request->input("id");
         $cantidad = $request->input("cantidad");
+        $descuento = $request->input("descuento");
 
         $paquete = Paquete::findOrFail($id);
         
@@ -217,7 +219,7 @@ class CarroController extends Controller
         $reservaPaquete->id = $id;
         $reservaPaquete->categoria = 'Paquete 2';
         $reservaPaquete->subcategoria = 'Paquete';
-        $reservaPaquete->precio = $paquete->precio_por_persona;
+        $reservaPaquete->precio = $paquete->precio_por_persona - $descuento;
         $reservaPaquete->nombre = 'Paquete Vuelo+Vehiculo';
         $reservaPaquete->cantidad = $cantidad;
         $reservaPaquete->subtotal= $reservaPaquete->precio * $cantidad;

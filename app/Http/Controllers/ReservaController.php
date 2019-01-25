@@ -10,6 +10,7 @@ use App\Vehiculo;
 use App\Usuario;
 use App\Vuelo;
 use App\Asiento;
+use App\Paquete;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -206,6 +207,20 @@ class ReservaController extends Controller
                     $asiento->disponibilidad = false;
                     $reserva->vuelos()->attach($asiento->id_vuelo);
                     $vuelo->save();
+                    break;
+
+                case 'Paquete 1':
+                    
+                    $paquete = Paquete::findOrFail($item->id);
+                    $reserva->paquetes()->attach($item->id);
+                    $reserva->save();
+                    break;
+
+                case 'Paquete 2':
+                    
+                    $paquete = Paquete::findOrFail($item->id);
+                    $reserva->paquetes()->attach($item->id);
+                    $reserva->save();
                     break;
 
             }   

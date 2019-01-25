@@ -12,7 +12,26 @@ class PaquetesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Paquete::class,20)->create();
+        $paquete = new Paquete();
+        $paquete->precio_por_persona = 1000.00;
+        $paquete->descripcion = "Paquete vuelo + actividad";
+        $paquete->descuento = 50.00;
+        $paquete->save(); //se guarda usuario
+        //attach relaciona ambos modelos (rol y user)
+        //$rol_user solo es una variable (se puede cambiar)
+        $paquete->vuelos()->attach(2);
+        $paquete->actividads()->attach(1);
+
+        $paquete = new Paquete();
+        $paquete->precio_por_persona = 2000.00;
+        $paquete->descripcion = "Paquete vuelo + vehiculo";
+        $paquete->descuento = 20.00;
+        $paquete->save(); //se guarda usuario
+        //attach relaciona ambos modelos (rol y user)
+        //$rol_user solo es una variable (se puede cambiar)
+        $paquete->vuelos()->attach(2);
+        $paquete->vehiculos()->attach(1);
+       /* factory(App\Paquete::class,20)->create();
 
         //Para cada servicio, agregar un factory
         factory(App\Paquete::class,20)->create()->each(function($paquete) { //Para cada  reserva
@@ -28,7 +47,7 @@ class PaquetesTableSeeder extends Seeder
             $vuelo->vuelos()->attach(App\Vuelo::all()->random(1)); //se crea tabla intermedia
         });*/
 
-        factory(App\Paquete::class,20)->create()->each(function($vehiculo) { //Para cada  actividad
+      /*  factory(App\Paquete::class,20)->create()->each(function($vehiculo) { //Para cada  actividad
             $vehiculo->vehiculos()->attach(App\Vehiculo::all()->random(1)); //se cr/*ea tabla intermedia
         });
 
@@ -42,6 +61,6 @@ class PaquetesTableSeeder extends Seeder
 
         factory(App\Paquete::class,20)->create()->each(function($vuelo) { //Para cada  actividad
             $vuelo->vuelos()->attach(App\Vuelo::all()->random(1)); //se crea tabla intermedia
-        });
+        });*/
     }
 }
