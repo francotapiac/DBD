@@ -75,14 +75,6 @@
                       <div class="offers_text">Tipo asiento: Económico</div>
                       @endif     
                     <div class="offers_text">Disponibilidad asiento: {{$asiento->disponibilidad}}</div>
-                    <div class="offers_icons">
-                        <ul class="offers_icons_list">
-                            <li class="offers_icons_item"><img src="imagenes/post.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/compass.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/bicycle.png" alt=""></li>
-                            <li class="offers_icons_item"><img src="imagenes/sailboat.png" alt=""></li>
-                        </ul>
-                    </div>
 
                     <!-- Botón editar -->
                     @if(Auth::check())

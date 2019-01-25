@@ -16,6 +16,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="offers_content">
+                    <div class="offers_price">${{$habitacion->precio_noche}}</div>
                     <div class="offers_text">Número habitación: {{$habitacion->id_habitacion}}</div>
                     <div class="offers_text">Capacidad: {{$habitacion->capacidad}}</div>
                     <p class="offers_text">Descripción: {{$habitacion->descripcion}}</p>
@@ -43,9 +44,6 @@
 								</div>
 
 			</form>
-			 <div class="offer_name"><a href="{{action('CarroController@mostrarCarro')}}">A</a></div>
-
-
                 </div>
             </div>
         </div>
