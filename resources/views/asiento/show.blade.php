@@ -21,8 +21,6 @@
                       @else
                       <div class="offers_text">Tipo asiento: Económico</div>
                       @endif     
-                    <div class="offers_text">Disponibilidad asiento: {{$asiento->disponibilidad}}</div>
-
                     
       <form method="POST" action="{{ route('agregarVuelo') }}"  role="form">
         {{ csrf_field() }}

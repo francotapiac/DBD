@@ -61,6 +61,7 @@ Route::post('/reserva/vuelo', 'ReservaController@reservaVuelo')->name('reservaVu
 Route::post('/comprarReserva', 'ReservaController@comprar')->name('comprar');
 Route::get('/historialReserva', 'ReservaController@historialReserva')->name('historialReserva');
 
+
 Route::resource('actividad', 'ActividadController');  
 Route::resource('aeropuerto', 'AeropuertoController');
 Route::resource('asiento', 'AsientoController');
@@ -246,6 +247,9 @@ Route::post('/paquete/store','PaqueteController@store');
 Route::post('/paquete/update/{id}','PaqueteController@update');
 Route::get('/paquete/create','PaqueteController@create');
 */
+
+
+
 
 
 

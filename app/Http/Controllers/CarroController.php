@@ -266,19 +266,19 @@ class CarroController extends Controller
 */
 
 
-	/*//Crear variable de sesión carrito
+    /*//Crear variable de sesión carrito
     //Permite que sea disponible en cuaquier lado del sitio
     /*public function _construct(){
-    	if(!\Session::has('carroCompra')) \Session::put('carroCompra',array());
+        if(!\Session::has('carroCompra')) \Session::put('carroCompra',array());
     }
 
     //Mostar datos de carrito
     public function show(){
-    	return \Session::get('carroCompra');
+        return \Session::get('carroCompra');
     }
 
     public function add(Reserva $reserva){
-    	$carrito =  \Session::get('carroCompra');
+        $carrito =  \Session::get('carroCompra');
         $carrito[$reserva->id_reserva] = $reserva;
         \Session::put('carroCompra',$carrito);
         return redirect()->route('carritos.show');

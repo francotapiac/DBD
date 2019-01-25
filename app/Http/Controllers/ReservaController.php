@@ -226,21 +226,20 @@ class ReservaController extends Controller
             }   
 
             Session::forget("carro");
-
-            if(Auth::user()){
-                $reservas = Reserva::where('id_usuario',Auth::user()->id)->get();
-            
-                return view('usuario.historialReserva',compact('reservas'));
-
-            }
-            
             return redirect("/")->with('success', 'La compra fue realizada con éxito');
         }
 
         //Crear nueva reserva
         
+    }
 
+    public function mostrarReserva(){
+        if(Auth::user()){
+            $reservas = Reserva::where('id_usuario',Auth::user()->id)->first();
+            return view('historialReserva',compact('$reservas'));
 
+        }
+        
     }
 
 }
